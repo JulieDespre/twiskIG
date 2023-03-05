@@ -1,20 +1,23 @@
 package twisk.mondeIG;
 
+import twisk.outils.FabriqueIdentifiant;
+
 import java.awt.*;
 
 public abstract class EtapeIG {
     private String nom;
-    private String identifiant;
+    private int  identifiant;
     private double posX = 100;
     private double posY= 100;
     private int largeur;
     private int hauteur;
 
     public EtapeIG(String nom, int largeur, int hauteur){
-            this.nom= nom;
-            this.largeur= largeur;
-            this.hauteur= hauteur;
-
+        this.nom= nom;
+        this.largeur= largeur;
+        this.hauteur= hauteur;
+        FabriqueIdentifiant maFabrique=FabriqueIdentifiant.getInstance();
+        this.identifiant= maFabrique.getNumero();
     }
 
     public EtapeIG(String nom, Point point, int largeur, int hauteur){
@@ -23,9 +26,15 @@ public abstract class EtapeIG {
         this.hauteur= hauteur;
         this.posX= point.getX();
         this.posY= point.getY();
+        FabriqueIdentifiant maFabrique=FabriqueIdentifiant.getInstance();
+        this.identifiant= maFabrique.getNumero();
     }
 
     //getters pour etape
+    int getIdentifiant(){
+        return identifiant;
+    }
+
     double getEtapePosX(){
         return this.posX;
     }
