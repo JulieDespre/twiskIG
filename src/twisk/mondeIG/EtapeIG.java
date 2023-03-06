@@ -4,7 +4,7 @@ import twisk.outils.FabriqueIdentifiant;
 
 import java.awt.*;
 
-public abstract class EtapeIG {
+public abstract class EtapeIG extends SujetObserve {
     private String nom;
     private int  identifiant;
     private double posX = 100;
@@ -31,47 +31,53 @@ public abstract class EtapeIG {
     }
 
     //getters pour etape
-    int getIdentifiant(){
+    public int getIdentifiant(){
         return identifiant;
     }
 
-    double getEtapePosX(){
+    public double getEtapePosX(){
         return this.posX;
     }
 
-    double getEtapePosY(){
+    public double getEtapePosY(){
         return this.posY;
     }
 
-    int getEtapeHauteur(){
+    public int getEtapeHauteur(){
         return this.hauteur;
     }
 
-    int getEtapeLargeur(){
+    public int getEtapeLargeur(){
         return this.largeur;
     }
 
-    String getNom(){
+    public String getNom(){
         return this.nom;
     }
  //setters pour Etapes
-    double setEtapePosX(double newPosX ){
-        return this.posX = newPosX;
- }
 
-    double setEtapePosY(double newPosY){
-        return this.posY = newPosY;
+    public void setEtapePosX(double newPosX ){
+        this.posX = newPosX;
+        notifierObservateurs();
     }
 
-    int setEtapeHauteur(int newHauteur){
-        return this.hauteur= newHauteur;
+    public void setEtapePosY(double newPosY){
+        this.posY = newPosY;
+        notifierObservateurs();
     }
 
-    int setEtapeLargeur(int newLargeur){
-        return this.largeur= newLargeur;
+    public void setEtapeHauteur(int newHauteur){
+        this.hauteur= newHauteur;
+        notifierObservateurs();
     }
 
-    String setNom(String newNom){
-        return this.nom= newNom;
+    public void setEtapeLargeur(int newLargeur){
+        this.largeur= newLargeur;
+        notifierObservateurs();
+    }
+
+    public void setNom(String newNom){
+        this.nom= newNom;
+        notifierObservateurs();
     }
 }
