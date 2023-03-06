@@ -66,15 +66,6 @@ public abstract class EtapeIG extends SujetObserve {
         notifierObservateurs();
     }
 
-    public void setEtapeHauteur(int newHauteur){
-        this.hauteur= newHauteur;
-        notifierObservateurs();
-    }
-
-    public void setEtapeLargeur(int newLargeur){
-        this.largeur= newLargeur;
-        notifierObservateurs();
-    }
 
     public void setNom(String newNom){
         this.nom= newNom;

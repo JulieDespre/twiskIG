@@ -1,5 +1,7 @@
 package twisk.mondeIG;
 
+import twisk.Vue.Observateur;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -28,6 +30,6 @@ public class SujetObserve {
             observateur.reagir();
             }
         }
-
-
 }
+
+
