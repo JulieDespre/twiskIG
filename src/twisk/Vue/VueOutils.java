@@ -24,6 +24,7 @@ public class VueOutils extends TilePane implements Observateur {
         ImageView icon = new ImageView(image);
         addAct.setGraphic(icon) ;
         this.getChildren().add(addAct);
+        addAct.setOnAction(new EcouteurBouton());
 
     }
 

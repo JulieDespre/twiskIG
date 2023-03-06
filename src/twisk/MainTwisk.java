@@ -21,7 +21,7 @@ public class MainTwisk extends Application {
         MondeIG monMonde = new MondeIG();
         VueMondeIG vueMond =new VueMondeIG(monMonde);
         root.setCenter(vueMond);
-        EtapeIG test1 = new ActiviteIG("test1",300, 150);
+
 
         VueOutils vueOut = new VueOutils(monMonde);
         root.setBottom(vueOut);

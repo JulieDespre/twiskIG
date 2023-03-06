@@ -35,19 +35,19 @@ public abstract class EtapeIG extends SujetObserve {
         return identifiant;
     }
 
-    public double getEtapePosX(){
+    public double getPosX(){
         return this.posX;
     }
 
-    public double getEtapePosY(){
+    public double getPosY(){
         return this.posY;
     }
 
-    public int getEtapeHauteur(){
+    public int getHauteur(){
         return this.hauteur;
     }
 
-    public int getEtapeLargeur(){
+    public int getLargeur(){
         return this.largeur;
     }
 

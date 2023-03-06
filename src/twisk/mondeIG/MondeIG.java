@@ -13,6 +13,8 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
 
     public MondeIG(){
         this.etapes = new HashMap<Integer, EtapeIG>();
+        EtapeIG test1 = new ActiviteIG("test1",300, 150);
+        this.ajouterEtape(test1);
     }
 
     @Override
