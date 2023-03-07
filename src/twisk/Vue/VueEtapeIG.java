@@ -5,7 +5,7 @@ import javafx.scene.layout.VBox;
 import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
 
-public class VueEtapeIG extends VBox implements Observateur{
+public class VueEtapeIG extends VBox implements Observateur {
     private MondeIG monde;
     private EtapeIG etape;
 
@@ -17,6 +17,7 @@ public class VueEtapeIG extends VBox implements Observateur{
 
         Label labNom = new Label(etape.getNom() + etape.getIdentifiant());
         VBox zoneClient = new VBox();
+
         this.getChildren().addAll(labNom, zoneClient);
 
 
@@ -24,6 +25,8 @@ public class VueEtapeIG extends VBox implements Observateur{
 
     @Override
     public void reagir() {
-
+        //for (EtapeIG e : monde.getEtapes().values()) {
+            //VueEtapeIG vEt = new VueEtapeIG(this.monde, e);
+        //}
     }
 }

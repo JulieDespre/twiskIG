@@ -1,7 +1,6 @@
 package twisk.mondeIG;
 
 import twisk.Vue.Observateur;
-
 import java.util.ArrayList;
 import java.util.Collection;
 

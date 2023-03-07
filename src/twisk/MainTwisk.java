@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import twisk.Vue.VueActiviteIG;
 import twisk.Vue.VueMondeIG;
 import twisk.Vue.VueOutils;
 import twisk.mondeIG.ActiviteIG;
