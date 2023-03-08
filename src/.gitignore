@@ -8,7 +8,7 @@
 /dataSources.local.xml
 ### IntelliJ IDEA ###
 out/
-
+out/
 /.idea
 *.iml
 !**/src/main/**/out/
