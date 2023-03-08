@@ -25,7 +25,7 @@ public class VueEtapeIG extends VBox implements Observateur {
         this.setBackground(bg3);
 
         Label labNom = new Label();
-        labNom.setText("Activité "+etape.getIdentifiant());
+        labNom.setText("Activité "+etape.getIdentifiant()+" :    "+etape.getTemps()+(" sec +/- ")+etape.getDelais()+(" sec"));
         labNom.setStyle("-fx-font: 13 Lucida; -fx-font-weight: bold; -fx-padding: 2px;");
         labNom.setTextAlignment(TextAlignment.CENTER);
 

@@ -17,7 +17,7 @@ public class EcouteurBouton implements EventHandler<ActionEvent> {
     //ne fonctionne pas nullpointer exception
     @Override
     public void handle(ActionEvent actionEvent) {
-           EtapeIG e = new ActiviteIG("", 250, 100);
+           EtapeIG e = new ActiviteIG("", 250, 100, 5, 3);
            monde.ajouterEtape(e);
     }
 }

@@ -14,6 +14,7 @@ public class MainTwisk extends Application {
         primaryStage.setTitle("CREATEUR DE MONDES");
         primaryStage.setResizable(false);
         BorderPane root = new BorderPane();
+        root.setStyle("-fx-border-color: slategrey; -fx-border-width: 2px;");
         primaryStage.setScene(new Scene(root, 1000, 1000));
         MondeIG monMonde = new MondeIG();
         VueMondeIG vueMond =new VueMondeIG(monMonde);

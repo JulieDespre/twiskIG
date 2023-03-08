@@ -10,7 +10,7 @@ public class TestMondeIG {
     @Test
     public void TestConstructeurMonde() {
         MondeIG m1 = new MondeIG();
-        EtapeIG e1 =  new ActiviteIG("test1", 10, 10);
+        EtapeIG e1 =  new ActiviteIG("test1", 10, 10, 6, 2);
         m1.ajouterEtape(e1);
         int cpt = 0;
         for (EtapeIG e : m1) {

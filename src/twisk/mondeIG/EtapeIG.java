@@ -6,16 +6,20 @@ import java.awt.*;
 
 public abstract class EtapeIG extends SujetObserve {
     private String nom;
-    private final int  identifiant;
+    private int  identifiant;
     private double posX = 100;
     private double posY= 100;
-    private final int largeur;
-    private final int hauteur;
+    private int largeur;
+    private int hauteur;
+    private int temps;
+    private int delais;
 
-    public EtapeIG(String nom, int largeur, int hauteur){
+    public EtapeIG(String nom, int largeur, int hauteur, int temps, int delais){
         this.nom= nom;
         this.largeur= largeur;
         this.hauteur= hauteur;
+        this.temps= temps;
+        this.delais= delais;
         FabriqueIdentifiant maFabrique=FabriqueIdentifiant.getInstance();
         this.identifiant= maFabrique.getNumero();
     }
@@ -51,17 +55,25 @@ public abstract class EtapeIG extends SujetObserve {
         return this.largeur;
     }
 
+    public int getTemps(){
+        return this.temps;
+    }
+
+    public int getDelais(){
+        return this.delais;
+    }
+
     public String getNom(){
         return this.nom;
     }
  //setters pour Etapes
 
-    public void setEtapePosX(double newPosX ){
+    public void setPosX(double newPosX ){
         this.posX = newPosX;
         notifierObservateurs();
     }
 
-    public void setEtapePosY(double newPosY){
+    public void setPosY(double newPosY){
         this.posY = newPosY;
         notifierObservateurs();
     }
