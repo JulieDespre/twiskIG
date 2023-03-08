@@ -8,8 +8,8 @@ import java.util.Iterator;
 
 
 public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
-    private HashMap <Integer, EtapeIG> etapes;
-    private ArrayList<Observateur> observateurs = new ArrayList<>(15);
+    private final HashMap <Integer, EtapeIG> etapes;
+    private final ArrayList<Observateur> observateurs = new ArrayList<>(15);
 
     public MondeIG(){
         this.etapes = new HashMap<Integer, EtapeIG>();

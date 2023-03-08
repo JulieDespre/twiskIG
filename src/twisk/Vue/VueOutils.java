@@ -11,7 +11,7 @@ import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
 
 public class VueOutils extends TilePane implements Observateur {
-    private MondeIG monde;
+    private final MondeIG monde;
 
     public VueOutils(MondeIG monde) {
         this.monde = monde;

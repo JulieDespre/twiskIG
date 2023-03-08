@@ -10,7 +10,7 @@ import java.awt.*;
 import java.util.HashMap;
 
 public class EcouteurBouton implements EventHandler<ActionEvent> {
-    private MondeIG monde;
+    private final MondeIG monde;
 
     public EcouteurBouton(MondeIG monde) {
         this.monde = monde;
@@ -21,16 +21,9 @@ public class EcouteurBouton implements EventHandler<ActionEvent> {
     //ne fonctionne pas nullpointer exception
     @Override
     public void handle(ActionEvent actionEvent) {
-           EtapeIG e = new ActiviteIG("nom", 300, 150);
+           EtapeIG e = new ActiviteIG("", 300, 150);
            monde.ajouterEtape(e);
 
-
-    /*public void afficherPosAct(){
-        double posX= ActiviteIG.getPosX();
-        double posY= ActiviteIG.getPosY();
-        Point posAct = new Point(posX, posY);
-        System.out.println(posAct);
-    }*/
 
     }
 }

@@ -6,11 +6,11 @@ import java.awt.*;
 
 public abstract class EtapeIG extends SujetObserve {
     private String nom;
-    private int  identifiant;
+    private final int  identifiant;
     private double posX = 100;
     private double posY= 100;
-    private int largeur;
-    private int hauteur;
+    private final int largeur;
+    private final int hauteur;
 
     public EtapeIG(String nom, int largeur, int hauteur){
         this.nom= nom;
@@ -68,7 +68,7 @@ public abstract class EtapeIG extends SujetObserve {
 
 
     public void setNom(String newNom){
-        this.nom= newNom;
+        this.nom = newNom;
         notifierObservateurs();
     }
 }

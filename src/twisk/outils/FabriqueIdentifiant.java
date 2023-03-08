@@ -1,7 +1,7 @@
 package twisk.outils;
 
 public class FabriqueIdentifiant {
-        private static FabriqueIdentifiant instance = new FabriqueIdentifiant();
+        private static final FabriqueIdentifiant instance = new FabriqueIdentifiant();
         private int numero;
         /**
          * Constructeur FabriqueIdentifiant

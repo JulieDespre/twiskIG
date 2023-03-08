@@ -13,7 +13,7 @@ import static javafx.geometry.Pos.CENTER;
 
 public class VueMondeIG extends Pane implements Observateur {
 
-    private MondeIG monde;
+    private final MondeIG monde;
 
 
 
