@@ -15,10 +15,6 @@ public class VueEtapeIG extends VBox implements Observateur {
         this.etape = etape;
         this.monde.ajouterObservateur(this);
 
-        Label labNom = new Label(etape.getNom() + etape.getIdentifiant());
-        VBox zoneClient = new VBox();
-
-        this.getChildren().addAll(labNom, zoneClient);
 
 
     }

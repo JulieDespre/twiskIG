@@ -15,13 +15,13 @@ public class VueOutils extends TilePane implements Observateur {
 
     public VueOutils(MondeIG monde) {
         this.monde = monde;
-        monde.ajouterObservateur(this);
+        this.monde.ajouterObservateur(this);
 
         Background bg = new Background(new BackgroundFill(Color.web("#D8D8D9"), null, null));
         this.setBackground(bg);
         Button addAct = new Button();
         addAct.setBackground(bg);
-        Image image = new Image(getClass().getResourceAsStream("/addAct.png"), 55, 60, true, true);
+        Image image = new Image(getClass().getResourceAsStream("/addAct.png"), 65, 65, true, true);
         ImageView icon = new ImageView(image);
         addAct.setGraphic(icon);
         this.getChildren().add(addAct);
