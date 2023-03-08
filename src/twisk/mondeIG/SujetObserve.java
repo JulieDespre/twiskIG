@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class SujetObserve {
-
         private final Collection<Observateur> observateurs;
 
         public SujetObserve() {

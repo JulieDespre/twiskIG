@@ -38,11 +38,9 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
 
     public void Action(ActiviteIG actIG){
         //deplacer l'activité au clic drag and drop
-
-
-
         this.notifierObservateurs() ;
     }
+
     public void nouveau() {
     // Réinitialiser le monde
         for (EtapeIG e: etapes.values()) {
