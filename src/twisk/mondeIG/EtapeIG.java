@@ -7,7 +7,7 @@ import java.awt.*;
 public abstract class EtapeIG extends SujetObserve {
     private String nom;
     private int  identifiant;
-    private double posX = 100;
+    private double posX;
     private double posY= 100;
     private int largeur;
     private int hauteur;
@@ -31,6 +31,7 @@ public abstract class EtapeIG extends SujetObserve {
         this.delais= delais;
         FabriqueIdentifiant maFabrique=FabriqueIdentifiant.getInstance();
         this.identifiant= maFabrique.getNumero();
+        this.posX=100*identifiant;
     }
 
     //getters pour etape

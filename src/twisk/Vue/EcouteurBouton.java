@@ -10,6 +10,7 @@ public class EcouteurBouton implements EventHandler<ActionEvent> {
     private final MondeIG monde;
 
     public EcouteurBouton(MondeIG monde) {
+
         this.monde = monde;
     }
 
