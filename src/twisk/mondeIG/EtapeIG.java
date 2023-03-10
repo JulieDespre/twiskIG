@@ -13,6 +13,7 @@ public abstract class EtapeIG extends SujetObserve {
     private int hauteur;
     private int temps;
     private int delais;
+    private Composant composant;
 
     public EtapeIG(String nom, int largeur, int hauteur, int temps, int delais){
         this.nom= nom;
@@ -24,12 +25,10 @@ public abstract class EtapeIG extends SujetObserve {
         this.identifiant= maFabrique.getNumero();
     }
 
-    public EtapeIG(String nom, Point point, int largeur, int hauteur){
+    public EtapeIG(String nom, int temps, int delais){
         this.nom= nom;
-        this.largeur= largeur;
-        this.hauteur= hauteur;
-        this.posX= point.getX();
-        this.posY= point.getY();
+        this.temps= temps;
+        this.delais= delais;
         FabriqueIdentifiant maFabrique=FabriqueIdentifiant.getInstance();
         this.identifiant= maFabrique.getNumero();
     }
@@ -66,8 +65,14 @@ public abstract class EtapeIG extends SujetObserve {
     public String getNom(){
         return this.nom;
     }
- //setters pour Etapes
 
+    public Composant getComposant(){
+        return this.composant;
+    }
+ //setters pour Etapes
+    public void setComposant(Composant composant){
+        this.composant=composant;
+    }
     public void setPosX(double newPosX ){
         this.posX = newPosX;
         notifierObservateurs();

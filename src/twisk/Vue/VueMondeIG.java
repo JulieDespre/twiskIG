@@ -15,12 +15,13 @@ public class VueMondeIG extends Pane implements Observateur {
     public VueMondeIG(MondeIG monMonde) {
         this.monde = monMonde;
         this.monde.ajouterObservateur(this);
-        Background bg = new Background(new BackgroundFill(Color.web("#D8D8D9"), null, null));
+        Background bg = new Background(new BackgroundFill(Color.web("F8F8FF"), null, null));
         this.setBackground(bg);
     }
 
     @Override
     public void reagir() {
+        //this.getChildren().clear();
         for (EtapeIG e : monde.getEtapes().values()) {
             VueEtapeIG vueActivite = new VueActiviteIG(monde, e);
             this.getChildren().add(vueActivite);

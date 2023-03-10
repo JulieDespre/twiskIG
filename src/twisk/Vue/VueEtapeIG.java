@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
+import twisk.mondeIG.TailleComposants;
 
 public class VueEtapeIG extends VBox implements Observateur {
     private final MondeIG monde;
@@ -18,26 +19,27 @@ public class VueEtapeIG extends VBox implements Observateur {
         this.monde = monde;
         this.etape = etape;
 
+            TailleComposants taille=TailleComposants.getInstance();
+            this.setPrefSize(taille.getLargeur(etape),taille.getHauteur(etape));
+            this.setStyle("-fx-border-color: slategrey; -fx-padding: 10px;  -fx-border-width: 2px; -fx-effect: dropshadow( one-pass-box , grey, 8 , 0.0 , 2 , 0); -fx-border-radius: 10;");
+            Background bg3 = new Background(new BackgroundFill(Color.web("#A8CDD3"), new CornerRadii(10), null));
+            this.setBackground(bg3);
 
-        this.setPrefSize(monde.getEtape(1).getLargeur(), monde.getEtape(1).getHauteur());
-        this.setStyle("-fx-border-color: slategrey; -fx-padding: 10px;  -fx-border-width: 2px; -fx-effect: dropshadow( one-pass-box , grey, 8 , 0.0 , 2 , 0); -fx-border-radius: 10;");
-        Background bg3 = new Background(new BackgroundFill(Color.web("#A8CDD3"), new CornerRadii(10), null));
-        this.setBackground(bg3);
 
-        Label labNom = new Label();
-        labNom.setText("Activité "+etape.getIdentifiant()+" :    "+etape.getTemps()+(" sec +/- ")+etape.getDelais()+(" sec"));
-        labNom.setStyle("-fx-font: 13 Lucida; -fx-font-weight: bold; -fx-padding: 2px;");
-        labNom.setTextAlignment(TextAlignment.CENTER);
+            Label labNom = new Label();
+            labNom.setText("Activité " + etape.getIdentifiant() + " :    " + etape.getTemps() + (" sec +/- ") + etape.getDelais() + (" sec"));
+            labNom.setStyle("-fx-font: 13 Lucida; -fx-font-weight: bold; -fx-padding: 2px;");
+            labNom.setTextAlignment(TextAlignment.CENTER);
 
-        VBox zoneClient = new VBox();
-        zoneClient.setPrefSize(70, 90);
-        zoneClient.setStyle("-fx-alignment: down");
-        zoneClient.setStyle("-fx-background-color: lightgrey; -fx-padding: 20px; -fx-border-color: #228b96; -fx-border-width: 2px");
+            VBox zoneClient = new VBox();
+            zoneClient.setPrefSize(70, 90);
+            zoneClient.setStyle("-fx-alignment: down");
+            zoneClient.setStyle("-fx-background-color: lightgrey; -fx-padding: 20px; -fx-border-color: #228b96; -fx-border-width: 2px");
 
-        this.setLayoutX(350);
-        this.setLayoutY(350);
-        this.getChildren().addAll(labNom, zoneClient);
-    }
+            this.setLayoutX(100*etape.getIdentifiant());
+            this.setLayoutY(350);
+            this.getChildren().addAll(labNom, zoneClient);
+        }
 
     @Override
     public void reagir() {

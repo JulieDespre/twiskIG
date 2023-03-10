@@ -1,8 +1,9 @@
 package twisk.mondeIG;
 
 public class ActiviteIG extends EtapeIG {
-    public ActiviteIG(String nom, int largeur, int hauteur, int temps, int delais) {
-        super(nom, largeur, hauteur, temps, delais);
+    public ActiviteIG(String nom, int temps, int delais) {
+        super(nom, temps, delais);
+        this.setComposant(Composant.ACTIVITE);
     }
 
 }
