@@ -8,7 +8,7 @@ public class SujetObserve {
         private final Collection<Observateur> observateurs;
 
         public SujetObserve() {
-            observateurs = new ArrayList<>();
+            observateurs = new ArrayList<>(15);
         }
 
         /**

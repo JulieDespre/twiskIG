@@ -33,7 +33,6 @@ public class VueOutils extends TilePane implements Observateur {
         tool.setTextAlignment(TextAlignment.CENTER);
         addAct.setTooltip(tool);
 
-        //addAct.setBackground(bg);
         addAct.setStyle("-fx-border-color: slategrey; -fx-border-width: 2px;");
         Image image = new Image(getClass().getResourceAsStream("/addAct.png"), 65, 65, true, true);
         ImageView icon = new ImageView(image);

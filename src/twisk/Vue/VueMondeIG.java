@@ -19,6 +19,7 @@ public class VueMondeIG extends Pane implements Observateur {
     @Override
     public void reagir() {
         this.getChildren().clear();
+        System.out.println(monde.getEtapes().size());
         for (EtapeIG e : monde.getEtapes().values()) {
             VueEtapeIG vueActivite = new VueActiviteIG(monde, e);
             this.getChildren().add(vueActivite);

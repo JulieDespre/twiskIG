@@ -1,6 +1,5 @@
 package twisk.Vue;
 
-import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -26,7 +25,6 @@ public class VueEtapeIG extends VBox implements Observateur {
             Background bg3 = new Background(new BackgroundFill(Color.web("#A8CDD3"), new CornerRadii(10), null));
             this.setBackground(bg3);
 
-
             Label labNom = new Label();
             labNom.setText("Activité " + etape.getIdentifiant() + " :    " + etape.getTemps() + (" sec +/- ") + etape.getDelais() + (" sec"));
             labNom.setStyle("-fx-font: 13 Lucida; -fx-font-weight: bold; -fx-padding: 2px;");
@@ -48,7 +46,7 @@ public class VueEtapeIG extends VBox implements Observateur {
         this.setStyle("-fx-border-color: darkgrey; -fx-padding: 10px;  -fx-border-width: 2px; -fx-effect: dropshadow( one-pass-box , grey, 8 , 0.0 , 2 , 0); -fx-border-radius: 10;");
         Background bg3 = new Background(new BackgroundFill(Color.web("#6f6f6f"), new CornerRadii(10), null));
         this.setBackground(bg3);
-        this.setOpacity(0.5);
+        this.setOpacity(0.25);
     }
     public void retourCouleur(){
         this.setStyle("-fx-border-color: slategrey; -fx-padding: 10px;  -fx-border-width: 2px; -fx-effect: dropshadow( one-pass-box , grey, 8 , 0.0 , 2 , 0); -fx-border-radius: 10;");

@@ -1,15 +1,11 @@
 package twisk.mondeIG;
 
-import twisk.Vue.Observateur;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
 
 public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     private final HashMap <Integer, EtapeIG> etapes;
-    private final ArrayList<Observateur> observateurs = new ArrayList<>(15);
 
     public MondeIG(){
         this.etapes = new HashMap<Integer, EtapeIG>();
@@ -36,16 +32,9 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     }
 
 
-    public void Action(ActiviteIG actIG){
-        //deplacer l'activité au clic drag and drop
-        this.notifierObservateurs() ;
-    }
-
     public void nouveau() {
     // Réinitialiser le monde
-        for (EtapeIG e: etapes.values()) {
-            etapes.remove(e.getIdentifiant());
-        }
-        this.notifierObservateurs() ;
+            etapes.clear();
+            this.notifierObservateurs();
     }
 }

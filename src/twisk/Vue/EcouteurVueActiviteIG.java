@@ -33,7 +33,7 @@ public class EcouteurVueActiviteIG implements  EventHandler<MouseEvent> {
                     this.vueEtapeIG.setPosX(newXPos);
                     this.etapeIG.setPosX(newXPos);
                 }
-                if ((newYPos >= 0) && (newYPos <= 920 - taille.getHauteur(etapeIG))) {
+                if ((newYPos >= 0) && (newYPos <= 910 - taille.getHauteur(etapeIG))) {
                     this.vueEtapeIG.setPosY(newYPos);
                     this.etapeIG.setPosY(newYPos);
                 }

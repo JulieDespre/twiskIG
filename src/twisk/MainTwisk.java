@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import twisk.Vue.VueMenu;
 import twisk.Vue.VueMondeIG;
 import twisk.Vue.VueOutils;
 import twisk.mondeIG.MondeIG;
@@ -22,6 +23,9 @@ public class MainTwisk extends Application {
 
         VueOutils vueOut = new VueOutils(monMonde);
         root.setBottom(vueOut);
+
+        VueMenu vueMen = new VueMenu(monMonde);
+        root.setTop(vueMen);
 
         primaryStage.show();
     }
