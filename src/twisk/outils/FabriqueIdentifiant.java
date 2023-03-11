@@ -2,7 +2,8 @@ package twisk.outils;
 
 public class FabriqueIdentifiant {
         private static final FabriqueIdentifiant instance = new FabriqueIdentifiant();
-        private int numero;
+        private int numeroAct;
+        private int numeroPDC;
         /**
          * Constructeur FabriqueIdentifiant
         *
@@ -24,7 +25,8 @@ public class FabriqueIdentifiant {
          * remet a zéro le numéro généré par la fabique d'itentifiant
          */
         public void reset() {
-            numero = 0;
+            numeroAct = 0;
+            numeroPDC = 0;
         }
 
         /**
@@ -32,10 +34,16 @@ public class FabriqueIdentifiant {
          *
          * @return le numéro
          */
-        public int getNumero() {
-            numero++;
-            return numero;
+        public int getNumeroActivite() {
+            numeroAct++;
+            return numeroAct;
         }
+
+        public int getNumeroPDC() {
+        numeroPDC++;
+        return numeroPDC;
+    }
+
 
 }
 

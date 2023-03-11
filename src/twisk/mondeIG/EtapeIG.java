@@ -2,9 +2,10 @@ package twisk.mondeIG;
 
 import twisk.outils.FabriqueIdentifiant;
 
-import java.awt.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public abstract class EtapeIG extends SujetObserve {
+public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeControleIG> {
     private String nom;
     private int  identifiant;
     private double posX;
@@ -14,6 +15,7 @@ public abstract class EtapeIG extends SujetObserve {
     private int temps;
     private int delais;
     private Composant composant;
+    private ArrayList<PointDeControleIG > pointsDeControle=new ArrayList<PointDeControleIG>(4);
 
     public EtapeIG(String nom, int largeur, int hauteur, int temps, int delais){
         this.nom= nom;
@@ -22,7 +24,7 @@ public abstract class EtapeIG extends SujetObserve {
         this.temps= temps;
         this.delais= delais;
         FabriqueIdentifiant maFabrique=FabriqueIdentifiant.getInstance();
-        this.identifiant= maFabrique.getNumero();
+        this.identifiant= maFabrique.getNumeroActivite();
     }
 
     public EtapeIG(String nom, int temps, int delais){
@@ -30,7 +32,7 @@ public abstract class EtapeIG extends SujetObserve {
         this.temps= temps;
         this.delais= delais;
         FabriqueIdentifiant maFabrique=FabriqueIdentifiant.getInstance();
-        this.identifiant= maFabrique.getNumero();
+        this.identifiant= maFabrique.getNumeroActivite();
         this.posX=100*identifiant;
     }
 
@@ -84,9 +86,30 @@ public abstract class EtapeIG extends SujetObserve {
         notifierObservateurs();
     }
 
+    public void ajouterPDC(){
+        FabriqueIdentifiant identifiant = FabriqueIdentifiant.getInstance();
+        PointDeControleIG pdcA = new PointDeControleIG(this.getPosX(), this.getPosY()+(this.getHauteur()/2), this);
+        PointDeControleIG pdcB = new PointDeControleIG(this.getPosX()+(this.getLargeur()/2),this.getPosY()+this.getHauteur(), this);
+        PointDeControleIG pdcC = new PointDeControleIG(this.getPosX()+this.getLargeur(),this.getPosY()+(this.getHauteur()/2), this);
+        PointDeControleIG pdcD = new PointDeControleIG(this.getPosX()+(this.getLargeur()/2),this.getPosY(),this);
+        pointsDeControle.add(pdcA);
+        pointsDeControle.add(pdcB);
+        pointsDeControle.add(pdcC);
+        pointsDeControle.add(pdcD);
+        notifierObservateurs();
+    }
+
+    public PointDeControleIG getPdc(int i){
+        return pointsDeControle.get(i);
+    }
+
 
     public void setNom(String newNom){
         this.nom = newNom;
         notifierObservateurs();
+    }
+    @Override
+    public Iterator<PointDeControleIG> iterator() {
+        return pointsDeControle.iterator();
     }
 }

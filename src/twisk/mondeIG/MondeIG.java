@@ -1,5 +1,7 @@
 package twisk.mondeIG;
 
+import twisk.outils.FabriqueIdentifiant;
+
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -18,6 +20,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
 
     public void ajouterEtape(EtapeIG... NewEtapes){
         for (EtapeIG e: NewEtapes) {
+            e.ajouterPDC();
             this.etapes.put(e.getIdentifiant(),e);
             this.notifierObservateurs();
         }
@@ -35,6 +38,8 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     public void nouveau() {
     // Réinitialiser le monde
             etapes.clear();
+            FabriqueIdentifiant identifiant = FabriqueIdentifiant.getInstance();
+            identifiant.reset();
             this.notifierObservateurs();
     }
 }
