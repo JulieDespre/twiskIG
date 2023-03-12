@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
+import twisk.mondeIG.PointDeControleIG;
 import twisk.mondeIG.TailleComposants;
 
 public class VueEtapeIG extends VBox implements Observateur {
@@ -19,7 +20,7 @@ public class VueEtapeIG extends VBox implements Observateur {
         this.monde = monde;
         this.etape = etape;
 
-            TailleComposants taille=TailleComposants.getInstance();
+            TailleComposants taille = TailleComposants.getInstance();
             this.setPrefSize(taille.getLargeur(etape),taille.getHauteur(etape));
             this.setStyle("-fx-border-color: slategrey; -fx-padding: 10px;  -fx-border-width: 2px; -fx-effect: dropshadow( one-pass-box , grey, 8 , 0.0 , 2 , 0); -fx-border-radius: 10;");
             Background bg3 = new Background(new BackgroundFill(Color.web("#A8CDD3"), new CornerRadii(10), null));

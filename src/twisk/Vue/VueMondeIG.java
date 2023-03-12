@@ -3,8 +3,10 @@ package twisk.Vue;
 
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
+import twisk.mondeIG.PointDeControleIG;
 
 public class VueMondeIG extends Pane implements Observateur {
     private final MondeIG monde;
@@ -19,12 +21,14 @@ public class VueMondeIG extends Pane implements Observateur {
     @Override
     public void reagir() {
         this.getChildren().clear();
-        System.out.println(monde.getEtapes().size());
         for (EtapeIG e : monde.getEtapes().values()) {
             VueEtapeIG vueActivite = new VueActiviteIG(monde, e);
             this.getChildren().add(vueActivite);
-            VuePointDeControleIG vuePointDeControleIG = new VuePointDeControleIG(e);
-            this.getChildren().add(vuePointDeControleIG);
+           for (PointDeControleIG pdc : e.getPdc()) {
+               VuePointDeControleIG vuePointDeControleIG = new VuePointDeControleIG(pdc.getPosX(), pdc.getPosY(), 10, e, monde);
+               this.getChildren().add(vuePointDeControleIG);
+               System.out.println(pdc.getPosX());
+           }
         }
     }
 }

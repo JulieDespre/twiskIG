@@ -3,18 +3,20 @@ package twisk.Vue;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import twisk.mondeIG.EtapeIG;
-import twisk.mondeIG.PointDeControleIG;
+import twisk.mondeIG.MondeIG;
+
 
 public class VuePointDeControleIG extends Circle implements Observateur{
     private EtapeIG etape;
-    private PointDeControleIG pdc;
+    private MondeIG monde;
 
-    public VuePointDeControleIG(EtapeIG etape){
+    public VuePointDeControleIG(Double posX, Double posY, int radius, EtapeIG etape, MondeIG monde){
+        super(posX,posY,radius);
+        this.monde = monde;
         this.etape = etape;
-        this.pdc = etape.getPdc(etape.getIdentifiant());
-        Circle vPdc = new Circle (pdc.getPosX(), pdc.getPosY(), 5);
-        vPdc.setStyle("-fx-border-color: grey; -fx-border-width: 2px; -fx-effect: dropshadow( one-pass-box , grey, 8 , 0.0 , 2 , 0);");
-        vPdc.setFill(Color.PINK);
+
+        //this.setStyle("-fx-border-color: grey; -fx-border-width: 2px; -fx-effect: dropshadow( one-pass-box , grey, 8 , 0.0 , 2 , 0)");
+        this.setFill(Color.PINK);
         System.out.println("bonjour");
     }
 

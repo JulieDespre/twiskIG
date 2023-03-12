@@ -9,13 +9,13 @@ public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeCo
     private String nom;
     private int  identifiant;
     private double posX;
-    private double posY= 100;
+    private double posY;
     private int largeur;
     private int hauteur;
     private int temps;
     private int delais;
     private Composant composant;
-    private ArrayList<PointDeControleIG > pointsDeControle=new ArrayList<PointDeControleIG>(4);
+    private ArrayList<PointDeControleIG > pointsDeControle=new ArrayList<PointDeControleIG> (4);
 
     public EtapeIG(String nom, int largeur, int hauteur, int temps, int delais){
         this.nom= nom;
@@ -34,6 +34,14 @@ public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeCo
         FabriqueIdentifiant maFabrique=FabriqueIdentifiant.getInstance();
         this.identifiant= maFabrique.getNumeroActivite();
         this.posX=100*identifiant;
+        this.posY=100;
+
+    }
+
+    protected void setTailles(){
+        TailleComposants taille=TailleComposants.getInstance();
+        this.hauteur= taille.getHauteur(this);
+        this.largeur=taille.getLargeur(this);
     }
 
     //getters pour etape
@@ -87,7 +95,6 @@ public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeCo
     }
 
     public void ajouterPDC(){
-        FabriqueIdentifiant identifiant = FabriqueIdentifiant.getInstance();
         PointDeControleIG pdcA = new PointDeControleIG(this.getPosX(), this.getPosY()+(this.getHauteur()/2), this);
         PointDeControleIG pdcB = new PointDeControleIG(this.getPosX()+(this.getLargeur()/2),this.getPosY()+this.getHauteur(), this);
         PointDeControleIG pdcC = new PointDeControleIG(this.getPosX()+this.getLargeur(),this.getPosY()+(this.getHauteur()/2), this);
@@ -97,10 +104,13 @@ public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeCo
         pointsDeControle.add(pdcC);
         pointsDeControle.add(pdcD);
         notifierObservateurs();
+        for (PointDeControleIG pdc : pointsDeControle) {
+            System.out.println(pdc);
+        }
     }
 
-    public PointDeControleIG getPdc(int i){
-        return pointsDeControle.get(i);
+    public ArrayList<PointDeControleIG> getPdc(){
+        return pointsDeControle;
     }
 
 

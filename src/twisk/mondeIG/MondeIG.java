@@ -1,5 +1,6 @@
 package twisk.mondeIG;
 
+import twisk.Vue.Observateur;
 import twisk.outils.FabriqueIdentifiant;
 
 import java.util.HashMap;
