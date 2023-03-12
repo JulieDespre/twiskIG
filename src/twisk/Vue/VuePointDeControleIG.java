@@ -24,4 +24,8 @@ public class VuePointDeControleIG extends Circle implements Observateur{
     public void reagir() {
 
     }
+    public void vpdcMove(VuePointDeControleIG vuePointDeControleIG){
+        vuePointDeControleIG.setStyle("-fx-border-color: grey; -fx-effect: dropshadow( one-pass-box , grey, 0 , 0.0 , 0 , 0)");
+        vuePointDeControleIG.setOpacity(0);
+    }
 }

@@ -3,7 +3,6 @@ package twisk.Vue;
 
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
 import twisk.mondeIG.PointDeControleIG;
@@ -27,6 +26,8 @@ public class VueMondeIG extends Pane implements Observateur {
             e.refreshPdc();
            for (PointDeControleIG pdc : e.getPdc()) {
                VuePointDeControleIG vuePointDeControleIG = new VuePointDeControleIG(pdc.getPosX(), pdc.getPosY(), 7, e, monde);
+               //add vpdc a son
+               vueActivite.getVuePdc().add(vuePointDeControleIG);
                this.getChildren().add(vuePointDeControleIG);
                System.out.println(pdc.getPosX());
            }

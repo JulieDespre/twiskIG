@@ -12,6 +12,6 @@ public class EcouteurNouveau implements EventHandler<ActionEvent> {
     }
 
     public void handle(ActionEvent event) {
-        this.monde.nouveau();
+        this.monde.destructeurDeMonde();
     }
 }

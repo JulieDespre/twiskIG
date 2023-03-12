@@ -33,7 +33,7 @@ public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeCo
         this.delais= delais;
         FabriqueIdentifiant maFabrique=FabriqueIdentifiant.getInstance();
         this.identifiant= maFabrique.getNumeroActivite();
-        this.posX=100*identifiant;
+        this.posX=100;
         this.posY=100;
 
     }

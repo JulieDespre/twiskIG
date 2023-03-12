@@ -19,9 +19,11 @@ public class EcouteurVueActiviteIG implements  EventHandler<MouseEvent> {
 
     @Override
     public void handle(MouseEvent mouseEvent) {
-
             if (mouseEvent.getEventType() == MouseEvent.MOUSE_DRAGGED) {
                 this.vueEtapeIG.moveCouleur();
+                for(VuePointDeControleIG vPdc : vueEtapeIG){
+                    vPdc.setOpacity(0);
+                }
                 double dragX = mouseEvent.getSceneX() - etapeIG.getPosX();
                 double dragY = mouseEvent.getSceneY() - etapeIG.getPosY();
 
@@ -33,7 +35,7 @@ public class EcouteurVueActiviteIG implements  EventHandler<MouseEvent> {
                     this.vueEtapeIG.setPosX(newXPos);
                     this.etapeIG.setPosX(newXPos);
                 }
-                if ((newYPos >= 0) && (newYPos <= 910 - taille.getHauteur(etapeIG))) {
+                if ((newYPos >= 0) && (newYPos <= 900 - taille.getHauteur(etapeIG))) {
                     this.vueEtapeIG.setPosY(newYPos);
                     this.etapeIG.setPosY(newYPos);
                 }

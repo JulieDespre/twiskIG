@@ -12,11 +12,15 @@ import twisk.mondeIG.MondeIG;
 import twisk.mondeIG.PointDeControleIG;
 import twisk.mondeIG.TailleComposants;
 
-public class VueEtapeIG extends VBox implements Observateur {
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDeControleIG> {
     private MondeIG monde;
     private EtapeIG etape;
+    private ArrayList<VuePointDeControleIG> vuePointDeControleIG = new ArrayList<VuePointDeControleIG>();
 
-    public VueEtapeIG(MondeIG monde, EtapeIG etape) {
+    public VueEtapeIG(MondeIG monde, EtapeIG etape){
         this.monde = monde;
         this.etape = etape;
 
@@ -64,8 +68,16 @@ public class VueEtapeIG extends VBox implements Observateur {
         this.setLayoutY(newPosY);
     }
 
+    public ArrayList<VuePointDeControleIG> getVuePdc(){
+        return vuePointDeControleIG;
+    }
+
     @Override
     public void reagir() {
     }
 
+    @Override
+    public Iterator<VuePointDeControleIG> iterator() {
+        return vuePointDeControleIG.iterator();
+    }
 }

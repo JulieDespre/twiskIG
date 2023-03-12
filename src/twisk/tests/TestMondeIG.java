@@ -25,7 +25,7 @@ public class TestMondeIG {
         EtapeIG e1 = new ActiviteIG("test1", 6, 2);
         EtapeIG e2 = new ActiviteIG("test2", 6, 2);
         m1.ajouterEtape(e1, e2);
-        m1.nouveau();
+        m1.destructeurDeMonde();
         int cpt = 0;
         for (EtapeIG e : m1) {
             cpt++;

@@ -36,7 +36,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     }
 
 
-    public void nouveau() {
+    public void destructeurDeMonde() {
     // Réinitialiser le monde
             etapes.clear();
             FabriqueIdentifiant identifiant = FabriqueIdentifiant.getInstance();
