@@ -108,6 +108,17 @@ public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeCo
             System.out.println(pdc);
         }
     }
+    public void refreshPdc(){
+        pointsDeControle.clear();
+        PointDeControleIG pdcA = new PointDeControleIG(this.getPosX(), this.getPosY()+(this.getHauteur()/2), this);
+        PointDeControleIG pdcB = new PointDeControleIG(this.getPosX()+(this.getLargeur()/2),this.getPosY()+this.getHauteur(), this);
+        PointDeControleIG pdcC = new PointDeControleIG(this.getPosX()+this.getLargeur(),this.getPosY()+(this.getHauteur()/2), this);
+        PointDeControleIG pdcD = new PointDeControleIG(this.getPosX()+(this.getLargeur()/2),this.getPosY(),this);
+        pointsDeControle.add(pdcA);
+        pointsDeControle.add(pdcB);
+        pointsDeControle.add(pdcC);
+        pointsDeControle.add(pdcD);
+    }
 
     public ArrayList<PointDeControleIG> getPdc(){
         return pointsDeControle;
