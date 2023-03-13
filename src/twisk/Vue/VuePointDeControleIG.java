@@ -5,6 +5,8 @@ import javafx.scene.shape.Circle;
 import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
 
+import java.awt.image.ColorModel;
+
 
 public class VuePointDeControleIG extends Circle implements Observateur{
     private EtapeIG etape;
@@ -18,14 +20,18 @@ public class VuePointDeControleIG extends Circle implements Observateur{
         this.setStyle("-fx-border-color: grey; -fx-effect: dropshadow( one-pass-box , grey, 8 , 0.0 , 2 , 0)");
         this.setFill(Color.web("C0C0C0"));
         System.out.println("bonjour");
+
+        this.setOnMouseClicked(new EcouteurVuePdc(monde, this));
     }
 
     @Override
     public void reagir() {
 
     }
-    public void vpdcMove(VuePointDeControleIG vuePointDeControleIG){
-        vuePointDeControleIG.setStyle("-fx-border-color: grey; -fx-effect: dropshadow( one-pass-box , grey, 0 , 0.0 , 0 , 0)");
-        vuePointDeControleIG.setOpacity(0);
+    public void couleurOnClicPair(){
+        this.setFill(Color.PINK);
+    }
+    public void couleurOnClicImpair(){
+        this.setFill(Color.GREY);
     }
 }
