@@ -8,7 +8,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.TilePane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.TextAlignment;
@@ -21,10 +20,9 @@ public class VueMenu extends HBox implements Observateur {
         public VueMenu (MondeIG monde) {
             super();
             this.monde = monde;
-
-            this.setStyle("-fx-border-color: slategrey; -fx-border-width: 2px;");
+            this.setStyle("-fx-border-color: slategrey; -fx-border-width: 1.5px;");
             MenuBar menuBar = new MenuBar();
-            menuBar.setStyle("-fx-border-color: slategrey; -fx-border-width: 2px;");
+            menuBar.setStyle("-fx-border-color: slategrey; -fx-border-width: 1.5px;");
             Menu menu = new Menu("Menu");
             menu.setStyle("-fx-font: 20 helvetica; -fx-font-color: grey ; -fx-background: lightgrey");
 
@@ -43,7 +41,7 @@ public class VueMenu extends HBox implements Observateur {
             Button bNew = new Button();
             Pane spacer = new Pane();
             spacer.setMinSize(606, 1);
-            spacer.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px;-fx-alignment: center");
+            spacer.setStyle("-fx-border-color: slategrey; -fx-border-width: 2px;-fx-alignment: center");
 
             //bouton pour setNom
             setNom.setStyle("-fx-border-color: slategrey; -fx-border-width: 2px;");
@@ -108,8 +106,7 @@ public class VueMenu extends HBox implements Observateur {
             Tooltip tool4 = new Tooltip("Destruction du Monde");
             tool4.setFont(Font.font("Verdana", FontPosture.REGULAR, 13));
             tool4.setTextAlignment(TextAlignment.CENTER);
-            bNew.setTooltip(tool3);
-
+            bNew.setTooltip(tool4);
 
             //ajout des items a vueMenu
             menu.getItems().addAll(nouveau, quitter);

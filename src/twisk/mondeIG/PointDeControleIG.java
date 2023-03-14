@@ -1,9 +1,6 @@
 package twisk.mondeIG;
 
-
 import twisk.outils.FabriqueIdentifiant;
-
-import java.awt.*;
 
 public class PointDeControleIG {
     private double poseCentX;
@@ -34,6 +31,19 @@ public class PointDeControleIG {
 
     public int getIdentifiant(){
         return identifiant;
+    }
+
+    public void setPdc(double newPosX, double newPosY){
+        this.poseCentX = newPosX;
+        this.poseCentY = newPosY;
+    }
+
+    public int getCpt(){
+        return cpt;
+    }
+
+    public void increCpt(){
+        cpt = cpt + 1;
     }
 
 }

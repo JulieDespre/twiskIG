@@ -52,9 +52,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     public double getCpt(){
         return cpt;
     }
-    public void increCpt(){
-        cpt = cpt + 1;
-    }
+
     public void setCpt(int newCpt){
        cpt = newCpt;
     }

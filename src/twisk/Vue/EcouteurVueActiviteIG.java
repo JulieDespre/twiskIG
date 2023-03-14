@@ -24,6 +24,7 @@ public class EcouteurVueActiviteIG implements  EventHandler<MouseEvent> {
             this.vueEtapeIG.moveCouleur();
             for (VuePointDeControleIG vPdc : vueEtapeIG) {
                 vPdc.setOpacity(0);
+                vP
             }
             double dragX = mouseEvent.getSceneX() - etapeIG.getPosX();
             double dragY = mouseEvent.getSceneY() - etapeIG.getPosY();

@@ -1,7 +1,6 @@
 package twisk.mondeIG;
 
 import twisk.outils.FabriqueIdentifiant;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -35,7 +34,6 @@ public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeCo
         this.identifiant= maFabrique.getNumeroActivite();
         this.posX=100;
         this.posY=100;
-
     }
 
     protected void setTailles(){
@@ -109,15 +107,10 @@ public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeCo
         }
     }
     public void refreshPdc(){
-        pointsDeControle.clear();
-        PointDeControleIG pdcA = new PointDeControleIG(this.getPosX(), this.getPosY()+(this.getHauteur()/2), this);
-        PointDeControleIG pdcB = new PointDeControleIG(this.getPosX()+(this.getLargeur()/2),this.getPosY()+this.getHauteur(), this);
-        PointDeControleIG pdcC = new PointDeControleIG(this.getPosX()+this.getLargeur(),this.getPosY()+(this.getHauteur()/2), this);
-        PointDeControleIG pdcD = new PointDeControleIG(this.getPosX()+(this.getLargeur()/2),this.getPosY(),this);
-        pointsDeControle.add(pdcA);
-        pointsDeControle.add(pdcB);
-        pointsDeControle.add(pdcC);
-        pointsDeControle.add(pdcD);
+        pointsDeControle.get(0).setPdc(this.getPosX(), this.getPosY()+(this.getHauteur()/2));
+        pointsDeControle.get(1).setPdc(this.getPosX()+(this.getLargeur()/2),this.getPosY()+this.getHauteur());
+        pointsDeControle.get(2).setPdc(this.getPosX()+this.getLargeur(),this.getPosY()+(this.getHauteur()/2));
+        pointsDeControle.get(3).setPdc(this.getPosX()+(this.getLargeur()/2),this.getPosY());
     }
 
     public ArrayList<PointDeControleIG> getPdc(){
