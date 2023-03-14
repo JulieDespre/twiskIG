@@ -17,9 +17,8 @@ public class VuePointDeControleIG extends Circle implements Observateur{
         this.monde = monde;
         this.etape = etape;
 
-        this.setStyle("-fx-border-color: grey; -fx-effect: dropshadow( one-pass-box , grey, 8 , 0.0 , 2 , 0)");
+        this.setStyle("-fx-border-color: lightgrey;");
         this.setFill(Color.web("C0C0C0"));
-        System.out.println("bonjour");
 
         this.setOnMouseClicked(new EcouteurVuePdc(monde, this));
     }
@@ -32,6 +31,6 @@ public class VuePointDeControleIG extends Circle implements Observateur{
         this.setFill(Color.PINK);
     }
     public void couleurOnClicImpair(){
-        this.setFill(Color.GREY);
+        this.setFill(Color.LIGHTGRAY);
     }
 }

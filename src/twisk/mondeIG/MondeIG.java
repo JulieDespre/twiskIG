@@ -9,10 +9,15 @@ import java.util.Iterator;
 
 public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     private final HashMap <Integer, EtapeIG> etapes;
+    private double pdcCentPosX;
+    private double pdcCentPosY;
+    private int cpt;
+
 
     public MondeIG(){
         this.etapes = new HashMap<Integer, EtapeIG>();
     }
+
 
     @Override
     public Iterator<EtapeIG> iterator() {
@@ -42,5 +47,29 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
             FabriqueIdentifiant identifiant = FabriqueIdentifiant.getInstance();
             identifiant.reset();
             this.notifierObservateurs();
+    }
+
+    public double getCpt(){
+        return cpt;
+    }
+    public void increCpt(){
+        cpt = cpt + 1;
+    }
+    public void setCpt(int newCpt){
+       cpt = newCpt;
+    }
+    public double getPdcCentPosX(){
+        return pdcCentPosX;
+    }
+    public void setPdcCentPosX(double newPosX){
+        pdcCentPosX = newPosX;
+    }
+
+    public double getPdcCentPosY(){
+        return pdcCentPosY;
+    }
+
+    public void setPdcCentPosY(double newPosY){
+        pdcCentPosY = newPosY;
     }
 }

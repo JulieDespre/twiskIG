@@ -13,7 +13,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.TextAlignment;
 import twisk.mondeIG.MondeIG;
 
-import static javafx.scene.paint.Color.WHITE;
+
 
 public class VueOutils extends TilePane implements Observateur {
     private final MondeIG monde;
@@ -24,7 +24,7 @@ public class VueOutils extends TilePane implements Observateur {
 
         Background bg = new Background(new BackgroundFill(Color.web("#D8D8D9"), null, null));
         this.setBackground(bg);
-        this.setStyle("-fx-border-color: slategrey; -fx-border-width: 2px;");
+        this.setStyle("-fx-border-color: slategrey; -fx-border-width: 0.5px;");
         Button addAct = new Button();
 
         //tooltip pour le bouton add
@@ -33,12 +33,13 @@ public class VueOutils extends TilePane implements Observateur {
         tool.setTextAlignment(TextAlignment.CENTER);
         addAct.setTooltip(tool);
 
-        addAct.setStyle("-fx-border-color: slategrey; -fx-border-width: 2px;");
-        Image image = new Image(getClass().getResourceAsStream("/addAct.png"), 65, 65, true, true);
+        addAct.setStyle("-fx-border-color: #1fd6fe; -fx-border-width: 0.5px;");
+        Image image = new Image(getClass().getResourceAsStream("/addAct.png"), 35, 35, true, true);
         ImageView icon = new ImageView(image);
         addAct.setGraphic(icon);
         this.getChildren().add(addAct);
         addAct.setOnAction(new EcouteurBouton(monde));
+
 
     }
 
