@@ -1,6 +1,6 @@
 package twisk.mondeIG;
 
-public class ArcIG {
+public abstract class ArcIG {
    PointDeControleIG pdcStart;
 
    PointDeControleIG pdcEnd;

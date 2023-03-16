@@ -3,10 +3,7 @@ package twisk.Vue;
 
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import twisk.mondeIG.ArcIG;
-import twisk.mondeIG.EtapeIG;
-import twisk.mondeIG.MondeIG;
-import twisk.mondeIG.PointDeControleIG;
+import twisk.mondeIG.*;
 
 
 public class VueMondeIG extends Pane implements Observateur {
@@ -29,8 +26,8 @@ public class VueMondeIG extends Pane implements Observateur {
         }
 
         //creation des vues graphiques
-        for(ArcIG arc : monde.getArcs()){
-            VueArcIG vArc = new VueArcIG(monde, arc);
+        for(LigneDroiteIG ligne : monde.getLignes()){
+            VueArcIG vArc = new VueArcIG(monde, ligne);
             this.getChildren().add(vArc);
         }
         for (EtapeIG e : monde.getEtapes().values()) {

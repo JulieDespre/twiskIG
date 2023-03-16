@@ -13,7 +13,6 @@ public class EcouteurVuePdc implements EventHandler<MouseEvent> {
     private final PointDeControleIG pdc;
 
 
-
     public EcouteurVuePdc(MondeIG monde, VuePointDeControleIG vPdc, PointDeControleIG pdc) {
 
         this.monde = monde;
@@ -23,7 +22,7 @@ public class EcouteurVuePdc implements EventHandler<MouseEvent> {
 
     @Override
     public void handle(MouseEvent mouseEvent) {
-        if (mouseEvent.getEventType() == MouseEvent.MOUSE_CLICKED) {
+       if (mouseEvent.getEventType() == MouseEvent.MOUSE_CLICKED) {
             System.out.println(monde.getPdcClick());
             vPdc.setFill(Color.gray(0.25));
             monde.setPdcCentPosX(vPdc.getCenterX());
@@ -46,4 +45,5 @@ public class EcouteurVuePdc implements EventHandler<MouseEvent> {
     }
 
 }
+
 

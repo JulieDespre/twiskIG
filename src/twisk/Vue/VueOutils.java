@@ -56,7 +56,7 @@ public class VueOutils extends HBox implements Observateur {
         Image image2 = new Image(getClass().getResourceAsStream("/courbe.png"), 35, 35, true, true);
         ImageView icon2 = new ImageView(image2);
         selectCourbe.setGraphic(icon2);
-        //addAct.setOnAction(new EcouteurBouton(monde));
+        selectCourbe.setOnMouseClicked(new EcouteurCourbe(monde));
         addTool("sélectionner l'outil créateur de courbes", selectCourbe);
 
 

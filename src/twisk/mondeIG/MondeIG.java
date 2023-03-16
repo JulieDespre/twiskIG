@@ -13,8 +13,10 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     private double pdcCentPosY;
     private int cpt;
     private PointDeControleIG pdcClick=null;
-    private final ArrayList<ArcIG> arcs =new ArrayList<ArcIG>();
+    private final ArrayList<LigneDroiteIG> lignes =new ArrayList<LigneDroiteIG>();
+    private final ArrayList<CourbeIG> courbes =new ArrayList<CourbeIG>();
     private Boolean creationLigne = false;
+    private Boolean creationCour = false;
 
 
     public MondeIG(){
@@ -47,7 +49,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     public void destructeurDeMonde() {
     // Réinitialiser le monde
             etapes.clear();
-            arcs.clear();
+            lignes.clear();
             FabriqueIdentifiant identifiant = FabriqueIdentifiant.getInstance();
             identifiant.reset();
             this.notifierObservateurs();
@@ -83,13 +85,13 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     }
 
     public void ajouterArc(PointDeControleIG pdcStart,PointDeControleIG pdcEnd) {
-        ArcIG newArc = new ArcIG(pdcStart,pdcEnd);
-        arcs.add(newArc);
+        LigneDroiteIG newArc = new LigneDroiteIG(pdcStart,pdcEnd);
+        lignes.add(newArc);
         this.notifierObservateurs();
     }
 
-    public ArrayList<ArcIG> getArcs() {
-        return arcs;
+    public ArrayList<LigneDroiteIG> getLignes() {
+        return lignes;
     }
 
     public boolean getcreationLigne(){
@@ -99,7 +101,10 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
         this.creationLigne = newcreaLig;
     }
 
-    public boolean creationCourbe(){
-        return false;
+    public boolean getcreationCourbe(){
+        return creationCour;
+    }
+    public void setCreationCourbe(boolean newcreaCour){
+        this.creationCour = newcreaCour;
     }
 }
