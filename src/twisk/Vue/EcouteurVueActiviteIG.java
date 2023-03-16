@@ -14,7 +14,7 @@ public class EcouteurVueActiviteIG implements  EventHandler<MouseEvent> {
     private final MondeIG monde;
 
     public EcouteurVueActiviteIG(MondeIG monde, VueEtapeIG vueEtapeIG, EtapeIG etapeIG) {
-       this.monde = monde;
+        this.monde = monde;
         this.vueEtapeIG = vueEtapeIG;
         this.etapeIG = etapeIG;
     }
@@ -26,8 +26,9 @@ public class EcouteurVueActiviteIG implements  EventHandler<MouseEvent> {
             for (VuePointDeControleIG vPdc : vueEtapeIG) {
                 vPdc.setOpacity(0);
             }
-            //for (ArcIG) {
-                //vArc.setOpacity(0);
+            /*for (VueArcIG vArc : vueMonde) {
+                vArc.setOpacity(0);
+            }*/
             double dragX = mouseEvent.getSceneX() - etapeIG.getPosX();
             double dragY = mouseEvent.getSceneY() - etapeIG.getPosY();
 
@@ -44,15 +45,8 @@ public class EcouteurVueActiviteIG implements  EventHandler<MouseEvent> {
                 this.etapeIG.setPosY(newYPos);
             }
 
-            //essaie de set couleur lors du dragged and drop des pdc
-           /* if (monde.getCpt() % 2 == 0) {
-                vPdc.setFill(Color.web("C0C0C0"));
-            } else {
-                vPdc.setFill(Color.gray(0.25));
-            }*/
-            //try to choose between 2 mouse event -> failed
         }
-        if (mouseEvent.getEventType() == MouseEvent.MOUSE_CLICKED){
+        if (mouseEvent.getEventType() == MouseEvent.MOUSE_CLICKED) {
             this.vueEtapeIG.clicCouleur();
             System.out.println(mouseEvent.getEventType());
         }
@@ -60,6 +54,7 @@ public class EcouteurVueActiviteIG implements  EventHandler<MouseEvent> {
 
     }
 }
+
 
 
 

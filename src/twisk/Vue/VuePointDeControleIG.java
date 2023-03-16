@@ -11,8 +11,8 @@ public class VuePointDeControleIG extends Circle implements Observateur{
     private final MondeIG monde;
     private final PointDeControleIG pdc;
 
-    public VuePointDeControleIG(Double posX, Double posY, int radius, EtapeIG etape, MondeIG monde, PointDeControleIG pdc){
-        super(posX,posY,radius);
+    public VuePointDeControleIG(Double posX, Double posY, int radius, EtapeIG etape, MondeIG monde, PointDeControleIG pdc) {
+        super(posX, posY, radius);
         this.monde = monde;
         this.etape = etape;
         this.pdc = pdc;
@@ -22,7 +22,6 @@ public class VuePointDeControleIG extends Circle implements Observateur{
 
         this.setOnMouseClicked(new EcouteurVuePdc(monde, this, pdc));
     }
-    //to do setColor qui se choisit en fonction du compteur de se propre pdc
 
     @Override
     public void reagir() {

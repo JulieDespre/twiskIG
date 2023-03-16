@@ -1,7 +1,5 @@
 package twisk.Vue;
 
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
@@ -12,8 +10,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.TextAlignment;
 import twisk.mondeIG.MondeIG;
-
-
 
 public class VueOutils extends HBox implements Observateur {
     private final MondeIG monde;
@@ -52,7 +48,7 @@ public class VueOutils extends HBox implements Observateur {
         Image image1 = new Image(getClass().getResourceAsStream("/ligne.png"), 35, 35, true, true);
         ImageView icon1 = new ImageView(image1);
         selectLine.setGraphic(icon1);
-        //addAct.setOnAction(new EcouteurBouton(monde));
+        selectLine.setOnMouseClicked(new EcouteurLigne(monde));
         addTool("selectionner l'outil créateur de lignes", selectLine);
 
         //bouton pour sélectionner coubes

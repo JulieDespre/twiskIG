@@ -14,6 +14,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     private int cpt;
     private PointDeControleIG pdcClick=null;
     private final ArrayList<ArcIG> arcs =new ArrayList<ArcIG>();
+    private Boolean creationLigne = false;
 
 
     public MondeIG(){
@@ -89,5 +90,16 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
 
     public ArrayList<ArcIG> getArcs() {
         return arcs;
+    }
+
+    public boolean getcreationLigne(){
+        return creationLigne;
+    }
+    public void setCreationLigne(boolean newcreaLig){
+        this.creationLigne = newcreaLig;
+    }
+
+    public boolean creationCourbe(){
+        return false;
     }
 }

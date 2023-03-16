@@ -22,6 +22,7 @@ public class VueArcIG extends Pane {
         double tailleFleche = 15;
 
         //creation de la flèche
+        System.out.println(monde.getcreationLigne());
         Line fleche1 = new Line();
         fleche1.setStartX(l1.getEndX());
         fleche1.setStartY(l1.getEndY());
@@ -37,6 +38,7 @@ public class VueArcIG extends Pane {
         fleche2.setStyle("-fx-stroke-width: 2px; -fx-stroke: slategrey");
 
         this.getChildren().addAll(l1, fleche1, fleche2);
+        System.out.println(monde.getcreationLigne());
     }
 }
 
