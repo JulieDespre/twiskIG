@@ -6,8 +6,8 @@ import javafx.scene.paint.Color;
 import twisk.mondeIG.MondeIG;
 
 public class EcouteurMouseRelease implements EventHandler<MouseEvent> {
-        private MondeIG monde;
-        private VueEtapeIG vueEtapeIG;
+        private final MondeIG monde;
+        private final VueEtapeIG vueEtapeIG;
 
         public EcouteurMouseRelease (MondeIG monde, VueEtapeIG vueEtapeIG) {
 

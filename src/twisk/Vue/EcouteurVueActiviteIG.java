@@ -2,18 +2,19 @@ package twisk.Vue;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
+import twisk.mondeIG.ArcIG;
 import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
 import twisk.mondeIG.TailleComposants;
 
 public class EcouteurVueActiviteIG implements  EventHandler<MouseEvent> {
-    private MondeIG monde;
-    private VueEtapeIG vueEtapeIG;
-    private EtapeIG etapeIG;
+    private final VueEtapeIG vueEtapeIG;
+    private final EtapeIG etapeIG;
+
+    private final MondeIG monde;
 
     public EcouteurVueActiviteIG(MondeIG monde, VueEtapeIG vueEtapeIG, EtapeIG etapeIG) {
-        this.monde = monde;
+       this.monde = monde;
         this.vueEtapeIG = vueEtapeIG;
         this.etapeIG = etapeIG;
     }
@@ -24,8 +25,9 @@ public class EcouteurVueActiviteIG implements  EventHandler<MouseEvent> {
             this.vueEtapeIG.moveCouleur();
             for (VuePointDeControleIG vPdc : vueEtapeIG) {
                 vPdc.setOpacity(0);
-                vP
             }
+            //for (ArcIG) {
+                //vArc.setOpacity(0);
             double dragX = mouseEvent.getSceneX() - etapeIG.getPosX();
             double dragY = mouseEvent.getSceneY() - etapeIG.getPosY();
 

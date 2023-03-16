@@ -6,15 +6,15 @@ import java.util.Iterator;
 
 public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeControleIG> {
     private String nom;
-    private int  identifiant;
+    private final int  identifiant;
     private double posX;
     private double posY;
     private int largeur;
     private int hauteur;
-    private int temps;
-    private int delais;
+    private final int temps;
+    private final int delais;
     private Composant composant;
-    private ArrayList<PointDeControleIG > pointsDeControle=new ArrayList<PointDeControleIG> (4);
+    private final ArrayList<PointDeControleIG > pointsDeControle=new ArrayList<PointDeControleIG> (4);
 
     public EtapeIG(String nom, int largeur, int hauteur, int temps, int delais){
         this.nom= nom;

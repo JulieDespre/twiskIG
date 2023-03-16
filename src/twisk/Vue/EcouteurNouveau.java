@@ -5,7 +5,7 @@ import javafx.event.EventHandler;
 import twisk.mondeIG.MondeIG;
 
 public class EcouteurNouveau implements EventHandler<ActionEvent> {
-    private MondeIG monde;
+    private final MondeIG monde;
 
     public EcouteurNouveau(MondeIG monde) {
         this.monde = monde;

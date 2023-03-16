@@ -7,9 +7,9 @@ import twisk.mondeIG.MondeIG;
 import twisk.mondeIG.PointDeControleIG;
 
 public class VuePointDeControleIG extends Circle implements Observateur{
-    private EtapeIG etape;
-    private MondeIG monde;
-    private PointDeControleIG pdc;
+    private final EtapeIG etape;
+    private final MondeIG monde;
+    private final PointDeControleIG pdc;
 
     public VuePointDeControleIG(Double posX, Double posY, int radius, EtapeIG etape, MondeIG monde, PointDeControleIG pdc){
         super(posX,posY,radius);

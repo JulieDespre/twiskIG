@@ -5,8 +5,8 @@ import twisk.outils.FabriqueIdentifiant;
 public class PointDeControleIG {
     private double poseCentX;
     private double poseCentY;
-    private int identifiant;
-    private EtapeIG etape;
+    private final int identifiant;
+    private final EtapeIG etape;
 
     private int cpt;
 

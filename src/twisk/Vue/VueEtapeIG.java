@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDeControleIG> {
-    private MondeIG monde;
-    private EtapeIG etape;
-    private ArrayList<VuePointDeControleIG> vuePointDeControleIG = new ArrayList<VuePointDeControleIG>();
+    private final MondeIG monde;
+    private final EtapeIG etape;
+    private final ArrayList<VuePointDeControleIG> vuePointDeControleIG = new ArrayList<VuePointDeControleIG>();
 
     public VueEtapeIG(MondeIG monde, EtapeIG etape){
         this.monde = monde;

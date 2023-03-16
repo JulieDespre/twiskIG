@@ -3,9 +3,12 @@ package twisk.Vue;
 
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
+import twisk.mondeIG.ArcIG;
 import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
 import twisk.mondeIG.PointDeControleIG;
+
 
 public class VueMondeIG extends Pane implements Observateur {
     private final MondeIG monde;
@@ -20,21 +23,33 @@ public class VueMondeIG extends Pane implements Observateur {
     @Override
     public void reagir() {
         this.getChildren().clear();
+
+        //boucle de mise à jour des données
+        for (EtapeIG e : monde.getEtapes().values()) {
+            e.refreshPdc();
+        }
+
+        //creation des vues graphiques
+        for(ArcIG arc : monde.getArcs()){
+            VueArcIG vArc = new VueArcIG(monde, arc);
+            this.getChildren().add(vArc);
+        }
         for (EtapeIG e : monde.getEtapes().values()) {
             VueEtapeIG vueActivite = new VueActiviteIG(monde, e);
             this.getChildren().add(vueActivite);
-            e.refreshPdc();
-           for (PointDeControleIG pdc : e.getPdc()) {
-               VuePointDeControleIG vuePointDeControleIG = new VuePointDeControleIG(pdc.getPosX(), pdc.getPosY(), 7, e, monde, pdc);
-               if (monde.getCpt() % 2 == 0) {
-                   vuePointDeControleIG.setFill(Color.web("C0C0C0"));
-               } else {
-                   vuePointDeControleIG.setFill(Color.SLATEGRAY);
-               }
-               vueActivite.getVuePdc().add(vuePointDeControleIG);
-               this.getChildren().add(vuePointDeControleIG);
-               System.out.println(pdc.getPosX());
-           }
+            for (PointDeControleIG pdc : e.getPdc()) {
+                VuePointDeControleIG vuePointDeControleIG = new VuePointDeControleIG(pdc.getPosX(), pdc.getPosY(), 7, e, monde, pdc);
+                if (pdc.getCpt() % 2 == 0) {
+                    vuePointDeControleIG.setFill(Color.web("C0C0C0"));
+                } else {
+                    vuePointDeControleIG.setFill(Color.SLATEGRAY);
+                }
+                vueActivite.getVuePdc().add(vuePointDeControleIG);
+                this.getChildren().add(vuePointDeControleIG);
+                System.out.println(pdc.getPosX());
+            }
         }
+
+
     }
 }

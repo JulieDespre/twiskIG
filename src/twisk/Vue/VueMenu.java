@@ -14,7 +14,7 @@ import javafx.scene.text.TextAlignment;
 import twisk.mondeIG.MondeIG;
 
 public class VueMenu extends HBox implements Observateur {
-        private MondeIG monde;
+        private final MondeIG monde;
 
 
         public VueMenu (MondeIG monde) {

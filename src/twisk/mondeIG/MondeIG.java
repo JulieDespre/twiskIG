@@ -2,7 +2,7 @@ package twisk.mondeIG;
 
 import twisk.Vue.Observateur;
 import twisk.outils.FabriqueIdentifiant;
-
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -12,6 +12,8 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     private double pdcCentPosX;
     private double pdcCentPosY;
     private int cpt;
+    private PointDeControleIG pdcClick=null;
+    private final ArrayList<ArcIG> arcs =new ArrayList<ArcIG>();
 
 
     public MondeIG(){
@@ -44,6 +46,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     public void destructeurDeMonde() {
     // Réinitialiser le monde
             etapes.clear();
+            arcs.clear();
             FabriqueIdentifiant identifiant = FabriqueIdentifiant.getInstance();
             identifiant.reset();
             this.notifierObservateurs();
@@ -69,5 +72,22 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
 
     public void setPdcCentPosY(double newPosY){
         pdcCentPosY = newPosY;
+    }
+    public PointDeControleIG getPdcClick(){
+        return pdcClick;
+    }
+
+    public void setPdcClick(PointDeControleIG newPdcClick){
+        pdcClick = newPdcClick;
+    }
+
+    public void ajouterArc(PointDeControleIG pdcStart,PointDeControleIG pdcEnd) {
+        ArcIG newArc = new ArcIG(pdcStart,pdcEnd);
+        arcs.add(newArc);
+        this.notifierObservateurs();
+    }
+
+    public ArrayList<ArcIG> getArcs() {
+        return arcs;
     }
 }
