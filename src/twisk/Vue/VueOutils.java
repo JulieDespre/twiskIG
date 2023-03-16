@@ -1,5 +1,7 @@
 package twisk.Vue;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
@@ -22,55 +24,60 @@ public class VueOutils extends HBox implements Observateur {
 
         Background bg = new Background(new BackgroundFill(Color.web("#D8D8D9"), null, null));
         this.setBackground(bg);
-        this.setStyle("-fx-border-color: slategrey; -fx-border-width: 0.5px;");
+        this.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px;");
 
         Button addAct = new Button();
-        Button selectArc = new Button();
+        Button selectLine = new Button();
         Button selectCourbe = new Button();
+        Button addGui = new Button();
 
-        //tooltip pour le bouton add
-        Tooltip tool = new Tooltip("ajouter une activité");
-        tool.setFont(Font.font("Verdana", FontPosture.REGULAR, 13));
-        tool.setTextAlignment(TextAlignment.CENTER);
-        addAct.setTooltip(tool);
-
-        //tooltip pour le bouton arc
-        Tooltip tool1 = new Tooltip("selectionner l'outils créateur de lignes");
-        tool1.setFont(Font.font("Verdana", FontPosture.REGULAR, 13));
-        tool1.setTextAlignment(TextAlignment.CENTER);
-        selectArc.setTooltip(tool1);
-
-        //tooltip pour le bouton courbe
-        Tooltip tool2 = new Tooltip("selectionner l'outils créateur de courbe");
-        tool2.setFont(Font.font("Verdana", FontPosture.REGULAR, 13));
-        tool2.setTextAlignment(TextAlignment.CENTER);
-        selectCourbe.setTooltip(tool2);
-
-        addAct.setStyle("-fx-border-color: #1fd6fe; -fx-border-width: 0.5px;");
+        //bouton ajouter une activité
+        addAct.setStyle("-fx-border-color: #1fd6fe; -fx-border-width: 1px;");
         Image image = new Image(getClass().getResourceAsStream("/addAct.png"), 35, 35, true, true);
         ImageView icon = new ImageView(image);
         addAct.setGraphic(icon);
         addAct.setOnAction(new EcouteurBouton(monde));
+        addTool("Ajouter une activité", addAct);
 
-        selectArc.setStyle("-fx-border-color: slategrey; -fx-border-width: 0.5px;");
+        //bouton ajouter un guichet
+        addGui.setStyle("-fx-border-color: limegreen; -fx-border-width: 1px;-fx-content-display: center;");
+        Image image3 = new Image(getClass().getResourceAsStream("/addGui2.png"), 35, 35, false, false);
+        ImageView icon3 = new ImageView(image3);
+        addGui.setGraphic(icon3);
+        addGui.setOnAction(new EcouteurBouton(monde));
+        addTool("Ajouter un guichet", addGui);
+
+        //bouton pour sélectionner arc ligne droite
+        selectLine.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px;");
         Image image1 = new Image(getClass().getResourceAsStream("/ligne.png"), 35, 35, true, true);
         ImageView icon1 = new ImageView(image1);
-        selectArc.setGraphic(icon1);
+        selectLine.setGraphic(icon1);
         //addAct.setOnAction(new EcouteurBouton(monde));
+        addTool("selectionner l'outil créateur de lignes", selectLine);
 
-        selectCourbe.setStyle("-fx-border-color: slategrey; -fx-border-width: 0.5px;");
+        //bouton pour sélectionner coubes
+        selectCourbe.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px;");
         Image image2 = new Image(getClass().getResourceAsStream("/courbe.png"), 35, 35, true, true);
         ImageView icon2 = new ImageView(image2);
         selectCourbe.setGraphic(icon2);
         //addAct.setOnAction(new EcouteurBouton(monde));
+        addTool("sélectionner l'outil créateur de courbes", selectCourbe);
+
 
         Pane spacer = new Pane();
-        spacer.setMinSize(835, 1);
+        spacer.setMinSize(775, 1);
 
-        this.getChildren().addAll(addAct, spacer, selectArc, selectCourbe);
+        this.getChildren().addAll(addAct, addGui, spacer, selectLine, selectCourbe);
     }
 
     @Override
     public void reagir() {
+    }
+
+    public void addTool(String nom, Button bouton){
+        Tooltip tool1 = new Tooltip(nom);
+        tool1.setFont(Font.font("Verdana", FontPosture.REGULAR, 13));
+        tool1.setTextAlignment(TextAlignment.CENTER);
+        bouton.setTooltip(tool1);
     }
 }
