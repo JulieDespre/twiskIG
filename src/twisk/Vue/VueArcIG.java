@@ -18,7 +18,7 @@ public class VueArcIG extends Pane {
         double pente = (arcIG.getStartY()-arcIG.getEndY())/(arcIG.getStartX()-arcIG.getEndX());
         double angle = Math.atan(pente);
 
-        double angleFleche= arcIG.getStartX() > arcIG.getEndX() ? Math.toRadians(45) : -Math.toRadians(225);
+        double angleFleche= arcIG.getStartX() > arcIG.getEndX() ? Math.toRadians(45) : -Math.toRadians(200);
         double tailleFleche = 15;
 
         //creation de la flèche
@@ -27,12 +27,14 @@ public class VueArcIG extends Pane {
         fleche1.setStartY(l1.getEndY());
         fleche1.setEndX(l1.getEndX() + tailleFleche * Math.cos(angle - angleFleche));
         fleche1.setEndY(l1.getEndY() + tailleFleche * Math.sin(angle - angleFleche));
+        fleche1.setStyle("-fx-stroke-width: 2px; -fx-stroke: slategrey");
 
         Line fleche2 = new Line();
         fleche2.setStartX(l1.getEndX());
         fleche2.setStartY(l1.getEndY());
         fleche2.setEndX(l1.getEndX() + tailleFleche * Math.cos(angle + angleFleche));
         fleche2.setEndY(l1.getEndY() + tailleFleche * Math.sin(angle + angleFleche));
+        fleche2.setStyle("-fx-stroke-width: 2px; -fx-stroke: slategrey");
 
         this.getChildren().addAll(l1, fleche1, fleche2);
     }
