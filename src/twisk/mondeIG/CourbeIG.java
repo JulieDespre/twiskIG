@@ -3,10 +3,10 @@ package twisk.mondeIG;
 import java.awt.*;
 
 public class CourbeIG {
-        PointDeControleIG pdcStart;
-        Point p1;
-        Point p2;
-        PointDeControleIG pdcEnd;
+        private PointDeControleIG pdcStart;
+        private Point p1;
+        private Point p2;
+        private PointDeControleIG pdcEnd;
         public CourbeIG (PointDeControleIG pdcStart, PointDeControleIG pdcEnd, Point p1, Point p2) {
             this.pdcStart=pdcStart;
             this.p1 = p1;

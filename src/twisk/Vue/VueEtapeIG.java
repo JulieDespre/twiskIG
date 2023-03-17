@@ -42,7 +42,7 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
         labNom.setText("Activité " + etape.getIdentifiant() + " :    " + etape.getTemps() + (" sec +/- ") + etape.getDelais() + (" sec"));
         labNom.setStyle("-fx-font: 13 Lucida; -fx-font-weight: bold; -fx-padding: 2px;");
         labNom.setAlignment(Pos.TOP_CENTER);
-        this.getChildren().addAll(entSort, labNom);
+        this.getChildren().add(labNom);
 
         VBox zoneClient = new VBox();
         zoneClient.setPrefSize(80, 90);
@@ -95,6 +95,10 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
 
     public void setWasDragged(boolean wasDragged){
         this.wasDragged=wasDragged;
+    }
+
+    public void setNom(){
+
     }
 
     @Override
