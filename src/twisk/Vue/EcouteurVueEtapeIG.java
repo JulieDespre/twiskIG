@@ -9,7 +9,6 @@ import twisk.mondeIG.TailleComposants;
 public class EcouteurVueEtapeIG implements  EventHandler<MouseEvent> {
     private final VueEtapeIG vueEtapeIG;
     private final EtapeIG etapeIG;
-
     private final MondeIG monde;
 
     public EcouteurVueEtapeIG(MondeIG monde, VueEtapeIG vueEtapeIG, EtapeIG etapeIG) {
@@ -21,7 +20,7 @@ public class EcouteurVueEtapeIG implements  EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent mouseEvent) {
             if (mouseEvent.getEventType() == MouseEvent.MOUSE_DRAGGED) {
-                System.out.println("hello");
+                vueEtapeIG.setWasDragged(true);
                 this.vueEtapeIG.moveCouleur();
                 for (VuePointDeControleIG vPdc : vueEtapeIG) {
                     vPdc.setOpacity(0);

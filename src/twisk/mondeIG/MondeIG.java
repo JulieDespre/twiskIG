@@ -57,7 +57,6 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
             this.notifierObservateurs();
     }
 
-
     public EtapeIG getEtape(int identifiant){
         return etapes.get(identifiant);
     }

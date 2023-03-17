@@ -12,6 +12,8 @@ import javafx.scene.text.TextAlignment;
 import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
 import twisk.mondeIG.TailleComposants;
+
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -22,28 +24,27 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
     private EtapeIG etape;
     private ArrayList<VuePointDeControleIG> vuePointDeControleIG = new ArrayList<VuePointDeControleIG>();
 
+    private boolean wasDragged=false;
+
     public VueEtapeIG(MondeIG monde, EtapeIG etape){
         this.monde = monde;
         this.etape = etape;
 
-        //HBox top = new HBox();
+        HBox top = new HBox();
         TailleComposants taille = TailleComposants.getInstance();
         this.setPrefSize(taille.getLargeur(etape),taille.getHauteur(etape));
         this.setStyle("-fx-border-color: #4eadfe; -fx-padding: 10px;  -fx-border-width: 2px; ");
         Background bg3 = new Background(new BackgroundFill(Color.web("#F5FFFA"), new CornerRadii(2), null));
         this.setBackground(bg3);
 
-        //Label param = new Label();
-        //Label entSort = new Label();
+        Label entSort = new Label();
         Label labNom = new Label();
         labNom.setText("Activité " + etape.getIdentifiant() + " :    " + etape.getTemps() + (" sec +/- ") + etape.getDelais() + (" sec"));
         labNom.setStyle("-fx-font: 13 Lucida; -fx-font-weight: bold; -fx-padding: 2px;");
-        labNom.setTextAlignment(TextAlignment.CENTER);
-        //param.setAlignment(CENTER);
-        //Image image1 = new Image(getClass().getResourceAsStream("/parame.png"), 35, 35, true, true);
-        //ImageView icon1 = new ImageView(image1);
-        //param.setGraphic(icon1);
-        //this.getChildren().add(labNom);
+        labNom.setAlignment(Pos.BASELINE_CENTER);
+        Image image1 = new Image(getClass().getResourceAsStream("/parame.png"), 30, 30, true, true);
+        ImageView icon1 = new ImageView(image1);
+        this.getChildren().addAll(entSort, labNom);
 
         VBox zoneClient = new VBox();
         zoneClient.setPrefSize(70, 90);
@@ -52,12 +53,12 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
 
         this.setLayoutX(etape.getPosX());
         this.setLayoutY(etape.getPosY());
-        this.getChildren().addAll(labNom, zoneClient);
+        this.getChildren().addAll(top, zoneClient);
 
         //pour setNom d'une activité
         this.setOnMouseDragged(new EcouteurVueEtapeIG(monde, this, etape));
-        this.setOnMouseReleased(new EcouteurMouseRelease(monde, this));
-        this.setOnMouseClicked(new EcouteurEtapeIGClick(monde, this, etape));
+        this.setOnMouseReleased(new EcouteurMouseRelease(monde, this, etape));
+
         }
 
     public void moveCouleur(){
@@ -67,7 +68,7 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
         this.setOpacity(0.25);
     }
     public void clicCouleur(){
-        this.setStyle("-fx-border-color: darkgrey; -fx-padding: 10px;  -fx-border-width: 2px;");
+        this.setStyle("-fx-border-color: darkgrey; -fx-padding: 10px;  -fx-border-width: 2px;-fx-opacity: 0.5");
         Background bg3 = new Background(new BackgroundFill(Color.web("#6f6f6f"), new CornerRadii(2), null));
         this.setBackground(bg3);
     }
@@ -88,6 +89,14 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
 
     public ArrayList<VuePointDeControleIG> getVuePdc(){
         return vuePointDeControleIG;
+    }
+
+    public boolean getWasDragged(){
+        return wasDragged;
+    }
+
+    public void setWasDragged(boolean wasDragged){
+        this.wasDragged=wasDragged;
     }
 
     @Override
