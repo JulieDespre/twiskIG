@@ -41,13 +41,11 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
         Label labNom = new Label();
         labNom.setText("Activité " + etape.getIdentifiant() + " :    " + etape.getTemps() + (" sec +/- ") + etape.getDelais() + (" sec"));
         labNom.setStyle("-fx-font: 13 Lucida; -fx-font-weight: bold; -fx-padding: 2px;");
-        labNom.setAlignment(Pos.BASELINE_CENTER);
-        Image image1 = new Image(getClass().getResourceAsStream("/parame.png"), 30, 30, true, true);
-        ImageView icon1 = new ImageView(image1);
+        labNom.setAlignment(Pos.TOP_CENTER);
         this.getChildren().addAll(entSort, labNom);
 
         VBox zoneClient = new VBox();
-        zoneClient.setPrefSize(70, 90);
+        zoneClient.setPrefSize(80, 90);
         zoneClient.setStyle("-fx-alignment: down");
         zoneClient.setStyle("-fx-background-color: #e3e3e3; -fx-padding: 10px; -fx-border-color: #1fd6fe; -fx-border-width: 2px");
 
@@ -74,7 +72,7 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
     }
     public void retourCouleur(){
         this.setStyle("-fx-border-color: slategrey; -fx-padding: 10px;  -fx-border-width: 2px;");
-        Background bg4 = new Background(new BackgroundFill(Color.web("#A8CDD3"), new CornerRadii(2), null));
+        Background bg4 = new Background(new BackgroundFill(Color.web("#e3e3e3"), new CornerRadii(2), null));
         this.setBackground(bg4);
         this.setOpacity(1.0);
     }

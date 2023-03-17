@@ -20,7 +20,7 @@ public class VueArcIG extends Pane {
             double pente = (ligneDroite.getStartY() - ligneDroite.getEndY()) / (ligneDroite.getStartX() - ligneDroite.getEndX());
             double angle = Math.atan(pente);
 
-            double angleFleche = ligneDroite.getStartX() > ligneDroite.getEndX() ? Math.toRadians(25) : -Math.toRadians(200);
+            double angleFleche = ligneDroite.getStartX() > ligneDroite.getEndX() ? Math.toRadians(20) : -Math.toRadians(200);
             double tailleFleche = 15;
 
             //creation de la flèche

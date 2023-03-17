@@ -12,7 +12,7 @@ public class EcouteurMouseRelease implements EventHandler<MouseEvent> {
     private EtapeIG etape;
 
     public EcouteurMouseRelease (MondeIG monde, VueEtapeIG vueEtapeIG, EtapeIG etape) {
-
+        this.etape = etape;
         this.monde = monde;
         this.vueEtapeIG = vueEtapeIG;
     }
@@ -21,15 +21,14 @@ public class EcouteurMouseRelease implements EventHandler<MouseEvent> {
     public void handle(MouseEvent mouseEvent) {
         if (vueEtapeIG.getWasDragged()){
         vueEtapeIG.retourCouleur();
-        monde.notifierObservateurs();}
+            }
         else {
-            System.out.println("Ulysse");
-            //monde.ajouterEtapesClicked(etape);
-            vueEtapeIG.setStyle("-fx-border-color: darkgrey; -fx-border-width: 10px; -fx-opacity: 0.2");
-            vueEtapeIG.clicCouleur();
-            //monde.notifierObservateurs();
+            if (!monde.hasBeenClicked(etape)) monde.ajouterEtapesClicked(etape);
+            else monde.enleverEtapesClicked(etape);
+            monde.increCptAct();
         }
         vueEtapeIG.setWasDragged(false);
+        monde.notifierObservateurs();
         mouseEvent.consume();
     }
 }

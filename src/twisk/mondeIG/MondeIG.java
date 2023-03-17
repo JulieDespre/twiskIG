@@ -11,7 +11,7 @@ import java.util.Iterator;
 public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     private final HashMap <Integer, EtapeIG> etapes;
 
-    private final HashMap <Integer, EtapeIG> etapesClicked = new HashMap <Integer, EtapeIG>();
+    private final ArrayList <EtapeIG> etapesClicked = new ArrayList <EtapeIG>();
     private double pdcCentPosX;
     private double pdcCentPosY;
     //compteur de point pour cubicCurve
@@ -49,12 +49,20 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
         }
 
 
-    public HashMap<Integer, EtapeIG> getEtapesClicked(){
+    public ArrayList<EtapeIG> getEtapesClicked(){
         return etapesClicked;
     }
     public void  ajouterEtapesClicked(EtapeIG etape){
-            etapesClicked.put(etape.getIdentifiant(), etape);
+            etapesClicked.add(etape);
             this.notifierObservateurs();
+    }
+
+    public boolean hasBeenClicked(EtapeIG etape){
+        return etapesClicked.contains(etape);
+    }
+
+    public void enleverEtapesClicked(EtapeIG etape){
+        etapesClicked.remove(etape);
     }
 
     public EtapeIG getEtape(int identifiant){
@@ -139,8 +147,12 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     public int getCptAct(){
         return cptAct;
     }
-
-
+    public void setCptAct(int newCpt){
+        cptAct = newCpt;
+    }
+    public void increCptAct(){
+        cptAct = cptAct + 1;
+    }
     public void increCpt(){
         cpt = cpt + 1;
     }

@@ -32,6 +32,7 @@ public class VueMondeIG extends Pane implements Observateur {
         }
         for (EtapeIG e : monde.getEtapes().values()) {
             VueEtapeIG vueActivite = new VueActiviteIG(monde, e);
+            if (monde.hasBeenClicked(e)) vueActivite.clicCouleur();
             this.getChildren().add(vueActivite);
             for (PointDeControleIG pdc : e.getPdc()) {
                 VuePointDeControleIG vuePointDeControleIG = new VuePointDeControleIG(pdc.getPosX(), pdc.getPosY(), 7, e, monde, pdc);
