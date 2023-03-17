@@ -46,6 +46,7 @@ public class EcouteurVueEtapeIG implements  EventHandler<MouseEvent> {
                     this.etapeIG.setPosY(newYPos);
                 }
         }
+        mouseEvent.consume();
     }
 }
 

@@ -18,8 +18,8 @@ public class EcouteurMouseRelease implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent mouseEvent) {
         vueEtapeIG.retourCouleur();
-        mouseEvent.consume();
         monde.notifierObservateurs();
+        mouseEvent.consume();
     }
 }
 

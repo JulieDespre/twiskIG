@@ -56,7 +56,7 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
 
         //pour setNom d'une activité
         this.setOnMouseDragged(new EcouteurVueEtapeIG(monde, this, etape));
-        this.setOnMouseDragReleased(new EcouteurMouseRelease(monde, this));
+        this.setOnMouseReleased(new EcouteurMouseRelease(monde, this));
         this.setOnMouseClicked(new EcouteurEtapeIGClick(monde, this, etape));
         }
 
