@@ -1,7 +1,8 @@
 package twisk.mondeIG;
 
-import twisk.Vue.Observateur;
 import twisk.outils.FabriqueIdentifiant;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -9,9 +10,15 @@ import java.util.Iterator;
 
 public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     private final HashMap <Integer, EtapeIG> etapes;
+
+    private final HashMap <Integer, EtapeIG> etapesClicked = new HashMap <Integer, EtapeIG>();
     private double pdcCentPosX;
     private double pdcCentPosY;
+    //compteur de point pour cubicCurve
+    private int cptPt;
     private int cpt;
+    //compteur pour activitée clickée
+    private int cptAct;
     private PointDeControleIG pdcClick=null;
     private final ArrayList<LigneDroiteIG> lignes =new ArrayList<LigneDroiteIG>();
     private final ArrayList<CourbeIG> courbes =new ArrayList<CourbeIG>();
@@ -41,6 +48,16 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
         return etapes;
         }
 
+
+    public HashMap<Integer, EtapeIG> getEtapesClicked(){
+        return etapesClicked;
+    }
+    public void  ajouterEtapesClicked(EtapeIG etape){
+            etapesClicked.put(etape.getIdentifiant(), etape);
+            this.notifierObservateurs();
+    }
+
+
     public EtapeIG getEtape(int identifiant){
         return etapes.get(identifiant);
     }
@@ -50,6 +67,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     // Réinitialiser le monde
             etapes.clear();
             lignes.clear();
+            courbes.clear();
             FabriqueIdentifiant identifiant = FabriqueIdentifiant.getInstance();
             identifiant.reset();
             this.notifierObservateurs();
@@ -84,14 +102,23 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
         pdcClick = newPdcClick;
     }
 
-    public void ajouterArc(PointDeControleIG pdcStart,PointDeControleIG pdcEnd) {
+    public void ajouterLigne(PointDeControleIG pdcStart, PointDeControleIG pdcEnd) {
         LigneDroiteIG newArc = new LigneDroiteIG(pdcStart,pdcEnd);
         lignes.add(newArc);
         this.notifierObservateurs();
     }
 
+    public void ajouterCourbe(PointDeControleIG pdcStart, Point p1, Point p2, PointDeControleIG pdcEnd) {
+        CourbeIG newCourbe = new CourbeIG(pdcStart, pdcEnd, p1, p2);
+        courbes.add(newCourbe);
+        this.notifierObservateurs();
+    }
     public ArrayList<LigneDroiteIG> getLignes() {
         return lignes;
+    }
+
+    public ArrayList<CourbeIG> getCourbes() {
+        return courbes;
     }
 
     public boolean getcreationLigne(){
@@ -106,5 +133,16 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     }
     public void setCreationCourbe(boolean newcreaCour){
         this.creationCour = newcreaCour;
+    }
+    public int getCptpt(){
+        return cptPt;
+    }
+    public int getCptAct(){
+        return cptAct;
+    }
+
+
+    public void increCpt(){
+        cpt = cpt + 1;
     }
 }

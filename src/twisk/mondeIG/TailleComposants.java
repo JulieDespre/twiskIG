@@ -25,7 +25,7 @@ private TailleComposants(){
         int hauteur = 0;
         switch (etape.getComposant()){
             case ACTIVITE:
-                hauteur = 100;
+                hauteur = 120;
                 break;
             case GUICHET:
                 hauteur = 70;
@@ -43,13 +43,13 @@ private TailleComposants(){
         int largeur = 0;
         switch (etape.getComposant()){
             case ACTIVITE:
-                largeur = 250;
+                largeur = 300;
                 break;
             case GUICHET:
-                largeur = 250;
+                largeur = 300;
                 break;
             case ACTIVITERESTREINTE:
-                largeur = 250;
+                largeur = 300;
                 break;
             default:
                 System.out.println("Le composant choisit n'existe pas");

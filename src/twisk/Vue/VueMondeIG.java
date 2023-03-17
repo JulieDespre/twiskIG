@@ -42,10 +42,7 @@ public class VueMondeIG extends Pane implements Observateur {
                 }
                 vueActivite.getVuePdc().add(vuePointDeControleIG);
                 this.getChildren().add(vuePointDeControleIG);
-                System.out.println(pdc.getPosX());
             }
         }
-
-
     }
 }

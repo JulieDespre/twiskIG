@@ -20,7 +20,7 @@ public class VueArcIG extends Pane {
             double pente = (ligneDroite.getStartY() - ligneDroite.getEndY()) / (ligneDroite.getStartX() - ligneDroite.getEndX());
             double angle = Math.atan(pente);
 
-            double angleFleche = ligneDroite.getStartX() > ligneDroite.getEndX() ? Math.toRadians(45) : -Math.toRadians(200);
+            double angleFleche = ligneDroite.getStartX() > ligneDroite.getEndX() ? Math.toRadians(25) : -Math.toRadians(200);
             double tailleFleche = 15;
 
             //creation de la flèche
@@ -42,7 +42,7 @@ public class VueArcIG extends Pane {
             this.getChildren().addAll(l1, fleche1, fleche2);
             System.out.println(monde.getcreationLigne());
         }
-       /* if (monde.getcreationCourbe() == true) {
+       /*if (monde.getcreationCourbe() == true) {
             CubicCurve l2 = new CubicCurve(arcIG.getStartX(), arcIG.getStartY(), arcIG.getEndX(), arcIG.getEndY());
             l2.setStyle("-fx-stroke-width: 2px; -fx-stroke: slategrey");
             double pente = (arcIG.getStartY() - arcIG.getEndY()) / (arcIG.getStartX() - arcIG.getEndX());

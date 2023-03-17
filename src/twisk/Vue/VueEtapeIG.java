@@ -1,53 +1,65 @@
 package twisk.Vue;
 
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
 import twisk.mondeIG.TailleComposants;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import static javafx.geometry.Pos.CENTER;
+
 public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDeControleIG> {
-    private final MondeIG monde;
-    private final EtapeIG etape;
-    private final ArrayList<VuePointDeControleIG> vuePointDeControleIG = new ArrayList<VuePointDeControleIG>();
+    private MondeIG monde;
+    private EtapeIG etape;
+    private ArrayList<VuePointDeControleIG> vuePointDeControleIG = new ArrayList<VuePointDeControleIG>();
 
     public VueEtapeIG(MondeIG monde, EtapeIG etape){
         this.monde = monde;
         this.etape = etape;
 
-            TailleComposants taille = TailleComposants.getInstance();
-            this.setPrefSize(taille.getLargeur(etape),taille.getHauteur(etape));
-            this.setStyle("-fx-border-color: #4eadfe; -fx-padding: 10px;  -fx-border-width: 2px; ");
-            Background bg3 = new Background(new BackgroundFill(Color.web("#F5FFFA"), new CornerRadii(2), null));
-            this.setBackground(bg3);
+        //HBox top = new HBox();
+        TailleComposants taille = TailleComposants.getInstance();
+        this.setPrefSize(taille.getLargeur(etape),taille.getHauteur(etape));
+        this.setStyle("-fx-border-color: #4eadfe; -fx-padding: 10px;  -fx-border-width: 2px; ");
+        Background bg3 = new Background(new BackgroundFill(Color.web("#F5FFFA"), new CornerRadii(2), null));
+        this.setBackground(bg3);
 
-            Label labNom = new Label();
-            labNom.setText("Activité " + etape.getIdentifiant() + " :    " + etape.getTemps() + (" sec +/- ") + etape.getDelais() + (" sec"));
-            labNom.setStyle("-fx-font: 13 Lucida; -fx-font-weight: bold; -fx-padding: 2px;");
-            labNom.setTextAlignment(TextAlignment.CENTER);
+        //Label param = new Label();
+        //Label entSort = new Label();
+        Label labNom = new Label();
+        labNom.setText("Activité " + etape.getIdentifiant() + " :    " + etape.getTemps() + (" sec +/- ") + etape.getDelais() + (" sec"));
+        labNom.setStyle("-fx-font: 13 Lucida; -fx-font-weight: bold; -fx-padding: 2px;");
+        labNom.setTextAlignment(TextAlignment.CENTER);
+        //param.setAlignment(CENTER);
+        //Image image1 = new Image(getClass().getResourceAsStream("/parame.png"), 35, 35, true, true);
+        //ImageView icon1 = new ImageView(image1);
+        //param.setGraphic(icon1);
+        //this.getChildren().add(labNom);
 
-            VBox zoneClient = new VBox();
-            zoneClient.setPrefSize(70, 90);
-            zoneClient.setStyle("-fx-alignment: down");
-            zoneClient.setStyle("-fx-background-color: #e3e3e3; -fx-padding: 10px; -fx-border-color: #1fd6fe; -fx-border-width: 2px");
+        VBox zoneClient = new VBox();
+        zoneClient.setPrefSize(70, 90);
+        zoneClient.setStyle("-fx-alignment: down");
+        zoneClient.setStyle("-fx-background-color: #e3e3e3; -fx-padding: 10px; -fx-border-color: #1fd6fe; -fx-border-width: 2px");
 
-            this.setLayoutX(etape.getPosX());
-            this.setLayoutY(etape.getPosY());
-            this.getChildren().addAll(labNom, zoneClient);
+        this.setLayoutX(etape.getPosX());
+        this.setLayoutY(etape.getPosY());
+        this.getChildren().addAll(labNom, zoneClient);
 
-            //pour setNom d'une activité
-            //this.setOnMouseClicked(new EcouteurVueActiviteIG(monde, this, etape));
-            this.setOnMouseDragged(new EcouteurVueActiviteIG(monde, this, etape));
-            this.setOnMouseReleased(new EcouteurMouseRelease(monde, this));
+        //pour setNom d'une activité
+        this.setOnMouseDragged(new EcouteurVueEtapeIG(monde, this, etape));
+        this.setOnMouseDragReleased(new EcouteurMouseRelease(monde, this));
+        this.setOnMouseClicked(new EcouteurEtapeIGClick(monde, this, etape));
         }
+
     public void moveCouleur(){
         this.setStyle("-fx-border-color: darkgrey; -fx-padding: 10px;  -fx-border-width: 2px;");
         Background bg3 = new Background(new BackgroundFill(Color.web("#6f6f6f"), new CornerRadii(2), null));
