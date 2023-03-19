@@ -23,4 +23,14 @@ public abstract class ArcIG {
         return pdcEnd.getPosY();
     }
 
+    public PointDeControleIG getPdcStart(){
+        return pdcStart;
+    }
+
+    public PointDeControleIG getPdcEnd(){
+        return pdcEnd;
+    }
+    public int getIdentifiant(PointDeControleIG pdc){
+        return pdc.getIdentifiant();
+    }
 }

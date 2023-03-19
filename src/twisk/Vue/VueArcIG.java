@@ -24,7 +24,6 @@ public class VueArcIG extends Pane {
             double tailleFleche = 15;
 
             //creation de la flèche
-            System.out.println(monde.getcreationLigne());
             Line fleche1 = new Line();
             fleche1.setStartX(l1.getEndX());
             fleche1.setStartY(l1.getEndY());

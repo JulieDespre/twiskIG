@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeControleIG> {
     private String nom;
-    private final int  identifiant;
+    private final int identifiant;
     private double posX;
     private double posY;
     private int largeur;

@@ -109,6 +109,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
         pdcClick = newPdcClick;
     }
 
+    //ajouter les arcs
     public void ajouterLigne(PointDeControleIG pdcStart, PointDeControleIG pdcEnd) {
         LigneDroiteIG newArc = new LigneDroiteIG(pdcStart,pdcEnd);
         lignes.add(newArc);
@@ -155,5 +156,25 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     }
     public void increCpt(){
         cpt = cpt + 1;
+    }
+    public void supprimerEtapes(){
+        System.out.println(etapesClicked.size());
+        for(EtapeIG etape : etapesClicked){
+                for(PointDeControleIG pdc : etape.getPdc()){
+                    for(ArcIG arc : lignes){
+                        if(pdc.getIdentifiant() == arc.getPdcStart().getIdentifiant() || pdc.getIdentifiant() == arc.getPdcEnd().getIdentifiant()){
+                            lignes.remove(arc);
+                        }
+                    }
+                }
+            etapes.remove(etape.getIdentifiant());
+        }
+        this.etapesClicked.clear();
+        System.out.println(etapesClicked.size());
+        this.notifierObservateurs();
+    }
+
+    public int nbEtapeSelec(){
+        return etapesClicked.size();
     }
 }
