@@ -1,6 +1,9 @@
 package twisk.Vue;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -29,7 +32,7 @@ public class VueOutils extends HBox implements Observateur {
 
         //bouton ajouter une activité
         addAct.setStyle("-fx-border-color: #1fd6fe; -fx-border-width: 1px;");
-        Image image = new Image(getClass().getResourceAsStream("/addAct.png"), 35, 35, true, true);
+        Image image = new Image(getClass().getResourceAsStream("/addAct.png"), 36, 36, true, true);
         ImageView icon = new ImageView(image);
         addAct.setGraphic(icon);
         addAct.setOnAction(new EcouteurBouton(monde));
@@ -37,7 +40,7 @@ public class VueOutils extends HBox implements Observateur {
 
         //bouton ajouter un guichet
         addGui.setStyle("-fx-border-color: limegreen; -fx-border-width: 1px;-fx-content-display: center;");
-        Image image3 = new Image(getClass().getResourceAsStream("/addGui2.png"), 35, 35, false, false);
+        Image image3 = new Image(getClass().getResourceAsStream("/addGui2.png"), 36, 36, false, false);
         ImageView icon3 = new ImageView(image3);
         addGui.setGraphic(icon3);
         addGui.setOnAction(new EcouteurBouton(monde));
@@ -45,7 +48,7 @@ public class VueOutils extends HBox implements Observateur {
 
         //bouton pour sélectionner arc ligne droite
         selectLine.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px;");
-        Image image1 = new Image(getClass().getResourceAsStream("/ligne.png"), 35, 35, true, true);
+        Image image1 = new Image(getClass().getResourceAsStream("/ligne.png"), 36, 36, true, true);
         ImageView icon1 = new ImageView(image1);
         selectLine.setGraphic(icon1);
         selectLine.setOnMouseClicked(new EcouteurLigne(monde));
@@ -53,17 +56,21 @@ public class VueOutils extends HBox implements Observateur {
 
         //bouton pour sélectionner coubes
         selectCourbe.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px;");
-        Image image2 = new Image(getClass().getResourceAsStream("/courbe.png"), 35, 35, true, true);
+        Image image2 = new Image(getClass().getResourceAsStream("/courbe.png"), 36, 36, true, true);
         ImageView icon2 = new ImageView(image2);
         selectCourbe.setGraphic(icon2);
         selectCourbe.setOnMouseClicked(new EcouteurCourbe(monde));
         addTool("sélectionner l'outil créateur de courbes", selectCourbe);
 
+        Label arcNom = new Label("Dessiner les arcs :");
+        arcNom.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px; -fx-font-weight: bold; -fx-max-width: 250; -fx-max-height: 45; -fx-text-alignment: center");
+        arcNom.setPadding(new Insets(5, 5, 5, 5));
 
         Pane spacer = new Pane();
-        spacer.setMinSize(775, 1);
+        spacer.setMinSize(623, 1);
 
-        this.getChildren().addAll(addAct, addGui, spacer, selectLine, selectCourbe);
+
+        this.getChildren().addAll(addAct, addGui, spacer, arcNom, selectLine, selectCourbe);
     }
 
     @Override

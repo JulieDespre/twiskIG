@@ -26,6 +26,7 @@ public class VueMenu extends HBox implements Observateur {
             Menu menu = new Menu("Menu");
             menu.setStyle("-fx-font: 20 helvetica; -fx-font-color: grey ; -fx-background: lightgrey");
 
+            Menu menuFich = new Menu("Fichier");
             MenuItem nouveau = new MenuItem("Nouveau");
             nouveau.setAccelerator(KeyCombination.keyCombination("Ctrl+N"));
             nouveau.setOnAction(new EcouteurNouveau(monde));
@@ -33,6 +34,11 @@ public class VueMenu extends HBox implements Observateur {
             MenuItem quitter = new MenuItem("Quitter");
             quitter.setAccelerator(KeyCombination.keyCombination("Ctrl+Q"));
             quitter.setOnAction(event -> Platform.exit());
+
+            Menu menuEd = new Menu("Edition");
+            MenuItem supprimer = new MenuItem("Supprimer");
+            supprimer.setAccelerator(KeyCombination.keyCombination("Ctrl+D"));
+            supprimer.setOnAction(new EcouteurSupprimer(monde));
 
             Button setNom = new Button();
             Button setTps = new Button();
@@ -109,7 +115,9 @@ public class VueMenu extends HBox implements Observateur {
             bNew.setTooltip(tool4);
 
             //ajout des items a vueMenu
-            menu.getItems().addAll(nouveau, quitter);
+            menuFich.getItems().addAll(nouveau, quitter);
+            menuEd.getItems().add(supprimer);
+            menu.getItems().addAll(menuFich, menuEd);
             menuBar.getMenus().addAll(menu);
             this.getChildren().addAll(menuBar, setNom, setTps, setDel, spacer, bNew, bQuit);
 
