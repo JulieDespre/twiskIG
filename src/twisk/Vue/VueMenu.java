@@ -109,14 +109,14 @@ public class VueMenu extends HBox implements Observateur {
             bNew.setAlignment(Pos.CENTER_RIGHT);
             bNew.setOnAction(new EcouteurNouveau(monde));
 
+            //ajout des items a vueMenu
+            menuFich.getItems().addAll(nouveau, quitter);
+            menuEd.getItems().add(supprimer);
+
             Tooltip tool4 = new Tooltip("Destruction du Monde");
             tool4.setFont(Font.font("Verdana", FontPosture.REGULAR, 13));
             tool4.setTextAlignment(TextAlignment.CENTER);
             bNew.setTooltip(tool4);
-
-            //ajout des items a vueMenu
-            menuFich.getItems().addAll(nouveau, quitter);
-            menuEd.getItems().add(supprimer);
             menu.getItems().addAll(menuFich, menuEd);
             menuBar.getMenus().addAll(menu);
             this.getChildren().addAll(menuBar, setNom, setTps, setDel, spacer, bNew, bQuit);

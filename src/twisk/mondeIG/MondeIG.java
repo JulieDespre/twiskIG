@@ -157,13 +157,17 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     public void increCpt(){
         cpt = cpt + 1;
     }
+
+    //suprime étape(s) sélectionnées et arc qui lui sont reliées
     public void supprimerEtapes(){
         System.out.println(etapesClicked.size());
         for(EtapeIG etape : etapesClicked){
                 for(PointDeControleIG pdc : etape.getPdc()){
-                    for(ArcIG arc : lignes){
+                    for(int i=0;i<lignes.size();i++){
+                        ArcIG arc= lignes.get(i);
                         if(pdc.getIdentifiant() == arc.getPdcStart().getIdentifiant() || pdc.getIdentifiant() == arc.getPdcEnd().getIdentifiant()){
                             lignes.remove(arc);
+                            i--;
                         }
                     }
                 }

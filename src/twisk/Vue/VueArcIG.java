@@ -14,7 +14,15 @@ public class VueArcIG extends Pane {
         this.monde = monde;
         this.ligneDroite = ligneDroite;
 
+        this.creationArcLigne();
         if (monde.getcreationLigne() == true) {
+           this.creationArcLigne();
+        }
+       /*if (monde.getcreationCourbe() == true) {
+           this.creationArcCourbe();
+        }*/
+        }
+        public void creationArcLigne(){
             Line l1 = new Line(ligneDroite.getStartX(), ligneDroite.getStartY(), ligneDroite.getEndX(), ligneDroite.getEndY());
             l1.setStyle("-fx-stroke-width: 2px; -fx-stroke: slategrey");
             double pente = (ligneDroite.getStartY() - ligneDroite.getEndY()) / (ligneDroite.getStartX() - ligneDroite.getEndX());
@@ -41,8 +49,9 @@ public class VueArcIG extends Pane {
             this.getChildren().addAll(l1, fleche1, fleche2);
             System.out.println(monde.getcreationLigne());
         }
-       /*if (monde.getcreationCourbe() == true) {
-            CubicCurve l2 = new CubicCurve(arcIG.getStartX(), arcIG.getStartY(), arcIG.getEndX(), arcIG.getEndY());
+
+        public void creationArcCourbe(){
+            /*CubicCurve l2 = new CubicCurve(arcIG.getStartX(), arcIG.getStartY(), arcIG.getEndX(), arcIG.getEndY());
             l2.setStyle("-fx-stroke-width: 2px; -fx-stroke: slategrey");
             double pente = (arcIG.getStartY() - arcIG.getEndY()) / (arcIG.getStartX() - arcIG.getEndX());
             double angle = Math.atan(pente);
@@ -67,8 +76,7 @@ public class VueArcIG extends Pane {
             fleche2.setStyle("-fx-stroke-width: 2px; -fx-stroke: slategrey");
 
             this.getChildren().addAll(l2, fleche1, fleche2);
-            System.out.println(monde.getcreationLigne());
-        }*/
+            System.out.println(monde.getcreationLigne());*/
         }
     }
 
