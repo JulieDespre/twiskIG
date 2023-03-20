@@ -11,16 +11,21 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.TextAlignment;
+import jdk.jfr.Recording;
 import twisk.mondeIG.MondeIG;
 
 public class VueMenu extends HBox implements Observateur {
         private final MondeIG monde;
 
+        private MenuItem setNomItem;
 
-        public VueMenu (MondeIG monde) {
+    public VueMenu (MondeIG monde) {
             super();
             this.monde = monde;
+            this.monde.ajouterObservateur(this);
             this.setStyle("-fx-border-color: slategrey; -fx-border-width: 1.5px;");
+
+            //creation des menubar, menus et items
             MenuBar menuBar = new MenuBar();
             menuBar.setStyle("-fx-border-color: slategrey; -fx-border-width: 1.5px;");
             Menu menu = new Menu("Menu");
@@ -37,15 +42,19 @@ public class VueMenu extends HBox implements Observateur {
 
             Menu menuEd = new Menu("Edition");
             MenuItem supprimer = new MenuItem("Supprimer");
+            setNomItem = new MenuItem("Renomer la sélection");
             supprimer.setAccelerator(KeyCombination.keyCombination("Ctrl+D"));
-            supprimer.setOnAction(new EcouteurSupprimer(monde));
+            supprimer.setOnAction(new EcouteurSupprimerEtape(monde));
 
+            //creation des boutons
             Button setNom = new Button();
             Button setTps = new Button();
             Button setDel = new Button();
             Button bQuit = new Button();
             Button bNew = new Button();
             Pane spacer = new Pane();
+
+            //espaceur pour mise en place des boutons
             spacer.setMinSize(606, 1);
             spacer.setStyle("-fx-border-color: slategrey; -fx-border-width: 2px;-fx-alignment: center");
 
@@ -55,12 +64,9 @@ public class VueMenu extends HBox implements Observateur {
             ImageView icon = new ImageView(image);
             setNom.setGraphic(icon);
             setNom.setAlignment(Pos.CENTER_RIGHT);
-            setNom.setOnAction(new EcouteurBouton(monde));
+            setNom.setOnAction(new EcouteurSetNom(monde));
 
-            Tooltip tool = new Tooltip("Modifier le nom de l'activité");
-            tool.setFont(Font.font("Verdana", FontPosture.REGULAR, 13));
-            tool.setTextAlignment(TextAlignment.CENTER);
-            setNom.setTooltip(tool);
+            addTool("Modifier le nom de l'activité", setNom);
 
             //bouton pour setTemps
             setTps.setStyle("-fx-border-color: slategrey; -fx-border-width: 2px;");
@@ -70,10 +76,8 @@ public class VueMenu extends HBox implements Observateur {
             setTps.setAlignment(Pos.CENTER_RIGHT);
             setTps.setOnAction(new EcouteurBouton(monde));
 
-            Tooltip tool1 = new Tooltip("Modifier la durée de l'activité");
-            tool1.setFont(Font.font("Verdana", FontPosture.REGULAR, 13));
-            tool1.setTextAlignment(TextAlignment.CENTER);
-            setTps.setTooltip(tool1);
+            addTool("Modifier le durée de l'activité", setTps);
+
 
             //bouton pour setDel
             setDel.setStyle("-fx-border-color: slategrey; -fx-border-width: 2px;");
@@ -83,10 +87,7 @@ public class VueMenu extends HBox implements Observateur {
             setDel.setAlignment(Pos.CENTER_RIGHT);
             setDel.setOnAction(new EcouteurBouton(monde));
 
-            Tooltip tool2 = new Tooltip("Modifier le delais de l'activité");
-            tool2.setFont(Font.font("Verdana", FontPosture.REGULAR, 13));
-            tool2.setTextAlignment(TextAlignment.CENTER);
-            setDel.setTooltip(tool2);
+            addTool("Modifier le delais de l'activité", setDel);
 
             //bouton pour quitter
             bQuit.setStyle("-fx-border-color: slategrey; -fx-border-width: 2px;");
@@ -95,13 +96,10 @@ public class VueMenu extends HBox implements Observateur {
             bQuit.setGraphic(icon3);
             bQuit.setAlignment(Pos.CENTER_RIGHT);
             bQuit.setOnAction(e-> Platform.exit());
+            addTool("Quitter le créateur de Monde", bQuit);
 
-            Tooltip tool3 = new Tooltip("Quitter le créateur de Monde");
-            tool3.setFont(Font.font("Verdana", FontPosture.REGULAR, 13));
-            tool3.setTextAlignment(TextAlignment.CENTER);
-            bQuit.setTooltip(tool3);
 
-            //bouton pour quitter
+            //bouton pour remettre à zéro
             bNew.setStyle("-fx-border-color: slategrey; -fx-border-width: 2px;");
             Image image4 = new Image(getClass().getResourceAsStream("/newMonde.png"), 35, 35, true, true);
             ImageView icon4 = new ImageView(image4);
@@ -109,24 +107,33 @@ public class VueMenu extends HBox implements Observateur {
             bNew.setAlignment(Pos.CENTER_RIGHT);
             bNew.setOnAction(new EcouteurNouveau(monde));
 
-            //ajout des items a vueMenu
+            //ajout des items au menu
             menuFich.getItems().addAll(nouveau, quitter);
-            menuEd.getItems().add(supprimer);
+            System.out.println(monde.nbEtapeSelec());
+            menuEd.getItems().addAll(supprimer, setNomItem);
 
-            Tooltip tool4 = new Tooltip("Destruction du Monde");
-            tool4.setFont(Font.font("Verdana", FontPosture.REGULAR, 13));
-            tool4.setTextAlignment(TextAlignment.CENTER);
-            bNew.setTooltip(tool4);
+            addTool("Destruction du Monde", bNew);
+
+
+            //ajouter menu dans menuBar ajoutée à HBox
             menu.getItems().addAll(menuFich, menuEd);
             menuBar.getMenus().addAll(menu);
             this.getChildren().addAll(menuBar, setNom, setTps, setDel, spacer, bNew, bQuit);
-
+            setNomItem.setDisable(monde.nbEtapeSelec() != 1);
         }
 
         @Override
         public void reagir() {
-
+            setNomItem.setDisable(monde.nbEtapeSelec() != 1);
+            }
+        public void addTool(String nom, Button bouton){
+            Tooltip tool1 = new Tooltip(nom);
+            tool1.setFont(Font.font("Verdana", FontPosture.REGULAR, 13));
+            tool1.setTextAlignment(TextAlignment.CENTER);
+            bouton.setTooltip(tool1);
         }
+
+
     }
 
 

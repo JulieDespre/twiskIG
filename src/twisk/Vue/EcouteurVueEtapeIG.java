@@ -25,10 +25,7 @@ public class EcouteurVueEtapeIG implements  EventHandler<MouseEvent> {
                 for (VuePointDeControleIG vPdc : vueEtapeIG) {
                     vPdc.setOpacity(0);
                 }
-                //rendre les arcs transparents pendant le drag and drop
-            /*for (VueArcIG vArc : vueMonde) {
-                vArc.setOpacity(0);
-            }*/
+
                 double dragX = mouseEvent.getSceneX() - etapeIG.getPosX();
                 double dragY = mouseEvent.getSceneY() - etapeIG.getPosY();
 

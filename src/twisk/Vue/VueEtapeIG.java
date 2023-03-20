@@ -1,23 +1,15 @@
 package twisk.Vue;
 
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.TextAlignment;
 import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
 import twisk.mondeIG.TailleComposants;
-
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import static javafx.geometry.Pos.CENTER;
 
 public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDeControleIG> {
     private MondeIG monde;
@@ -39,7 +31,7 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
 
         Label entSort = new Label();
         Label labNom = new Label();
-        labNom.setText("Activité " + etape.getIdentifiant() + " :    " + etape.getTemps() + (" sec +/- ") + etape.getDelais() + (" sec"));
+        labNom.setText(etape.getNom() + " :    " + etape.getTemps() + (" sec +/- ") + etape.getDelais() + (" sec"));
         labNom.setStyle("-fx-font: 13 Lucida; -fx-font-weight: bold; -fx-padding: 2px;");
         labNom.setAlignment(Pos.TOP_CENTER);
         this.getChildren().add(labNom);

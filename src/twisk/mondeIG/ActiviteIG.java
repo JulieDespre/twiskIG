@@ -7,4 +7,10 @@ public class ActiviteIG extends EtapeIG {
         this.setTailles();
     }
 
+    public ActiviteIG(int temps, int delais) {
+        super(temps, delais);
+        this.setComposant(Composant.ACTIVITE);
+        this.setTailles();
+    }
+
 }

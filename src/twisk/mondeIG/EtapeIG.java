@@ -36,6 +36,16 @@ public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeCo
         this.posY=100;
     }
 
+    public EtapeIG(int temps, int delais){
+        this.temps= temps;
+        this.delais= delais;
+        FabriqueIdentifiant maFabrique=FabriqueIdentifiant.getInstance();
+        this.identifiant= maFabrique.getNumeroActivite();
+        this.nom="Activité "+this.identifiant;
+        this.posX=100;
+        this.posY=100;
+    }
+
     protected void setTailles(){
         TailleComposants taille=TailleComposants.getInstance();
         this.hauteur= taille.getHauteur(this);
@@ -121,6 +131,10 @@ public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeCo
     public void setNom(String newNom){
         this.nom = newNom;
         notifierObservateurs();
+    }
+    public void setNomEtapeClicked(String newNom){
+        this.nom = newNom;
+        this.notifierObservateurs();
     }
     @Override
     public Iterator<PointDeControleIG> iterator() {

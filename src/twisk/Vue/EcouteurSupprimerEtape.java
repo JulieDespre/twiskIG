@@ -2,13 +2,12 @@ package twisk.Vue;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
 
-public class EcouteurSupprimer implements EventHandler<ActionEvent> {
+public class EcouteurSupprimerEtape implements EventHandler<ActionEvent> {
     private MondeIG monde;
 
-    public EcouteurSupprimer(MondeIG monde) {
+    public EcouteurSupprimerEtape(MondeIG monde) {
         this.monde = monde;
     }
 

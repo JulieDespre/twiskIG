@@ -63,7 +63,7 @@ public class VueOutils extends HBox implements Observateur {
         addTool("sélectionner l'outil créateur de courbes", selectCourbe);
 
         Label arcNom = new Label("Dessiner les arcs :");
-        arcNom.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px; -fx-font-weight: bold; -fx-max-width: 250; -fx-max-height: 45; -fx-text-alignment: center");
+        arcNom.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px; -fx-font: 13 helvetica; -fx-font-weight: bold; -fx-max-width: 250; -fx-max-height: 45; -fx-text-alignment: center");
         arcNom.setPadding(new Insets(5, 5, 5, 5));
 
         Pane spacer = new Pane();

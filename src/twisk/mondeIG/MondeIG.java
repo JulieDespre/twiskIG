@@ -48,14 +48,18 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
         return etapes;
         }
 
-
     public ArrayList<EtapeIG> getEtapesClicked(){
         return etapesClicked;
+    }
+
+    public EtapeIG getEtapesClicked(int indice){
+        return etapesClicked.get(indice);
     }
     public void  ajouterEtapesClicked(EtapeIG etape){
             etapesClicked.add(etape);
             this.notifierObservateurs();
     }
+
 
     public boolean hasBeenClicked(EtapeIG etape){
         return etapesClicked.contains(etape);
@@ -65,11 +69,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
         etapesClicked.remove(etape);
     }
 
-    public EtapeIG getEtape(int identifiant){
-        return etapes.get(identifiant);
-    }
-
-
+    //methode nouveau
     public void destructeurDeMonde() {
     // Réinitialiser le monde
             etapes.clear();
