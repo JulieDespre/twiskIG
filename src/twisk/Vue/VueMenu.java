@@ -18,6 +18,7 @@ public class VueMenu extends HBox implements Observateur {
         private final MondeIG monde;
 
         private MenuItem setNomItem;
+        private Button setNom;
 
     public VueMenu (MondeIG monde) {
             super();
@@ -47,7 +48,7 @@ public class VueMenu extends HBox implements Observateur {
             supprimer.setOnAction(new EcouteurSupprimerEtape(monde));
 
             //creation des boutons
-            Button setNom = new Button();
+            setNom = new Button();
             Button setTps = new Button();
             Button setDel = new Button();
             Button bQuit = new Button();
@@ -120,12 +121,19 @@ public class VueMenu extends HBox implements Observateur {
             menuBar.getMenus().addAll(menu);
             this.getChildren().addAll(menuBar, setNom, setTps, setDel, spacer, bNew, bQuit);
             setNomItem.setDisable(monde.nbEtapeSelec() != 1);
+            setNom.setDisable(true);
         }
 
         @Override
         public void reagir() {
             setNomItem.setDisable(monde.nbEtapeSelec() != 1);
+                if (monde.getEtapesClicked().size() !=1) {
+                        setNom.setDisable(true);
+                } else {
+                        setNom.setDisable(false);
+                }
             }
+
         public void addTool(String nom, Button bouton){
             Tooltip tool1 = new Tooltip(nom);
             tool1.setFont(Font.font("Verdana", FontPosture.REGULAR, 13));
