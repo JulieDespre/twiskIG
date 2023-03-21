@@ -19,6 +19,7 @@ public class VueMenu extends HBox implements Observateur {
 
         private MenuItem setNomItem;
         private Button setNom;
+        private MenuItem supprimer;
 
     public VueMenu (MondeIG monde) {
             super();
@@ -32,7 +33,12 @@ public class VueMenu extends HBox implements Observateur {
             Menu menu = new Menu("Menu");
             menu.setStyle("-fx-font: 20 helvetica; -fx-font-color: grey ; -fx-background: lightgrey");
 
+            Menu menuEd = new Menu("Edition");
+            Menu menuAct = new Menu("Activités");
+            Menu menuGuichet = new Menu("guichets");
+            Menu menuArc = new Menu("Arcs");
             Menu menuFich = new Menu("Fichier");
+
             MenuItem nouveau = new MenuItem("Nouveau");
             nouveau.setAccelerator(KeyCombination.keyCombination("Ctrl+N"));
             nouveau.setOnAction(new EcouteurNouveau(monde));
@@ -41,9 +47,9 @@ public class VueMenu extends HBox implements Observateur {
             quitter.setAccelerator(KeyCombination.keyCombination("Ctrl+Q"));
             quitter.setOnAction(event -> Platform.exit());
 
-            Menu menuEd = new Menu("Edition");
-            MenuItem supprimer = new MenuItem("Supprimer");
+            supprimer = new MenuItem("Supprimer");
             setNomItem = new MenuItem("Renomer la sélection");
+
             supprimer.setAccelerator(KeyCombination.keyCombination("Ctrl+D"));
             supprimer.setOnAction(new EcouteurSupprimerEtape(monde));
 
@@ -111,24 +117,29 @@ public class VueMenu extends HBox implements Observateur {
             //ajout des items au menu
             menuFich.getItems().addAll(nouveau, quitter);
             System.out.println(monde.nbEtapeSelec());
-            menuEd.getItems().addAll(supprimer, setNomItem);
+            menuAct.getItems().addAll(supprimer, setNomItem);
+            menuGuichet.getItems().addAll();
 
             addTool("Destruction du Monde", bNew);
 
 
             //ajouter menu dans menuBar ajoutée à HBox
             menu.getItems().addAll(menuFich, menuEd);
+            menuEd.getItems().addAll(menuAct, menuGuichet, menuArc);
             menuBar.getMenus().addAll(menu);
             this.getChildren().addAll(menuBar, setNom, setTps, setDel, spacer, bNew, bQuit);
             setNomItem.setDisable(monde.nbEtapeSelec() != 1);
+            supprimer.setDisable(monde.nbEtapeSelec() != 1);
             setNom.setDisable(true);
         }
 
         @Override
         public void reagir() {
             setNomItem.setDisable(monde.nbEtapeSelec() != 1);
+            supprimer.setDisable(monde.nbEtapeSelec() != 1);
                 if (monde.getEtapesClicked().size() !=1) {
                         setNom.setDisable(true);
+
                 } else {
                         setNom.setDisable(false);
                 }
