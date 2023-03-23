@@ -32,7 +32,6 @@ public class EcouteurVuePdc implements EventHandler<MouseEvent> {
             } else {
                 vPdc.setFill(Color.SLATEGRAY);
             }
-            System.out.println(monde.getPdcClick());
             if (monde.getPdcClick() == null){
                 monde.setPdcClick(this.pdc);
             } else if (monde.getPdcClick() != this.pdc){

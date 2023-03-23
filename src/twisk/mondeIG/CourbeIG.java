@@ -7,11 +7,12 @@ public class CourbeIG {
         private Point p1;
         private Point p2;
         private PointDeControleIG pdcEnd;
-        public CourbeIG (PointDeControleIG pdcStart, PointDeControleIG pdcEnd, Point p1, Point p2) {
+        public CourbeIG (PointDeControleIG pdcStart, Point p1, Point p2, PointDeControleIG pdcEnd) {
             this.pdcStart=pdcStart;
             this.p1 = p1;
             this.p2 = p2;
             this.pdcEnd=pdcEnd;
+
         }
 
         public double getStartX(){

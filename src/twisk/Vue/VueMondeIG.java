@@ -27,7 +27,7 @@ public class VueMondeIG extends Pane implements Observateur {
 
         //creation des vues graphiques
         for(LigneDroiteIG ligne : monde.getLignes()){
-            VueArcIG vArc = new VueArcIG(monde, ligne);
+            VueArcIG vArc = new VueLigneDroite(monde, ligne);
             this.getChildren().add(vArc);
         }
         for (EtapeIG e : monde.getEtapes().values()) {

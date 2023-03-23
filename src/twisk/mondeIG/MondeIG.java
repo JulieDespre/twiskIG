@@ -23,7 +23,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     private final ArrayList<LigneDroiteIG> lignes =new ArrayList<LigneDroiteIG>();
     private final ArrayList<CourbeIG> courbes =new ArrayList<CourbeIG>();
     private Boolean creationLigne = false;
-    private Boolean creationCour = false;
+    private Boolean creationCourbe = false;
 
 
     public MondeIG(){
@@ -78,25 +78,23 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
             FabriqueIdentifiant identifiant = FabriqueIdentifiant.getInstance();
             identifiant.reset();
             this.notifierObservateurs();
-    }
-
-    public double getCpt(){
+    }/*public double getCpt(){
         return cpt;
-    }
+    }*/
 
-    public void setCpt(int newCpt){
+    /*public void setCpt(int newCpt){
        cpt = newCpt;
-    }
-    public double getPdcCentPosX(){
+    }*/
+   /* public double getPdcCentPosX(){
         return pdcCentPosX;
-    }
+    }*/
     public void setPdcCentPosX(double newPosX){
         pdcCentPosX = newPosX;
     }
 
-    public double getPdcCentPosY(){
+    /*public double getPdcCentPosY(){
         return pdcCentPosY;
-    }
+    }*/
 
     public void setPdcCentPosY(double newPosY){
         pdcCentPosY = newPosY;
@@ -117,7 +115,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     }
 
     public void ajouterCourbe(PointDeControleIG pdcStart, Point p1, Point p2, PointDeControleIG pdcEnd) {
-        CourbeIG newCourbe = new CourbeIG(pdcStart, pdcEnd, p1, p2);
+        CourbeIG newCourbe = new CourbeIG(pdcStart, p2, p1, pdcEnd);
         courbes.add(newCourbe);
         this.notifierObservateurs();
     }
@@ -137,10 +135,10 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     }
 
     public boolean getcreationCourbe(){
-        return creationCour;
+        return creationCourbe;
     }
     public void setCreationCourbe(boolean newcreaCour){
-        this.creationCour = newcreaCour;
+        this.creationCourbe = newcreaCour;
     }
     public int getCptpt(){
         return cptPt;
