@@ -1,7 +1,6 @@
 package twisk.Vue;
 
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
@@ -51,7 +50,7 @@ public class VueOutils extends HBox implements Observateur {
         Image image1 = new Image(getClass().getResourceAsStream("/ligne.png"), 36, 36, true, true);
         ImageView icon1 = new ImageView(image1);
         selectLine.setGraphic(icon1);
-        selectLine.setOnMouseClicked(new EcouteurLigne(monde));
+        selectLine.setOnMouseClicked(new EcouteurLigneBouton(monde));
         addTool("selectionner l'outil créateur de lignes", selectLine);
 
         //bouton pour sélectionner coubes
@@ -59,7 +58,7 @@ public class VueOutils extends HBox implements Observateur {
         Image image2 = new Image(getClass().getResourceAsStream("/courbe.png"), 36, 36, true, true);
         ImageView icon2 = new ImageView(image2);
         selectCourbe.setGraphic(icon2);
-        selectCourbe.setOnMouseClicked(new EcouteurCourbe(monde));
+        selectCourbe.setOnMouseClicked(new EcouteurCourbeBouton(monde));
         addTool("sélectionner l'outil créateur de courbes", selectCourbe);
 
         Label arcNom = new Label("Dessiner les arcs :");

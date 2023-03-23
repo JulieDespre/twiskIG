@@ -3,6 +3,7 @@ package twisk.Vue;
 
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.CubicCurve;
 import twisk.mondeIG.*;
 
 
@@ -30,6 +31,10 @@ public class VueMondeIG extends Pane implements Observateur {
             VueArcIG vArc = new VueLigneDroite(monde, ligne);
             this.getChildren().add(vArc);
         }
+        for(CourbeIG curve : monde.getCourbes()){
+            VueCourbeIG vCourbe = new VueCourbeIG(monde,curve);
+            this.getChildren().add(vCourbe);
+        }
         for (EtapeIG e : monde.getEtapes().values()) {
             VueEtapeIG vueActivite = new VueActiviteIG(monde, e);
             if (monde.hasBeenClicked(e)) vueActivite.clicCouleur();
@@ -45,5 +50,6 @@ public class VueMondeIG extends Pane implements Observateur {
                 this.getChildren().add(vuePointDeControleIG);
             }
         }
+        this.setOnMouseClicked(new EcouteurMonde(monde));
     }
 }

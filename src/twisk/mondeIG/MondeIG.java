@@ -24,6 +24,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     private final ArrayList<CourbeIG> courbes =new ArrayList<CourbeIG>();
     private Boolean creationLigne = false;
     private Boolean creationCourbe = false;
+    private ArrayList<Point> pointClicked = new ArrayList<Point>();
 
 
     public MondeIG(){
@@ -78,23 +79,11 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
             FabriqueIdentifiant identifiant = FabriqueIdentifiant.getInstance();
             identifiant.reset();
             this.notifierObservateurs();
-    }/*public double getCpt(){
-        return cpt;
-    }*/
+    }
 
-    /*public void setCpt(int newCpt){
-       cpt = newCpt;
-    }*/
-   /* public double getPdcCentPosX(){
-        return pdcCentPosX;
-    }*/
     public void setPdcCentPosX(double newPosX){
         pdcCentPosX = newPosX;
     }
-
-    /*public double getPdcCentPosY(){
-        return pdcCentPosY;
-    }*/
 
     public void setPdcCentPosY(double newPosY){
         pdcCentPosY = newPosY;
@@ -115,7 +104,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     }
 
     public void ajouterCourbe(PointDeControleIG pdcStart, Point p1, Point p2, PointDeControleIG pdcEnd) {
-        CourbeIG newCourbe = new CourbeIG(pdcStart, p2, p1, pdcEnd);
+        CourbeIG newCourbe = new CourbeIG(pdcStart, p1, p2, pdcEnd);
         courbes.add(newCourbe);
         this.notifierObservateurs();
     }
@@ -156,6 +145,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
         cpt = cpt + 1;
     }
 
+
     //suprime étape(s) sélectionnées et arc qui lui sont reliées
     public void supprimerEtapes(){
         System.out.println(etapesClicked.size());
@@ -179,4 +169,18 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     public int nbEtapeSelec(){
         return etapesClicked.size();
     }
+
+    public Point getPointCliked (int i){
+        return pointClicked.get(i);
+    }
+
+    public int getTaillePointCliked (){
+        return pointClicked.size();
+    }
+    public void  ajouterPointClicked(Point point){
+        pointClicked.add(point);
+        this.notifierObservateurs();
+    }
+
+
 }
