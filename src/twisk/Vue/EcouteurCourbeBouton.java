@@ -4,11 +4,11 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import twisk.mondeIG.MondeIG;
 
-public class EcouteurCourbe implements EventHandler<MouseEvent> {
+public class EcouteurCourbeBouton implements EventHandler<MouseEvent> {
     private MondeIG monde;
 
 
-    public EcouteurCourbe (MondeIG monde){
+    public EcouteurCourbeBouton(MondeIG monde){
         this.monde = monde;
 
     }

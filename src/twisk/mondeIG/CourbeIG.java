@@ -2,17 +2,15 @@ package twisk.mondeIG;
 
 import java.awt.*;
 
-public class CourbeIG {
-        private PointDeControleIG pdcStart;
+public class CourbeIG extends ArcIG{
+
         private Point p1;
         private Point p2;
-        private PointDeControleIG pdcEnd;
+
         public CourbeIG (PointDeControleIG pdcStart, Point p1, Point p2, PointDeControleIG pdcEnd) {
-            this.pdcStart=pdcStart;
+           super(pdcStart,pdcEnd);
             this.p1 = p1;
             this.p2 = p2;
-            this.pdcEnd=pdcEnd;
-
         }
 
         public double getStartX(){

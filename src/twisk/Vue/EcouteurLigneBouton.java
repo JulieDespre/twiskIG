@@ -4,11 +4,11 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import twisk.mondeIG.MondeIG;
 
-public class EcouteurLigne implements EventHandler<MouseEvent> {
+public class EcouteurLigneBouton implements EventHandler<MouseEvent> {
     private MondeIG monde;
 
 
-    public EcouteurLigne (MondeIG monde){
+    public EcouteurLigneBouton(MondeIG monde){
         this.monde = monde;
 
     }

@@ -22,7 +22,6 @@ public class EcouteurVuePdc implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent mouseEvent) {
        if (mouseEvent.getEventType() == MouseEvent.MOUSE_CLICKED) {
-            System.out.println(monde.getPdcClick());
             vPdc.setFill(Color.gray(0.25));
             monde.setPdcCentPosX(vPdc.getCenterX());
             monde.setPdcCentPosY(vPdc.getCenterY());
@@ -35,7 +34,16 @@ public class EcouteurVuePdc implements EventHandler<MouseEvent> {
             if (monde.getPdcClick() == null){
                 monde.setPdcClick(this.pdc);
             } else if (monde.getPdcClick() != this.pdc){
-                monde.ajouterLigne(monde.getPdcClick(),this.pdc);
+                System.out.println(monde.getTaillePointCliked());
+                if (monde.getTaillePointCliked()>1){
+                    System.out.println("ert");
+                    monde.ajouterCourbe(monde.getPdcClick(),monde.getPointCliked(0),monde.getPointCliked(1), this.pdc);
+                    //clear
+                }
+                else {
+                    System.out.println("zer");
+                    monde.ajouterLigne(monde.getPdcClick(), this.pdc);
+                }
                 monde.setPdcClick(null);
             }
         }
