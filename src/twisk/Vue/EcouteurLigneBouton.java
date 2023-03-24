@@ -17,6 +17,7 @@ public class EcouteurLigneBouton implements EventHandler<MouseEvent> {
     public void handle(MouseEvent mouseEvent) {
         if (mouseEvent.getEventType() == MouseEvent.MOUSE_CLICKED) {
             monde.setCreationLigne(true);
+            //monde.setCreationCourbe(false);
         }
     }
 }

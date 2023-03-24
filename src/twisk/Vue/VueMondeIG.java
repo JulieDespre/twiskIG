@@ -27,14 +27,19 @@ public class VueMondeIG extends Pane implements Observateur {
         }
 
         //creation des vues graphiques
-        for(LigneDroiteIG ligne : monde.getLignes()){
-            VueArcIG vArc = new VueLigneDroite(monde, ligne);
-            this.getChildren().add(vArc);
+        if (monde.getPointCliked().size() == 2) {
+            for (CourbeIG curve : monde.getCourbes()) {
+                VueCourbeIG vCourbe = new VueCourbeIG(monde, curve);
+                this.getChildren().add(vCourbe);
+            }
+        }else {
+            for (LigneDroiteIG ligne : monde.getLignes()){
+                VueArcIG vArc = new VueLigneDroite(monde, ligne);
+                this.getChildren().add(vArc);
+            }
         }
-        for(CourbeIG curve : monde.getCourbes()){
-            VueCourbeIG vCourbe = new VueCourbeIG(monde,curve);
-            this.getChildren().add(vCourbe);
-        }
+
+
         for (EtapeIG e : monde.getEtapes().values()) {
             VueEtapeIG vueActivite = new VueActiviteIG(monde, e);
             if (monde.hasBeenClicked(e)) vueActivite.clicCouleur();

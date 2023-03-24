@@ -13,7 +13,7 @@ public class VueCourbeIG extends VueArcIG{
         super(monde,courbe);
 
         this.creationCourbe();
-      /* if (monde.getcreationCourbe() == true) {
+      /*if (monde.getcreationCourbe() == true) {
            this.creationCourbe();
         }*/
     }

@@ -170,8 +170,12 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
         return etapesClicked.size();
     }
 
-    public Point getPointCliked (int i){
+    public Point getPointCliked(int i){
         return pointClicked.get(i);
+    }
+
+    public ArrayList<Point> getPointCliked(){
+        return pointClicked;
     }
 
     public int getTaillePointCliked (){

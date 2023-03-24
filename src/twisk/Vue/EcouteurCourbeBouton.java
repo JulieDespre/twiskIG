@@ -15,7 +15,9 @@ public class EcouteurCourbeBouton implements EventHandler<MouseEvent> {
 
     @Override
     public void handle(MouseEvent mouseEvent) {
-        if (mouseEvent.getEventType() == MouseEvent.MOUSE_CLICKED) monde.setCreationCourbe(true);
+        if (mouseEvent.getEventType() == MouseEvent.MOUSE_CLICKED)
+            monde.setCreationCourbe(true);
+            //monde.setCreationLigne(false);
     }
 }
 
