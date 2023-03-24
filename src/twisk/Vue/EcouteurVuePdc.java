@@ -38,12 +38,10 @@ public class EcouteurVuePdc implements EventHandler<MouseEvent> {
             } else if (monde.getPdcClick() != this.pdc){
                 System.out.println(monde.getTaillePointCliked());
                 if (monde.getTaillePointCliked()>1){
-                    System.out.println("ert");
                     monde.ajouterCourbe(monde.getPdcClick(),monde.getPointCliked(0),monde.getPointCliked(1), this.pdc);
-                    //clear
+                    monde.clearPointClicked();
                 }
                 else {
-                    System.out.println("zer");
                     monde.ajouterLigne(monde.getPdcClick(), this.pdc);
                 }
                 monde.setPdcClick(null);

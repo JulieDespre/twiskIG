@@ -65,11 +65,17 @@ public class VueOutils extends HBox implements Observateur {
         arcNom.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px; -fx-font: 13 helvetica; -fx-font-weight: bold; -fx-max-width: 250; -fx-max-height: 45; -fx-text-alignment: center");
         arcNom.setPadding(new Insets(5, 5, 5, 5));
 
+        Label courbeModif = new Label("Modifier les courbes :");
+        arcNom.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px; -fx-font: 13 helvetica; -fx-font-weight: bold; -fx-max-width: 250; -fx-max-height: 45; -fx-text-alignment: center");
+        arcNom.setPadding(new Insets(5, 5, 5, 5));
+
+
+
         Pane spacer = new Pane();
         spacer.setMinSize(623, 1);
 
 
-        this.getChildren().addAll(addAct, addGui, spacer, arcNom, selectLine, selectCourbe);
+        this.getChildren().addAll(addAct, addGui, spacer, courbeModif, arcNom, selectLine, selectCourbe);
     }
 
     @Override

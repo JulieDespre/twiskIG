@@ -3,6 +3,7 @@ package twisk.Vue;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.CubicCurve;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.StrokeLineCap;
 import twisk.mondeIG.ArcIG;
 import twisk.mondeIG.CourbeIG;
 import twisk.mondeIG.LigneDroiteIG;
@@ -12,7 +13,6 @@ public class VueCourbeIG extends VueArcIG{
 
     public VueCourbeIG(MondeIG monde, CourbeIG courbe) {
         super(monde,courbe);
-
         this.creationCourbe();
       /*if (monde.getcreationCourbe() == true) {
            this.creationCourbe();
@@ -21,6 +21,7 @@ public class VueCourbeIG extends VueArcIG{
     public void creationCourbe(){
         CubicCurve c1= new CubicCurve(this.getArc().getStartX(), this.getArc().getStartY(), ((CourbeIG)(this.getArc())).getP1X(), ((CourbeIG)(this.getArc())).getP1Y(), ((CourbeIG)(this.getArc())).getP2X(), ((CourbeIG)(this.getArc())).getP2Y(), ((CourbeIG)(this.getArc())).getEndX(), ((CourbeIG)(this.getArc())).getEndY());
         c1.setStyle("-fx-stroke-width: 2px; -fx-stroke: slategrey");
+        c1.setFill(Color.GHOSTWHITE);
         this.getChildren().addAll(c1);
         //c1.setFill(Color.TRANSPARENT);
 
