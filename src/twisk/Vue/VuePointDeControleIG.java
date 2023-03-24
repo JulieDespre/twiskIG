@@ -17,8 +17,9 @@ public class VuePointDeControleIG extends Circle implements Observateur{
         this.etape = etape;
         this.pdc = pdc;
 
-        this.setStyle("-fx-border-color: lightgrey;");
+        this.setStroke(Color.SLATEGRAY);
         this.setFill(Color.web("#C0C0C0"));
+
 
 
         this.setOnMouseClicked(new EcouteurVuePdc(monde, this, pdc));

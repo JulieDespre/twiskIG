@@ -47,7 +47,7 @@ public class VueMondeIG extends Pane implements Observateur {
             if (monde.hasBeenClicked(e)) vueActivite.clicCouleur();
             this.getChildren().add(vueActivite);
             for (PointDeControleIG pdc : e.getPdc()) {
-                VuePointDeControleIG vuePointDeControleIG = new VuePointDeControleIG(pdc.getPosX(), pdc.getPosY(), 10, e, monde, pdc);
+                VuePointDeControleIG vuePointDeControleIG = new VuePointDeControleIG(pdc.getPosX(), pdc.getPosY(), 9, e, monde, pdc);
                 if (pdc.getCpt() % 2 == 0) {
                     vuePointDeControleIG.setFill(Color.web("C0C0C0"));
                 } else {
