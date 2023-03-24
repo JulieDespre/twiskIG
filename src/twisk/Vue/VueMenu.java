@@ -11,7 +11,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.TextAlignment;
-import jdk.jfr.Recording;
 import twisk.mondeIG.MondeIG;
 
 public class VueMenu extends HBox implements Observateur {

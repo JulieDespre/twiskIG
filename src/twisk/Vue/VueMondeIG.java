@@ -18,7 +18,7 @@ public class VueMondeIG extends Pane implements Observateur {
     }
 
     @Override
-    public void reagir() {
+    public void reagir(){
         this.getChildren().clear();
 
         //boucle de mise à jour des données
@@ -27,18 +27,20 @@ public class VueMondeIG extends Pane implements Observateur {
         }
 
         //creation des vues graphiques
-        if (monde.getPointCliked().size() == 2) {
+        //pb pas d'affichage des lignes et prend en compte trop de clic
+        if (monde.getPointCliked().size()>2 && monde.getPdcClicked().size() == 2) {
             for (CourbeIG curve : monde.getCourbes()) {
                 VueCourbeIG vCourbe = new VueCourbeIG(monde, curve);
                 this.getChildren().add(vCourbe);
+                System.out.println("hello" + monde.getPointCliked().size());
             }
-        }else {
-            for (LigneDroiteIG ligne : monde.getLignes()){
+        } else if (monde.getPointCliked().size() == 0 && monde.getPdcClicked().size() == 2) {
+            for (LigneDroiteIG ligne : monde.getLignes()) {
                 VueArcIG vArc = new VueLigneDroite(monde, ligne);
                 this.getChildren().add(vArc);
+                System.out.println("bonjour" + monde.getPointCliked().size());
             }
         }
-
 
         for (EtapeIG e : monde.getEtapes().values()) {
             VueEtapeIG vueActivite = new VueActiviteIG(monde, e);

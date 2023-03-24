@@ -24,6 +24,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     private final ArrayList<CourbeIG> courbes =new ArrayList<CourbeIG>();
     private Boolean creationLigne = false;
     private Boolean creationCourbe = false;
+    private ArrayList<PointDeControleIG> pdcClicked = new ArrayList<PointDeControleIG>();
     private ArrayList<Point> pointClicked = new ArrayList<Point>();
 
 
@@ -98,6 +99,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
 
     //ajouter les arcs
     public void ajouterLigne(PointDeControleIG pdcStart, PointDeControleIG pdcEnd) {
+        //vérifier si étape se branche sur elle même
         LigneDroiteIG newArc = new LigneDroiteIG(pdcStart,pdcEnd);
         lignes.add(newArc);
         this.notifierObservateurs();
@@ -170,6 +172,13 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
         return etapesClicked.size();
     }
 
+    public void ajouterPdcClicked(PointDeControleIG pdc){
+        pdcClicked.add(pdc);
+    }
+    public ArrayList<PointDeControleIG> getPdcClicked(){
+        return pdcClicked;
+    }
+
     public Point getPointCliked(int i){
         return pointClicked.get(i);
     }
@@ -184,6 +193,10 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     public void  ajouterPointClicked(Point point){
         pointClicked.add(point);
         this.notifierObservateurs();
+    }
+
+    public void clearPointClicked(){
+        this.pointClicked.clear();
     }
 
 

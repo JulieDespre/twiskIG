@@ -1,5 +1,6 @@
 package twisk.Vue;
 
+import javafx.scene.paint.Color;
 import javafx.scene.shape.CubicCurve;
 import javafx.scene.shape.Line;
 import twisk.mondeIG.ArcIG;
@@ -19,8 +20,12 @@ public class VueCourbeIG extends VueArcIG{
     }
     public void creationCourbe(){
         CubicCurve c1= new CubicCurve(this.getArc().getStartX(), this.getArc().getStartY(), ((CourbeIG)(this.getArc())).getP1X(), ((CourbeIG)(this.getArc())).getP1Y(), ((CourbeIG)(this.getArc())).getP2X(), ((CourbeIG)(this.getArc())).getP2Y(), ((CourbeIG)(this.getArc())).getEndX(), ((CourbeIG)(this.getArc())).getEndY());
+        c1.setStyle("-fx-stroke-width: 2px; -fx-stroke: slategrey");
         this.getChildren().addAll(c1);
-        //c1.setStyle("-fx-stroke-width: 2px; -fx-stroke: slategrey");
+        //c1.setFill(Color.TRANSPARENT);
+
+
+
 
         /*double pente = (ligneDroite.getStartY() - ligneDroite.getEndY()) / (ligneDroite.getStartX() - ligneDroite.getEndX());
         double angle = Math.atan(pente);

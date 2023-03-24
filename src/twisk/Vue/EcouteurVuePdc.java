@@ -33,6 +33,8 @@ public class EcouteurVuePdc implements EventHandler<MouseEvent> {
             }
             if (monde.getPdcClick() == null){
                 monde.setPdcClick(this.pdc);
+                //stocker pdc dans arraylist pour utiliser aprés
+                monde.ajouterPdcClicked(this.pdc);
             } else if (monde.getPdcClick() != this.pdc){
                 System.out.println(monde.getTaillePointCliked());
                 if (monde.getTaillePointCliked()>1){
