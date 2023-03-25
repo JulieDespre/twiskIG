@@ -1,10 +1,12 @@
-package twisk.Vue;
+package twisk.mondeGraphique.ecouteurs;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import twisk.mondeGraphique.vues.VueEtapeIG;
+import twisk.mondeGraphique.vues.VuePointDeControleIG;
 import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
-import twisk.mondeIG.TailleComposants;
+import twisk.outils.TailleComposants;
 
 public class EcouteurVueEtapeIG implements  EventHandler<MouseEvent> {
     private final VueEtapeIG vueEtapeIG;

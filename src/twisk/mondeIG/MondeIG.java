@@ -191,8 +191,10 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
         return pointClicked.size();
     }
     public void  ajouterPointClicked(Point point){
-        pointClicked.add(point);
-        this.notifierObservateurs();
+        if(pdcClicked != null) {
+            pointClicked.add(point);
+            this.notifierObservateurs();
+        }
     }
 
     public void clearPointClicked(){

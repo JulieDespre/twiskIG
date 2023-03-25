@@ -1,4 +1,4 @@
-package twisk.Vue;
+package twisk.mondeGraphique;
 
 public interface Observateur {
     void reagir();

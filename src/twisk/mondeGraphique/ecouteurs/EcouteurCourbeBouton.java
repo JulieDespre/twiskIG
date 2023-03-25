@@ -1,4 +1,4 @@
-package twisk.Vue;
+package twisk.mondeGraphique.ecouteurs;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;

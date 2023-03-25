@@ -1,9 +1,10 @@
-package twisk.Vue;
+package twisk.mondeGraphique.vues;
 
 
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.CubicCurve;
+import twisk.mondeGraphique.Observateur;
+import twisk.mondeGraphique.ecouteurs.EcouteurMonde;
 import twisk.mondeIG.*;
 
 

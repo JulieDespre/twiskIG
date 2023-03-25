@@ -1,4 +1,4 @@
-package twisk.Vue;
+package twisk.mondeGraphique.vues;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -11,6 +11,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.TextAlignment;
+import twisk.mondeGraphique.Observateur;
+import twisk.mondeGraphique.ecouteurs.EcouteurBouton;
+import twisk.mondeGraphique.ecouteurs.EcouteurCourbeBouton;
+import twisk.mondeGraphique.ecouteurs.EcouteurLigneBouton;
 import twisk.mondeIG.MondeIG;
 
 public class VueOutils extends HBox implements Observateur {
@@ -28,6 +32,7 @@ public class VueOutils extends HBox implements Observateur {
         Button selectLine = new Button();
         Button selectCourbe = new Button();
         Button addGui = new Button();
+        Button modifCourbe = new Button();
 
         //bouton ajouter une activité
         addAct.setStyle("-fx-border-color: #1fd6fe; -fx-border-width: 1px;");
@@ -61,21 +66,29 @@ public class VueOutils extends HBox implements Observateur {
         selectCourbe.setOnMouseClicked(new EcouteurCourbeBouton(monde));
         addTool("sélectionner l'outil créateur de courbes", selectCourbe);
 
+        //bouton pour sélectionner arc ligne droite
+        modifCourbe.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px;");
+        Image image4 = new Image(getClass().getResourceAsStream("/modifCourbe.png"), 36, 36, true, true);
+        ImageView icon4 = new ImageView(image4);
+        modifCourbe.setGraphic(icon4);
+        modifCourbe.setOnMouseClicked(new EcouteurLigneBouton(monde));
+        addTool("Modifier les arcs courbes", modifCourbe);
+
         Label arcNom = new Label("Dessiner les arcs :");
         arcNom.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px; -fx-font: 13 helvetica; -fx-font-weight: bold; -fx-max-width: 250; -fx-max-height: 45; -fx-text-alignment: center");
         arcNom.setPadding(new Insets(5, 5, 5, 5));
 
-        Label courbeModif = new Label("Modifier les courbes :");
-        arcNom.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px; -fx-font: 13 helvetica; -fx-font-weight: bold; -fx-max-width: 250; -fx-max-height: 45; -fx-text-alignment: center");
-        arcNom.setPadding(new Insets(5, 5, 5, 5));
+        Label courbeModif = new Label("Modifier les arcs courbes :");
+        courbeModif.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px; -fx-font: 13 helvetica; -fx-font-weight: bold; -fx-max-width: 250; -fx-max-height: 45; -fx-text-alignment: center");
+        courbeModif.setPadding(new Insets(5, 5, 5, 5));
 
 
 
         Pane spacer = new Pane();
-        spacer.setMinSize(623, 1);
+        spacer.setMinSize(359, 1);
 
 
-        this.getChildren().addAll(addAct, addGui, spacer, courbeModif, arcNom, selectLine, selectCourbe);
+        this.getChildren().addAll(addAct, addGui, spacer, arcNom, selectLine, selectCourbe, courbeModif, modifCourbe);
     }
 
     @Override

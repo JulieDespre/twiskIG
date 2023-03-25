@@ -1,12 +1,15 @@
-package twisk.Vue;
+package twisk.mondeGraphique.vues;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import twisk.mondeGraphique.Observateur;
+import twisk.mondeGraphique.ecouteurs.EcouteurMouseRelease;
+import twisk.mondeGraphique.ecouteurs.EcouteurVueEtapeIG;
 import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
-import twisk.mondeIG.TailleComposants;
+import twisk.outils.TailleComposants;
 import java.util.ArrayList;
 import java.util.Iterator;
 

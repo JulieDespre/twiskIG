@@ -1,10 +1,7 @@
-package twisk.Vue;
+package twisk.mondeGraphique.vues;
 
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.CubicCurve;
-import javafx.scene.shape.Line;
 import twisk.mondeIG.ArcIG;
-import twisk.mondeIG.LigneDroiteIG;
 import twisk.mondeIG.MondeIG;
 
 public abstract class VueArcIG extends Pane {

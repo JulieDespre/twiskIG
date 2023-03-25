@@ -1,4 +1,4 @@
-package twisk.Vue;
+package twisk.mondeGraphique.vues;
 
 import javafx.application.Platform;
 import javafx.geometry.Pos;
@@ -11,6 +11,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.TextAlignment;
+import twisk.mondeGraphique.Observateur;
+import twisk.mondeGraphique.ecouteurs.EcouteurBouton;
+import twisk.mondeGraphique.ecouteurs.EcouteurNouveau;
+import twisk.mondeGraphique.ecouteurs.EcouteurSetNom;
+import twisk.mondeGraphique.ecouteurs.EcouteurSupprimerEtape;
 import twisk.mondeIG.MondeIG;
 
 public class VueMenu extends HBox implements Observateur {

@@ -1,6 +1,6 @@
 package twisk.mondeIG;
 
-import twisk.Vue.Observateur;
+import twisk.mondeGraphique.Observateur;
 import java.util.ArrayList;
 import java.util.Collection;
 

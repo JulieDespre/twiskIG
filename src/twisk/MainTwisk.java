@@ -4,9 +4,9 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import twisk.Vue.VueMenu;
-import twisk.Vue.VueMondeIG;
-import twisk.Vue.VueOutils;
+import twisk.mondeGraphique.vues.VueMenu;
+import twisk.mondeGraphique.vues.VueMondeIG;
+import twisk.mondeGraphique.vues.VueOutils;
 import twisk.mondeIG.MondeIG;
 
 public class MainTwisk extends Application {

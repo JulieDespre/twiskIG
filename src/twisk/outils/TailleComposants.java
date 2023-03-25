@@ -1,12 +1,6 @@
-package twisk.mondeIG;
+package twisk.outils;
 
-import javafx.geometry.Insets;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.paint.Color;
-
-import java.util.HashMap;
+import twisk.mondeIG.EtapeIG;
 
 public class TailleComposants {
     private static TailleComposants instance;

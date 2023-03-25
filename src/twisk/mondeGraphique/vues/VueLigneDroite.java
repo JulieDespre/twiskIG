@@ -1,10 +1,11 @@
-package twisk.Vue;
+package twisk.mondeGraphique.vues;
 
 import javafx.scene.shape.Line;
+import twisk.mondeGraphique.vues.VueArcIG;
 import twisk.mondeIG.LigneDroiteIG;
 import twisk.mondeIG.MondeIG;
 
-public class VueLigneDroite extends VueArcIG{
+public class VueLigneDroite extends VueArcIG {
     public VueLigneDroite(MondeIG monde, LigneDroiteIG ligneDroite) {
         super(monde, ligneDroite);
         creationArcLigne();

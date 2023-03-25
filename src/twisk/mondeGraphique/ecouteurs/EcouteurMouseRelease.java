@@ -1,8 +1,8 @@
-package twisk.Vue;
+package twisk.mondeGraphique.ecouteurs;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
+import twisk.mondeGraphique.vues.VueEtapeIG;
 import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
 
