@@ -3,6 +3,7 @@ package twisk.mondeGraphique.ecouteurs;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import twisk.exceptions.TwiskException;
 import twisk.mondeGraphique.vues.VuePointDeControleIG;
 import twisk.mondeIG.MondeIG;
 import twisk.mondeIG.PointDeControleIG;
@@ -37,13 +38,25 @@ public class EcouteurVuePdc implements EventHandler<MouseEvent> {
                 //stocker pdc dans arraylist pour utiliser aprés
                 monde.ajouterPdcClicked(this.pdc);
             } else if (monde.getPdcClick() != this.pdc){
-                System.out.println(monde.getTaillePointCliked());
+
                 if (monde.getTaillePointCliked()>1){
-                    monde.ajouterCourbe(monde.getPdcClick(),monde.getPointCliked(0),monde.getPointCliked(1), this.pdc);
+                    try {
+                        monde.ajouterCourbe(monde.getPdcClick(),monde.getPointCliked(0),monde.getPointCliked(1), this.pdc);
+                    } catch (TwiskException e) {
+                        e.getAlert();
+                        vPdc.setFill(Color.web("C0C0C0"));
+
+                    }
                     monde.clearPointClicked();
                 }
                 else {
-                    monde.ajouterLigne(monde.getPdcClick(), this.pdc);
+                    try {
+                        monde.ajouterLigne(monde.getPdcClick(), this.pdc);
+                    } catch (TwiskException e) {
+                        e.getAlert();
+                        vPdc.setFill(Color.web("C0C0C0"));
+
+                    }
                 }
                 monde.setPdcClick(null);
             }

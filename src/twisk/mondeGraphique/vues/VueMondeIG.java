@@ -33,14 +33,11 @@ public class VueMondeIG extends Pane implements Observateur {
             for (CourbeIG curve : monde.getCourbes()) {
                 VueCourbeIG vCourbe = new VueCourbeIG(monde, curve);
                 this.getChildren().add(vCourbe);
-                System.out.println("hello" + monde.getPointCliked().size());
             }
 
             for (LigneDroiteIG ligne : monde.getLignes()) {
                 VueArcIG vArc = new VueLigneDroite(monde, ligne);
                 this.getChildren().add(vArc);
-                System.out.println("bonjour" + monde.getPointCliked().size());
-
         }
 
         for (EtapeIG e : monde.getEtapes().values()) {

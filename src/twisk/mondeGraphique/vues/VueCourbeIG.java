@@ -52,8 +52,15 @@ public class VueCourbeIG extends VueArcIG {
      * @param t param between 0 and 1
      * @return a Point2D
      */
-    private Point2D getPtTan(CubicCurve c, double t){
+    public Point2D getPtTan(CubicCurve c, double t){
         Point2D ptTan=new Point2D(-3*Math.pow(1-t,2)*c.getStartX()+ 3*(Math.pow(1-t, 2)-2*t*(1-t))*c.getControlX1()+3*((1-t)*2*t-t*t)*c.getControlX2()+3*Math.pow(t, 2)*c.getEndX(),-3*Math.pow(1-t,2)*c.getStartY()+3*(Math.pow(1-t, 2)-2*t*(1-t))*c.getControlY1()+3*((1-t)*2*t-t*t)*c.getControlY2()+3*Math.pow(t, 2)*c.getEndY());
         return ptTan;
+    }
+
+    public void courbeModification (CubicCurve courbe){
+      //creation des lignes
+
+      //creation des points
+      //ajout à la cubicCurve
     }
 }

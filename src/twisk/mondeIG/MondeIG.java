@@ -1,5 +1,6 @@
 package twisk.mondeIG;
 
+import twisk.exceptions.TwiskException;
 import twisk.outils.FabriqueIdentifiant;
 
 import java.awt.*;
@@ -11,7 +12,7 @@ import java.util.Iterator;
 public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     private final HashMap <Integer, EtapeIG> etapes;
 
-    private final ArrayList <EtapeIG> etapesClicked = new ArrayList <EtapeIG>();
+    private final ArrayList <EtapeIG> etapesClicked = new ArrayList<>();
     private double pdcCentPosX;
     private double pdcCentPosY;
     //compteur de point pour cubicCurve
@@ -98,17 +99,25 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     }
 
     //ajouter les arcs
-    public void ajouterLigne(PointDeControleIG pdcStart, PointDeControleIG pdcEnd) {
-        //vérifier si étape se branche sur elle même
-        LigneDroiteIG newArc = new LigneDroiteIG(pdcStart,pdcEnd);
-        lignes.add(newArc);
-        this.notifierObservateurs();
+    public void ajouterLigne(PointDeControleIG pdcStart, PointDeControleIG pdcEnd) throws TwiskException {
+        if (pdcStart.getEtapePDC().getIdentifiant() != pdcEnd.getEtapePDC().getIdentifiant())
+        {
+            LigneDroiteIG newArc = new LigneDroiteIG(pdcStart, pdcEnd);
+            lignes.add(newArc);
+            this.notifierObservateurs();
+        } else {
+            throw new TwiskException();
+        }
     }
 
-    public void ajouterCourbe(PointDeControleIG pdcStart, Point p1, Point p2, PointDeControleIG pdcEnd) {
-        CourbeIG newCourbe = new CourbeIG(pdcStart, p1, p2, pdcEnd);
-        courbes.add(newCourbe);
-        this.notifierObservateurs();
+    public void ajouterCourbe(PointDeControleIG pdcStart, Point p1, Point p2, PointDeControleIG pdcEnd) throws TwiskException {
+        if (pdcStart.getEtapePDC().getIdentifiant() != pdcEnd.getEtapePDC().getIdentifiant()) {
+            CourbeIG newCourbe = new CourbeIG(pdcStart, p1, p2, pdcEnd);
+            courbes.add(newCourbe);
+            this.notifierObservateurs();
+        } else {
+            throw new TwiskException();
+        }
     }
     public ArrayList<LigneDroiteIG> getLignes() {
         return lignes;
