@@ -15,6 +15,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     private final ArrayList <EtapeIG> etapesClicked = new ArrayList<>();
     private double pdcCentPosX;
     private double pdcCentPosY;
+    //compteur pdc clické
     private int cpt;
     //compteur pour activitée clickée
     private int cptAct;

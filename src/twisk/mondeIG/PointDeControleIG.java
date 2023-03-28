@@ -8,6 +8,7 @@ public class PointDeControleIG {
     private final int identifiant;
     private final EtapeIG etape;
 
+    private Boolean hasArc = false;
     private int cpt;
 
     public PointDeControleIG(Double posX, Double posY, EtapeIG etape){
@@ -42,8 +43,20 @@ public class PointDeControleIG {
         return cpt;
     }
 
+    public void setCpt(int i){
+        cpt = i;
+    }
+
     public void increCpt(){
         cpt = cpt + 1;
+    }
+
+    public boolean getHasArc(){
+        return hasArc;
+    }
+
+    public void setHasArc(){
+        hasArc = true;
     }
 
 }

@@ -8,13 +8,16 @@ public class CourbeIG extends ArcIG{
         private Point p2;
 
         public CourbeIG (PointDeControleIG pdcStart, Point p1, Point p2, PointDeControleIG pdcEnd) {
-           super(pdcStart,pdcEnd);
+            super(pdcStart,pdcEnd);
             this.p1 = p1;
             this.p2 = p2;
+            pdcStart.setHasArc();
+            pdcEnd.setHasArc();
         }
 
         public double getStartX(){
             return pdcStart.getPosX();
+
         }
         public double getStartY(){
             return pdcStart.getPosY();

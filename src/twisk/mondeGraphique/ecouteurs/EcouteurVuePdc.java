@@ -62,6 +62,7 @@ public class EcouteurVuePdc implements EventHandler<MouseEvent> {
             }
         }
         mouseEvent.consume();
+       monde.notifierObservateurs();
     }
 
 }
