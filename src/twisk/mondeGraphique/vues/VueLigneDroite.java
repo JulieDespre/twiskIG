@@ -1,7 +1,6 @@
 package twisk.mondeGraphique.vues;
 
 import javafx.scene.shape.Line;
-import twisk.mondeGraphique.vues.VueArcIG;
 import twisk.mondeIG.LigneDroiteIG;
 import twisk.mondeIG.MondeIG;
 

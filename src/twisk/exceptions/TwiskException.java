@@ -1,10 +1,9 @@
 package twisk.exceptions;
 
+import javafx.animation.PauseTransition;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import twisk.mondeIG.MondeIG;
+import javafx.util.Duration;
 
-import java.util.Optional;
 
 public class TwiskException extends Exception {
 
@@ -16,6 +15,11 @@ public class TwiskException extends Exception {
         dialogException.setTitle("Erreur : l'arc ne peut pas être créé");
         dialogException.setHeaderText("Une étape ne peut pas être reliée à elle-même");
         dialogException.setContentText("créer un arc entre deux étapes différentes");
-        dialogException.showAndWait();
+        dialogException.show();
+        PauseTransition wait = new PauseTransition(Duration.seconds(3));
+        wait.setOnFinished((e) -> dialogException.close());
+        wait.play();
     }
+
+
 }

@@ -15,8 +15,6 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     private final ArrayList <EtapeIG> etapesClicked = new ArrayList<>();
     private double pdcCentPosX;
     private double pdcCentPosY;
-    //compteur de point pour cubicCurve
-    private int cptPt;
     private int cpt;
     //compteur pour activitée clickée
     private int cptAct;
@@ -139,9 +137,6 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     }
     public void setCreationCourbe(boolean newcreaCour){
         this.creationCourbe = newcreaCour;
-    }
-    public int getCptpt(){
-        return cptPt;
     }
     public int getCptAct(){
         return cptAct;

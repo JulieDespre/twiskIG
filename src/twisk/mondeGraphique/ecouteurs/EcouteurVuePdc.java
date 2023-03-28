@@ -1,8 +1,10 @@
 package twisk.mondeGraphique.ecouteurs;
 
+import javafx.animation.PauseTransition;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 import twisk.exceptions.TwiskException;
 import twisk.mondeGraphique.vues.VuePointDeControleIG;
 import twisk.mondeIG.MondeIG;
@@ -45,7 +47,6 @@ public class EcouteurVuePdc implements EventHandler<MouseEvent> {
                     } catch (TwiskException e) {
                         e.getAlert();
                         vPdc.setFill(Color.web("C0C0C0"));
-
                     }
                     monde.clearPointClicked();
                 }
@@ -55,7 +56,6 @@ public class EcouteurVuePdc implements EventHandler<MouseEvent> {
                     } catch (TwiskException e) {
                         e.getAlert();
                         vPdc.setFill(Color.web("C0C0C0"));
-
                     }
                 }
                 monde.setPdcClick(null);
