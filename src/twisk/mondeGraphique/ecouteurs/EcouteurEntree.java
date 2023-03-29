@@ -7,17 +7,25 @@ import twisk.mondeIG.MondeIG;
 
 public class EcouteurEntree implements EventHandler<ActionEvent> {
         private MondeIG monde;
-        private EtapeIG etape;
 
-    public EcouteurEntree(MondeIG monde, EtapeIG etape) {
-            this.etape = etape;
+    public EcouteurEntree(MondeIG monde) {
             this.monde = monde;
     }
 
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        monde.ajouterEntree(etape);
-
+        System.out.println("hello");
+        if (monde.getEtapesClicked().size() == 1) {
+            for (EtapeIG etape : monde.getEtapesClicked()) {
+                monde.ajouterEntree(etape);
+            }
+            System.out.println("entrée du mon " +monde.aCommeEntree());
+        }
+        for(int i=0;i<monde.getEtapesClicked().size();i++) {
+            monde.getEtapesClicked().remove(i);
+        }
+        monde.notifierObservateurs();
+        System.out.println("bite");
     }
 }

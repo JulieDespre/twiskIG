@@ -2,7 +2,6 @@ package twisk.mondeIG;
 
 import twisk.outils.FabriqueIdentifiant;
 import twisk.outils.TailleComposants;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -17,6 +16,7 @@ public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeCo
     private final int delais;
     private Composant composant;
     private final ArrayList<PointDeControleIG > pointsDeControle=new ArrayList<PointDeControleIG> (4);
+    private Boolean estEntree = false;
 
     public EtapeIG(String nom, int largeur, int hauteur, int temps, int delais){
         this.nom= nom;
@@ -129,14 +129,18 @@ public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeCo
         return pointsDeControle;
     }
 
-
-    public void setNom(String newNom){
-        this.nom = newNom;
-        notifierObservateurs();
-    }
     public void setNomEtapeClicked(String newNom){
         this.nom = newNom;
         this.notifierObservateurs();
+    }
+
+    public Boolean estEntree(){
+        return estEntree;
+    }
+
+    public Boolean setEstEntree(Boolean b){
+
+        return estEntree = b;
     }
     @Override
     public Iterator<PointDeControleIG> iterator() {

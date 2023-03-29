@@ -4,6 +4,7 @@ public abstract class ArcIG {
    PointDeControleIG pdcStart;
 
    PointDeControleIG pdcEnd;
+   boolean selec=false;
     public ArcIG ( PointDeControleIG pdcStart, PointDeControleIG pdcEnd) {
     this.pdcStart=pdcStart;
     this.pdcEnd=pdcEnd;
@@ -32,5 +33,13 @@ public abstract class ArcIG {
     }
     public int getIdentifiant(PointDeControleIG pdc){
         return pdc.getIdentifiant();
+    }
+
+    public void setSelec(){
+        selec=!selec;
+    }
+
+    public Boolean getSelect(){
+        return this.selec;
     }
 }

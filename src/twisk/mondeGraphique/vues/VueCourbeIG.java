@@ -3,6 +3,7 @@ package twisk.mondeGraphique.vues;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
+import twisk.mondeGraphique.ecouteurs.EcouteurVueArc;
 import twisk.mondeIG.CourbeIG;
 import twisk.mondeIG.MondeIG;
 import twisk.mondeIG.PointDeControleIG;
@@ -20,7 +21,7 @@ public class VueCourbeIG extends VueArcIG {
         CubicCurve c1= new CubicCurve(this.getArc().getStartX(), this.getArc().getStartY(), ((CourbeIG)(this.getArc())).getP1X(), ((CourbeIG)(this.getArc())).getP1Y(), ((CourbeIG)(this.getArc())).getP2X(), ((CourbeIG)(this.getArc())).getP2Y(), ((CourbeIG)(this.getArc())).getEndX(), ((CourbeIG)(this.getArc())).getEndY());
         c1.setStyle("-fx-stroke-width: 2px; -fx-stroke: slategrey");
         c1.setFill(Color.TRANSPARENT);
-
+        c1.setOnMouseClicked(new EcouteurVueArc(getMonde(), this,getArc()));
         double taille=80;
 
         Point2D tan = getPtTan(c1,1).normalize().multiply(taille);

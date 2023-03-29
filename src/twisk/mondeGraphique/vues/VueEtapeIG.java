@@ -4,6 +4,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import twisk.mondeGraphique.Observateur;
 import twisk.mondeGraphique.ecouteurs.EcouteurMouseRelease;
 import twisk.mondeGraphique.ecouteurs.EcouteurVueEtapeIG;
@@ -24,13 +26,13 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
 
     private boolean wasDragged=false;
 
-    public VueEtapeIG(MondeIG monde, EtapeIG etape){
+    public VueEtapeIG(MondeIG monde, EtapeIG etape) {
         this.monde = monde;
         this.etape = etape;
 
         HBox top = new HBox();
         TailleComposants taille = TailleComposants.getInstance();
-        this.setPrefSize(taille.getLargeur(etape),taille.getHauteur(etape));
+        this.setPrefSize(taille.getLargeur(etape), taille.getHauteur(etape));
         this.setStyle("-fx-border-color: #4eadfe; -fx-padding: 10px;  -fx-border-width: 2px; ");
         Background bg3 = new Background(new BackgroundFill(Color.web("#F5FFFA"), new CornerRadii(2), null));
         this.setBackground(bg3);
@@ -39,7 +41,6 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
         labNom.setText(etape.getNom() + " :    " + etape.getTemps() + (" sec +/- ") + etape.getDelais() + (" sec"));
         labNom.setStyle("-fx-font: 13 Lucida; -fx-font-weight: bold; -fx-padding: 2px;");
         labNom.setAlignment(Pos.TOP_CENTER);
-        top.getChildren().add(labNom);
 
         VBox zoneClient = new VBox();
         zoneClient.setPrefSize(80, 90);
@@ -48,18 +49,26 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
 
         this.setLayoutX(etape.getPosX());
         this.setLayoutY(etape.getPosY());
-        this.getChildren().addAll(top, zoneClient);
 
         //pour setNom d'une activité
         this.setOnMouseDragged(new EcouteurVueEtapeIG(monde, this, etape));
         this.setOnMouseReleased(new EcouteurMouseRelease(monde, this, etape));
 
-        for(EtapeIG entree : monde.aCommeEntree()){
-            Label entreeIcon = new Label();
-
+        if (etape.estEntree()) {
+            System.out.println("grrrrr");
+            for (int i =0; i<monde.aCommeEntree().size(); i++){
+                //Label entreeIcon = new Label();
+                Circle cercleEnt = new Circle(20);
+                cercleEnt.setStyle("-fx-bordure : GREENYELLOW");
+                javafx.scene.image.Image image = new javafx.scene.image.Image(getClass().getResourceAsStream("/entree.png"), 20, 20, true, true);
+                cercleEnt.setFill(new ImagePattern(image));
+                top.getChildren().addAll(cercleEnt, labNom);
+            }
+        }else {
+            top.getChildren().add(labNom);
         }
-
-        }
+        this.getChildren().addAll(top, zoneClient);
+}
 
     public void moveCouleur(){
         this.setStyle("-fx-border-color: darkgrey; -fx-padding: 10px;  -fx-border-width: 2px;");
@@ -98,10 +107,6 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
 
     public void setWasDragged(boolean wasDragged){
         this.wasDragged=wasDragged;
-    }
-
-    public void setNom(){
-
     }
 
     @Override

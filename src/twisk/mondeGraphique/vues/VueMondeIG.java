@@ -31,11 +31,21 @@ public class VueMondeIG extends Pane implements Observateur {
             for (CourbeIG curve : monde.getCourbes()) {
                 VueCourbeIG vCourbe = new VueCourbeIG(monde, curve);
                 this.getChildren().add(vCourbe);
+                if (!curve.getSelect()){
+                    vCourbe.setStyle("-fx-stroke: slategrey; -fx-opacity: 1");
+                }else{
+                    vCourbe.setStyle("-fx-stroke: slategrey; -fx-opacity: 0.25");
+                }
             }
 
             for (LigneDroiteIG ligne : monde.getLignes()) {
                 VueArcIG vArc = new VueLigneDroite(monde, ligne);
                 this.getChildren().add(vArc);
+                if (!ligne.getSelect()){
+                    vArc.setStyle("-fx-stroke: slategrey; -fx-opacity: 1");
+                }else{
+                    vArc.setStyle("-fx-stroke: slategrey; -fx-opacity: 0.25");
+                }
         }
 
         for (EtapeIG e : monde.getEtapes().values()) {

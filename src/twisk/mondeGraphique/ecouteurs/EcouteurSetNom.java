@@ -5,7 +5,6 @@ import javafx.event.EventHandler;
 import javafx.scene.control.TextInputDialog;
 import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
-
 import java.util.Optional;
 
 public class EcouteurSetNom implements EventHandler<ActionEvent> {

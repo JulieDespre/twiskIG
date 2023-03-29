@@ -214,6 +214,8 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
 
     public void ajouterEntree(EtapeIG etape){
         mondeEntree.add(etape);
+        etape.setEstEntree(true);
+        this.notifierObservateurs();
     }
 
     public ArrayList<EtapeIG> aCommeSortie(){
@@ -224,5 +226,20 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
         mondeSortie.add(etape);
     }
 
+    public void suppArcs(){
+        for (int i=0;i<lignes.size();i++){
+            if (lignes.get(i).getSelect()) {
+                lignes.remove(i);
+                i--;
+            }
+        }
+        for (int i=0;i<courbes.size();i++){
+            if (courbes.get(i).getSelect()) {
+                courbes.remove(i);
+                i--;
+            }
+        }
+        notifierObservateurs();
+    }
 
 }
