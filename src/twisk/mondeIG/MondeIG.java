@@ -26,6 +26,8 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     private Boolean creationCourbe = false;
     private ArrayList<PointDeControleIG> pdcClicked = new ArrayList<PointDeControleIG>();
     private ArrayList<Point> pointClicked = new ArrayList<Point>();
+    private ArrayList<EtapeIG> mondeEntree= new ArrayList<EtapeIG>();
+    private ArrayList<EtapeIG> mondeSortie= new ArrayList<EtapeIG>();
 
 
     public MondeIG(){
@@ -204,6 +206,22 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
 
     public void clearPointClicked(){
         this.pointClicked.clear();
+    }
+
+    public ArrayList<EtapeIG> aCommeEntree(){
+        return mondeEntree;
+    }
+
+    public void ajouterEntree(EtapeIG etape){
+        mondeEntree.add(etape);
+    }
+
+    public ArrayList<EtapeIG> aCommeSortie(){
+        return mondeSortie;
+    }
+
+    public void ajouterSortie(EtapeIG etape){
+        mondeSortie.add(etape);
     }
 
 

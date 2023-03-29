@@ -22,8 +22,13 @@ public class VueMenu extends HBox implements Observateur {
         private final MondeIG monde;
 
         private MenuItem setNomItem;
-        private Button setNom;
         private MenuItem supprimer;
+        private MenuItem mondeEntree;
+        private MenuItem mondeSortie;
+        private Button setNom;
+        private Button setTps;
+        private Button setDel;
+
 
     public VueMenu (MondeIG monde) {
             super();
@@ -34,14 +39,16 @@ public class VueMenu extends HBox implements Observateur {
             //creation des menubar, menus et items
             MenuBar menuBar = new MenuBar();
             menuBar.setStyle("-fx-border-color: slategrey; -fx-border-width: 1.5px;");
-            Menu menu = new Menu("Menu");
+            Menu menu = new Menu("Menu Monde");
             menu.setStyle("-fx-font: 20 helvetica; -fx-font-color: grey ; -fx-background: lightgrey");
 
             Menu menuEd = new Menu("Edition");
             Menu menuAct = new Menu("Activités");
-            Menu menuGuichet = new Menu("guichets");
+            //Menu menuGuichet = new Menu("guichets");
             Menu menuArc = new Menu("Arcs");
             Menu menuFich = new Menu("Fichier");
+            Menu menuMonde = new Menu("Monde");
+
 
             MenuItem nouveau = new MenuItem("Nouveau");
             nouveau.setAccelerator(KeyCombination.keyCombination("Ctrl+N"));
@@ -52,21 +59,28 @@ public class VueMenu extends HBox implements Observateur {
             quitter.setOnAction(event -> Platform.exit());
 
             supprimer = new MenuItem("Supprimer");
-            setNomItem = new MenuItem("Renomer la sélection");
-
             supprimer.setAccelerator(KeyCombination.keyCombination("Ctrl+D"));
             supprimer.setOnAction(new EcouteurSupprimerEtape(monde));
 
+            setNomItem = new MenuItem("Renomer la sélection");
+            setNomItem.setOnAction(new EcouteurSetNom(monde));
+
+            mondeEntree = new MenuItem("à comme entrée");
+            setNomItem.setOnAction(new EcouteurSetNom(monde));
+
+            mondeSortie = new MenuItem("à comme sortie");
+            setNomItem.setOnAction(new EcouteurSetNom(monde));
+
             //creation des boutons
             setNom = new Button();
-            Button setTps = new Button();
-            Button setDel = new Button();
+            setTps = new Button();
+            setDel = new Button();
             Button bQuit = new Button();
             Button bNew = new Button();
             Pane spacer = new Pane();
 
             //espaceur pour mise en place des boutons
-            spacer.setMinSize(606, 1);
+            spacer.setMinSize(532, 1);
             spacer.setStyle("-fx-border-color: slategrey; -fx-border-width: 2px;-fx-alignment: center");
 
             //bouton pour setNom
@@ -97,7 +111,6 @@ public class VueMenu extends HBox implements Observateur {
             setDel.setGraphic(icon2);
             setDel.setAlignment(Pos.CENTER_RIGHT);
             setDel.setOnAction(new EcouteurBouton(monde));
-
             addTool("Modifier le delais de l'activité", setDel);
 
             //bouton pour quitter
@@ -122,14 +135,15 @@ public class VueMenu extends HBox implements Observateur {
             menuFich.getItems().addAll(nouveau, quitter);
             System.out.println(monde.nbEtapeSelec());
             menuAct.getItems().addAll(supprimer, setNomItem);
-            menuGuichet.getItems().addAll();
+            //menuGuichet.getItems().addAll();
 
             addTool("Destruction du Monde", bNew);
 
 
             //ajouter menu dans menuBar ajoutée à HBox
-            menu.getItems().addAll(menuFich, menuEd);
-            menuEd.getItems().addAll(menuAct, menuGuichet, menuArc);
+            menu.getItems().addAll(menuFich, menuEd, menuMonde);
+            menuEd.getItems().addAll(menuAct, menuArc);
+            menuMonde.getItems().addAll(mondeEntree, mondeSortie);
             menuBar.getMenus().addAll(menu);
             this.getChildren().addAll(menuBar, setNom, setTps, setDel, spacer, bNew, bQuit);
             setNomItem.setDisable(monde.nbEtapeSelec() != 1);

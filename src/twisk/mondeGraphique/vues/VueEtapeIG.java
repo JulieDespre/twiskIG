@@ -32,12 +32,11 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
         Background bg3 = new Background(new BackgroundFill(Color.web("#F5FFFA"), new CornerRadii(2), null));
         this.setBackground(bg3);
 
-        Label entSort = new Label();
         Label labNom = new Label();
         labNom.setText(etape.getNom() + " :    " + etape.getTemps() + (" sec +/- ") + etape.getDelais() + (" sec"));
         labNom.setStyle("-fx-font: 13 Lucida; -fx-font-weight: bold; -fx-padding: 2px;");
         labNom.setAlignment(Pos.TOP_CENTER);
-        this.getChildren().add(labNom);
+        top.getChildren().add(labNom);
 
         VBox zoneClient = new VBox();
         zoneClient.setPrefSize(80, 90);
@@ -51,6 +50,11 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
         //pour setNom d'une activité
         this.setOnMouseDragged(new EcouteurVueEtapeIG(monde, this, etape));
         this.setOnMouseReleased(new EcouteurMouseRelease(monde, this, etape));
+
+        for(EtapeIG entree : monde.aCommeEntree()){
+            Label entreeIcon = new Label();
+
+        }
 
         }
 

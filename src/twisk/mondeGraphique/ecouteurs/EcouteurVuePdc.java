@@ -1,10 +1,8 @@
 package twisk.mondeGraphique.ecouteurs;
 
-import javafx.animation.PauseTransition;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.util.Duration;
 import twisk.exceptions.TwiskException;
 import twisk.mondeGraphique.vues.VuePointDeControleIG;
 import twisk.mondeIG.MondeIG;

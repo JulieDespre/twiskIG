@@ -27,7 +27,7 @@ public class VueCourbeIG extends VueArcIG {
 
         double angle = Math.atan(tan.getY()/tan.getX());
         double angleFleche =this.getArc().getStartX() > this.getArc().getEndX() ? Math.toRadians(20) : -Math.toRadians(200);
-        double tailleFleche = 20;
+        double tailleFleche = 40;
 
         //creation de la flèche
         Line fleche1 = new Line();

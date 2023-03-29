@@ -11,7 +11,6 @@ import java.util.Optional;
 public class EcouteurSetNom implements EventHandler<ActionEvent> {
         private MondeIG monde;
 
-
         public EcouteurSetNom(MondeIG monde) {
                 this.monde = monde;
         }
