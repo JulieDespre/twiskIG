@@ -19,7 +19,6 @@ public class EcouteurEntree implements EventHandler<ActionEvent> {
             for (EtapeIG etape : monde.getEtapesClicked()) {
                 monde.ajouterEntree(etape);
             }
-            System.out.println("entrée du mon " +monde.aCommeEntree());
         }
         for(int i=0;i<monde.getEtapesClicked().size();i++) {
             monde.getEtapesClicked().remove(i);

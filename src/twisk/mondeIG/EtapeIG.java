@@ -139,7 +139,6 @@ public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeCo
     }
 
     public Boolean setEstEntree(Boolean b){
-
         return estEntree = b;
     }
     @Override

@@ -63,7 +63,8 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
                 cercleEnt.setFill(new ImagePattern(image));
                 top.getChildren().addAll(cercleEnt, labNom);
             }
-        }else {
+        }else if (!etape.estEntree()) {
+            this.retourCouleur();
             top.getChildren().add(labNom);
         }
         this.getChildren().addAll(top, zoneClient);
@@ -81,10 +82,9 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
         this.setBackground(bg3);
     }
     public void retourCouleur(){
-        this.setStyle("-fx-border-color: slategrey; -fx-padding: 10px;  -fx-border-width: 2px;");
-        Background bg4 = new Background(new BackgroundFill(Color.web("#e3e3e3"), new CornerRadii(2), null));
-        this.setBackground(bg4);
-        this.setOpacity(1.0);
+        this.setStyle("-fx-border-color: #4eadfe; -fx-padding: 10px;  -fx-border-width: 2px; ");
+        Background bg3 = new Background(new BackgroundFill(Color.web("#F5FFFA"), new CornerRadii(2), null));
+        this.setBackground(bg3);
     }
 
     public void setPosX(double newPosX){

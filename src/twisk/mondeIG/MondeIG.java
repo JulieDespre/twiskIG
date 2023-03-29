@@ -224,6 +224,8 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
 
     public void ajouterSortie(EtapeIG etape){
         mondeSortie.add(etape);
+        //etape.setEstSortie(true);
+        this.notifierObservateurs();
     }
 
     public void suppArcs(){
@@ -241,5 +243,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
         }
         notifierObservateurs();
     }
+
+
 
 }

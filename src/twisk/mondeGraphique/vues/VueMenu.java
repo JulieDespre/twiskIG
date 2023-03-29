@@ -77,7 +77,7 @@ public class VueMenu extends HBox implements Observateur {
             mondeEntree = new MenuItem("est une entrée");
             mondeEntree.setOnAction(new EcouteurEntree(monde));
             annulerEntree = new MenuItem("n'est plus une entrée");
-            //annulerEntree.setOnAction(new EcouteurAnnulerEntree(monde));
+            annulerEntree.setOnAction(new EcouteurAnnulerEntree(monde));
             entree.getItems().addAll(mondeEntree, annulerEntree);
 
             Menu sortie = new Menu("Sortie");
