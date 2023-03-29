@@ -20,10 +20,12 @@ public class VueMenu extends HBox implements Observateur {
 
         private MenuItem setNomItem;
         private MenuItem supprimer;
+        private MenuItem suppSelect;
         private MenuItem mondeEntree;
         private MenuItem annulerEntree;
         private MenuItem supprimerArc;
         private MenuItem mondeSortie;
+        private MenuItem annulerSortie;
         private Button setNom;
         private Button setTps;
         private Button setDel;
@@ -58,8 +60,12 @@ public class VueMenu extends HBox implements Observateur {
             quitter.setOnAction(event -> Platform.exit());
 
             supprimer = new MenuItem("Supprimer");
-            supprimer.setAccelerator(KeyCombination.keyCombination("Ctrl+D"));
+            supprimer.setAccelerator(KeyCombination.keyCombination("Ctrl+S"));
             supprimer.setOnAction(new EcouteurSupprimerEtape(monde));
+
+            suppSelect = new MenuItem("Désélectionner");
+            suppSelect.setAccelerator(KeyCombination.keyCombination("Ctrl+D"));
+            suppSelect.setOnAction(new EcouteurDeselectionner(monde));
 
             supprimerArc = new MenuItem("Supprimer");
             supprimerArc.setOnAction(new EcouteurSupprimerArc(monde));
@@ -67,13 +73,19 @@ public class VueMenu extends HBox implements Observateur {
             setNomItem = new MenuItem("Renomer la sélection");
             setNomItem.setOnAction(new EcouteurSetNom(monde));
 
-            mondeEntree = new MenuItem("à comme entrée");
+            Menu entree = new Menu("Entrée");
+            mondeEntree = new MenuItem("est une entrée");
             mondeEntree.setOnAction(new EcouteurEntree(monde));
-            annulerEntree = new MenuItem("à comme entrée");
+            annulerEntree = new MenuItem("n'est plus une entrée");
             //annulerEntree.setOnAction(new EcouteurAnnulerEntree(monde));
+            entree.getItems().addAll(mondeEntree, annulerEntree);
 
-            mondeSortie = new MenuItem("à comme sortie");
+            Menu sortie = new Menu("Sortie");
+            mondeSortie = new Menu("est une sortie");
             setNomItem.setOnAction(new EcouteurSetNom(monde));
+            annulerSortie = new MenuItem("n'est plus une sortie");
+            //annulerEntree.setOnAction(new EcouteurAnnulerEntree(monde));
+            sortie.getItems().addAll(mondeSortie, annulerSortie);
 
             //creation des boutons
             setNom = new Button();
@@ -140,37 +152,57 @@ public class VueMenu extends HBox implements Observateur {
             System.out.println(monde.nbEtapeSelec());
             menuAct.getItems().addAll(supprimer, setNomItem);
             //menuGuichet.getItems().addAll();
-
             addTool("Destruction du Monde", bNew);
 
 
             //ajouter menu dans menuBar ajoutée à HBox
             menu.getItems().addAll(menuFich, menuEd, menuMonde);
-            menuEd.getItems().addAll(menuAct, menuArc);
+            menuEd.getItems().addAll(menuAct, menuArc, suppSelect);
             menuArc.getItems().add(supprimerArc);
-            menuMonde.getItems().addAll(mondeEntree, annulerEntree, mondeSortie);
+            menuMonde.getItems().addAll(entree, sortie);
             menuBar.getMenus().addAll(menu);
             this.getChildren().addAll(menuBar, setNom, setTps, setDel, spacer, bNew, bQuit);
-            setNomItem.setDisable(monde.nbEtapeSelec() != 1);
-            supprimer.setDisable(monde.nbEtapeSelec() != 1);
-            setNom.setDisable(true);
+            reagir();
         }
 
         @Override
         public void reagir() {
-            setNomItem.setDisable(monde.nbEtapeSelec() != 1);
-            supprimer.setDisable(monde.nbEtapeSelec() != 1);
-            mondeEntree.setDisable(monde.nbEtapeSelec() != 1);
-                if (monde.getEtapesClicked().size() !=1) {
+                setNomItem.setDisable(monde.nbEtapeSelec() != 1);
+                supprimer.setDisable(monde.nbEtapeSelec() != 1);
+                mondeEntree.setDisable(monde.nbEtapeSelec() != 1);
+
+                //disable suppression arc
+                boolean disable = true;
+                for (int i = 0; i < monde.getLignes().size(); i++) {
+                        if (monde.getLignes().get(i).getSelect()) {
+                                disable = false;
+                        }
+                }
+                supprimerArc.setDisable(disable);
+
+                //disable  nom, suppression, entree
+                if (monde.getEtapesClicked().size() != 1) {
                         setNom.setDisable(true);
                         supprimer.setDisable(true);
                         mondeEntree.setDisable(true);
+
                 } else {
                         setNom.setDisable(false);
                         supprimer.setDisable(false);
                         mondeEntree.setDisable(false);
                 }
-            }
+
+                boolean disable2 = true;
+                for (int i = 0; i < monde.getLignes().size(); i++) {
+                        if (monde.getEtapesClicked().size() != 1) {
+                                disable2 = false;
+                        } else if (monde.getLignes().get(i).getSelect()) {
+                                disable2 = false;
+                        }
+                }
+                suppSelect.setDisable(disable2);
+
+        }
 
         public void addTool(String nom, Button bouton){
             Tooltip tool1 = new Tooltip(nom);

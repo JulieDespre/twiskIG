@@ -36,10 +36,14 @@ public abstract class ArcIG {
     }
 
     public void setSelec(){
-        selec=!selec;
+        selec = !selec;
     }
 
     public Boolean getSelect(){
         return this.selec;
+    }
+
+    public void setSelect(Boolean bool){
+        selec = bool;
     }
 }

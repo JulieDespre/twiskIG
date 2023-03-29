@@ -15,7 +15,6 @@ public class EcouteurEntree implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        System.out.println("hello");
         if (monde.getEtapesClicked().size() == 1) {
             for (EtapeIG etape : monde.getEtapesClicked()) {
                 monde.ajouterEntree(etape);
@@ -26,6 +25,5 @@ public class EcouteurEntree implements EventHandler<ActionEvent> {
             monde.getEtapesClicked().remove(i);
         }
         monde.notifierObservateurs();
-        System.out.println("bite");
     }
 }

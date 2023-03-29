@@ -55,12 +55,11 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
         this.setOnMouseReleased(new EcouteurMouseRelease(monde, this, etape));
 
         if (etape.estEntree()) {
-            System.out.println("grrrrr");
-            for (int i =0; i<monde.aCommeEntree().size(); i++){
-                //Label entreeIcon = new Label();
-                Circle cercleEnt = new Circle(20);
-                cercleEnt.setStyle("-fx-bordure : GREENYELLOW");
-                javafx.scene.image.Image image = new javafx.scene.image.Image(getClass().getResourceAsStream("/entree.png"), 20, 20, true, true);
+                for (int i =0; i<monde.aCommeEntree().size(); i++){
+                Circle cercleEnt = new Circle(15);
+                cercleEnt.setStroke(Color.SPRINGGREEN);
+                cercleEnt.setStrokeWidth(2);
+                javafx.scene.image.Image image = new javafx.scene.image.Image(getClass().getResourceAsStream("/entree.png"), 45, 45, true, true);
                 cercleEnt.setFill(new ImagePattern(image));
                 top.getChildren().addAll(cercleEnt, labNom);
             }
