@@ -30,9 +30,7 @@ public class VueMondeIG extends Pane implements Observateur {
         //creation des vues graphiques
             for (CourbeIG curve : monde.getCourbes()) {
                 VueCourbeIG vCourbe = new VueCourbeIG(monde, curve);
-                //vCourbe.getvPdcStart().setFill(Color.web("#C0C0C0"));
                 this.getChildren().add(vCourbe);
-
             }
 
             for (LigneDroiteIG ligne : monde.getLignes()) {

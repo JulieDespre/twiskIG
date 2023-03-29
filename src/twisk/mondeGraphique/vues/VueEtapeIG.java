@@ -9,7 +9,10 @@ import twisk.mondeGraphique.ecouteurs.EcouteurMouseRelease;
 import twisk.mondeGraphique.ecouteurs.EcouteurVueEtapeIG;
 import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
+import twisk.mondeIG.PointDeControleIG;
 import twisk.outils.TailleComposants;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -89,6 +92,7 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
     }
 
     public boolean getWasDragged(){
+        monde.getPointCliked().clear();
         return wasDragged;
     }
 
