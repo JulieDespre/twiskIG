@@ -1,6 +1,7 @@
 package twisk.mondeGraphique.vues;
 
 import javafx.scene.shape.Line;
+import twisk.mondeGraphique.ecouteurs.EcouteurVueArc;
 import twisk.mondeIG.LigneDroiteIG;
 import twisk.mondeIG.MondeIG;
 
@@ -19,6 +20,7 @@ public class VueLigneDroite extends VueArcIG {
         double angleFleche =this.getArc().getStartX() > this.getArc().getEndX() ? Math.toRadians(20) : -Math.toRadians(200);
         double tailleFleche = 40;
 
+        l1.setOnMouseClicked(new EcouteurVueArc(getMonde(), this,getArc()));
         //creation de la flèche
         Line fleche1 = new Line();
         fleche1.setStartX(l1.getEndX());

@@ -12,10 +12,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.TextAlignment;
 import twisk.mondeGraphique.Observateur;
-import twisk.mondeGraphique.ecouteurs.EcouteurBouton;
-import twisk.mondeGraphique.ecouteurs.EcouteurNouveau;
-import twisk.mondeGraphique.ecouteurs.EcouteurSetNom;
-import twisk.mondeGraphique.ecouteurs.EcouteurSupprimerEtape;
+import twisk.mondeGraphique.ecouteurs.*;
 import twisk.mondeIG.MondeIG;
 
 public class VueMenu extends HBox implements Observateur {
@@ -24,6 +21,8 @@ public class VueMenu extends HBox implements Observateur {
         private MenuItem setNomItem;
         private MenuItem supprimer;
         private MenuItem mondeEntree;
+        private MenuItem annulerEntree;
+        private MenuItem supprimerArc;
         private MenuItem mondeSortie;
         private Button setNom;
         private Button setTps;
@@ -62,11 +61,16 @@ public class VueMenu extends HBox implements Observateur {
             supprimer.setAccelerator(KeyCombination.keyCombination("Ctrl+D"));
             supprimer.setOnAction(new EcouteurSupprimerEtape(monde));
 
+            supprimerArc = new MenuItem("Supprimer");
+            supprimerArc.setOnAction(new EcouteurSupprimerArc(monde));
+
             setNomItem = new MenuItem("Renomer la sélection");
             setNomItem.setOnAction(new EcouteurSetNom(monde));
 
             mondeEntree = new MenuItem("à comme entrée");
-            setNomItem.setOnAction(new EcouteurSetNom(monde));
+            mondeEntree.setOnAction(new EcouteurEntree(monde));
+            annulerEntree = new MenuItem("à comme entrée");
+            //annulerEntree.setOnAction(new EcouteurAnnulerEntree(monde));
 
             mondeSortie = new MenuItem("à comme sortie");
             setNomItem.setOnAction(new EcouteurSetNom(monde));
@@ -143,7 +147,8 @@ public class VueMenu extends HBox implements Observateur {
             //ajouter menu dans menuBar ajoutée à HBox
             menu.getItems().addAll(menuFich, menuEd, menuMonde);
             menuEd.getItems().addAll(menuAct, menuArc);
-            menuMonde.getItems().addAll(mondeEntree, mondeSortie);
+            menuArc.getItems().add(supprimerArc);
+            menuMonde.getItems().addAll(mondeEntree, annulerEntree, mondeSortie);
             menuBar.getMenus().addAll(menu);
             this.getChildren().addAll(menuBar, setNom, setTps, setDel, spacer, bNew, bQuit);
             setNomItem.setDisable(monde.nbEtapeSelec() != 1);
@@ -155,11 +160,15 @@ public class VueMenu extends HBox implements Observateur {
         public void reagir() {
             setNomItem.setDisable(monde.nbEtapeSelec() != 1);
             supprimer.setDisable(monde.nbEtapeSelec() != 1);
+            mondeEntree.setDisable(monde.nbEtapeSelec() != 1);
                 if (monde.getEtapesClicked().size() !=1) {
                         setNom.setDisable(true);
-
+                        supprimer.setDisable(true);
+                        mondeEntree.setDisable(true);
                 } else {
                         setNom.setDisable(false);
+                        supprimer.setDisable(false);
+                        mondeEntree.setDisable(false);
                 }
             }
 

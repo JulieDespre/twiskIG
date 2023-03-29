@@ -22,7 +22,7 @@ public class FabriqueIdentifiant {
         }
 
         /**
-         * remet a zéro le numéro généré par la fabique d'itentifiant
+         * remet a zéro le numéro généré par la fabique d'itentifiant, numéro pdc et numero activité
          */
         public void reset() {
             numeroAct = 0;
@@ -30,7 +30,7 @@ public class FabriqueIdentifiant {
         }
 
         /**
-         * retourne le numéro unique généré par la fabrique d'identifiant
+         * retourne le numéro unique généré par la fabrique d'identifiant pour une activité
          *
          * @return le numéro
          */
@@ -39,6 +39,11 @@ public class FabriqueIdentifiant {
             return numeroAct;
         }
 
+    /**
+     * retourne le numéro unique généré par la fabrique d'identifiant pour un pdc
+     *
+     * @return le numéro
+     */
         public int getNumeroPDC() {
         numeroPDC++;
         return numeroPDC;
