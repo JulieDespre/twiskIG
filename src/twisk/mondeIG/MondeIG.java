@@ -240,12 +240,24 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
     public void suppArcs(){
         for (int i=0;i<lignes.size();i++){
             if (lignes.get(i).getSelect()) {
+                pdcClicked.remove(lignes.get(i).getPdcStart());
+                pdcClicked.remove(lignes.get(i).getPdcEnd());
+                lignes.get(i).getPdcStart().setHasNoArc();
+                lignes.get(i).getPdcEnd().setHasNoArc();
+                lignes.get(i).getPdcStart().setCpt(0);
+                lignes.get(i).getPdcEnd().setCpt(0);
                 lignes.remove(i);
                 i--;
             }
         }
         for (int i=0;i<courbes.size();i++){
             if (courbes.get(i).getSelect()) {
+                pdcClicked.remove(courbes.get(i).getPdcStart());
+                pdcClicked.remove(courbes.get(i).getPdcEnd());
+                courbes.get(i).getPdcStart().setHasNoArc();
+                courbes.get(i).getPdcEnd().setHasNoArc();
+                courbes.get(i).getPdcStart().setCpt(0);
+                courbes.get(i).getPdcEnd().setCpt(0);
                 courbes.remove(i);
                 i--;
             }

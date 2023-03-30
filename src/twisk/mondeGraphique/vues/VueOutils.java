@@ -12,13 +12,13 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.TextAlignment;
 import twisk.mondeGraphique.Observateur;
-import twisk.mondeGraphique.ecouteurs.EcouteurBouton;
-import twisk.mondeGraphique.ecouteurs.EcouteurCourbeBouton;
-import twisk.mondeGraphique.ecouteurs.EcouteurLigneBouton;
+import twisk.mondeGraphique.ecouteurs.*;
 import twisk.mondeIG.MondeIG;
 
 public class VueOutils extends HBox implements Observateur {
     private final MondeIG monde;
+    private Button suppArc = new Button();
+    private Button suppEtp = new Button();
 
     public VueOutils(MondeIG monde) {
         this.monde = monde;
@@ -33,6 +33,7 @@ public class VueOutils extends HBox implements Observateur {
         Button selectCourbe = new Button();
         Button addGui = new Button();
         Button modifCourbe = new Button();
+
 
         //bouton ajouter une activité
         addAct.setStyle("-fx-border-color: #1fd6fe; -fx-border-width: 1px;");
@@ -74,25 +75,63 @@ public class VueOutils extends HBox implements Observateur {
         modifCourbe.setOnMouseClicked(new EcouteurLigneBouton(monde));
         addTool("Modifier les arcs courbes", modifCourbe);
 
+        //bouton pour supprimer arc
+        suppArc.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px;");
+        Image image5 = new Image(getClass().getResourceAsStream("/ligne.png"), 36, 36, true, true);
+        ImageView icon5 = new ImageView(image5);
+        suppArc.setGraphic(icon5);
+        suppArc.setOnAction(new EcouteurSupprimerArc(monde));
+        addTool("Supprimer le/les arc(s) sélectionné(s)", suppArc);
+
+        //bouton pour supprimer étapes
+        suppEtp.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px;");
+        Image image6 = new Image(getClass().getResourceAsStream("/act.png"), 36, 36, true, true);
+        ImageView icon6 = new ImageView(image6);
+        suppEtp.setGraphic(icon6);
+        suppEtp.setOnAction(new EcouteurSupprimerEtape(monde));
+        addTool("Supprimer le/les étapes(s) sélectionné(s)", suppEtp);
+
         Label arcNom = new Label("Dessiner les arcs :");
-        arcNom.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px; -fx-font: 13 helvetica; -fx-font-weight: bold; -fx-max-width: 250; -fx-max-height: 45; -fx-text-alignment: center");
+        arcNom.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px; -fx-font: 11 helvetica; -fx-font-weight: bold; -fx-max-width: 250; -fx-max-height: 46; -fx-text-alignment: center");
         arcNom.setPadding(new Insets(5, 5, 5, 5));
 
+        Label supArc = new Label("Suppression Arc :");
+        supArc.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px; -fx-font: 11 helvetica; -fx-font-weight: bold; -fx-max-width: 250; -fx-max-height: 46; -fx-text-alignment: center");
+        supArc.setPadding(new Insets(5, 5, 5, 5));
+
+        Label supEtape = new Label("Suppression Etape :");
+        supEtape.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px; -fx-font: 11 helvetica; -fx-font-weight: bold; -fx-max-width: 250; -fx-max-height: 46; -fx-text-alignment: center");
+        supEtape.setPadding(new Insets(5, 5, 5, 5));
+
+
         Label courbeModif = new Label("Modifier les arcs courbes :");
-        courbeModif.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px; -fx-font: 13 helvetica; -fx-font-weight: bold; -fx-max-width: 250; -fx-max-height: 45; -fx-text-alignment: center");
+        courbeModif.setStyle("-fx-border-color: slategrey; -fx-border-width: 1px; -fx-font: 11 helvetica; -fx-font-weight: bold; -fx-max-width: 250; -fx-max-height: 46; -fx-text-alignment: center");
         courbeModif.setPadding(new Insets(5, 5, 5, 5));
 
-
-
         Pane spacer = new Pane();
-        spacer.setMinSize(359, 1);
+        spacer.setMinSize(40, 1);
 
-
-        this.getChildren().addAll(addAct, addGui, spacer, arcNom, selectLine, selectCourbe, courbeModif, modifCourbe);
+        this.getChildren().addAll(addAct, addGui,spacer, arcNom, selectLine, selectCourbe, supEtape, suppEtp, supArc, suppArc, courbeModif, modifCourbe);
+        reagir();
     }
 
     @Override
     public void reagir() {
+        suppEtp.setDisable(monde.getEtapesClicked().size() != 1);
+        if (monde.getLignes() != null || monde.getCourbes() != null ){
+            boolean disable = true;
+            for (int i = 0; i < monde.getLignes().size(); i++) {
+                if (monde.getLignes().get(i).getSelect()) {
+                    disable = false;
+                }
+            }
+            for (int i = 0; i < monde.getCourbes().size(); i++) {
+                if (monde.getCourbes().get(i).getSelect()) {
+                    disable = false;
+                }
+            }
+            suppArc.setDisable(disable);
+        }
     }
 
     public void addTool(String nom, Button bouton){

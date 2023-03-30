@@ -29,6 +29,8 @@ public class VueMondeIG extends Pane implements Observateur {
 
         //creation des vues graphiques
             for (CourbeIG curve : monde.getCourbes()) {
+                curve.getPdcStart().setHasArc();
+                curve.getPdcEnd().setHasArc();
                 VueCourbeIG vCourbe = new VueCourbeIG(monde, curve);
                 this.getChildren().add(vCourbe);
                 if (!curve.getSelect()){
@@ -39,6 +41,8 @@ public class VueMondeIG extends Pane implements Observateur {
             }
 
             for (LigneDroiteIG ligne : monde.getLignes()) {
+                ligne.getPdcStart().setHasArc();
+                ligne.getPdcEnd().setHasArc();
                 VueArcIG vArc = new VueLigneDroite(monde, ligne);
                 this.getChildren().add(vArc);
                 if (!ligne.getSelect()){

@@ -11,10 +11,7 @@ import twisk.mondeGraphique.ecouteurs.EcouteurMouseRelease;
 import twisk.mondeGraphique.ecouteurs.EcouteurVueEtapeIG;
 import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
-import twisk.mondeIG.PointDeControleIG;
 import twisk.outils.TailleComposants;
-
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -66,11 +63,13 @@ public class VueEtapeIG extends VBox implements Observateur, Iterable<VuePointDe
             }else if (etape.estSortie() && !etape.estEntree()) {
                 for (int i = 0; i < monde.aCommeSortie().size(); i++) {
                     Circle cercleSort = new Circle(15);
+                    Circle cercleSpacer = new Circle(15);
+                    cercleSpacer.setFill(Color.TRANSPARENT);
                     cercleSort.setStroke(Color.RED);
                     cercleSort.setStrokeWidth(2);
                     javafx.scene.image.Image image = new javafx.scene.image.Image(getClass().getResourceAsStream("/sortie.png"), 45, 45, true, true);
                     cercleSort.setFill(new ImagePattern(image));
-                    top.getChildren().addAll(labNom, cercleSort);
+                    top.getChildren().addAll(cercleSpacer, labNom, cercleSort);
                     System.out.println("hello");
                 }
             }else if (etape.estEntree() && etape.estSortie()){

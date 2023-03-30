@@ -26,6 +26,10 @@ public class VueMenu extends HBox implements Observateur {
         private MenuItem supprimerArc;
         private MenuItem mondeSortie;
         private MenuItem annulerSortie;
+        private Menu param;
+        private MenuItem setTemp;
+        private MenuItem setDelais;
+
         private Button setNom;
         private Button setTps;
         private Button setDel;
@@ -72,6 +76,15 @@ public class VueMenu extends HBox implements Observateur {
 
             setNomItem = new MenuItem("Renomer la sélection");
             setNomItem.setOnAction(new EcouteurSetNom(monde));
+
+            param = new Menu("Paramètres de l'activité");
+            param.setOnAction(new EcouteurSetNom(monde));
+
+            setTemp = new MenuItem("Modifier la durée");
+            setTemp.setOnAction(new EcouteurSetNom(monde));
+
+            setDelais = new MenuItem("Modifier le delais");
+            setDelais.setOnAction(new EcouteurSetNom(monde));
 
             Menu entree = new Menu("Entrée");
             mondeEntree = new MenuItem("est une entrée");
@@ -156,10 +169,12 @@ public class VueMenu extends HBox implements Observateur {
 
 
             //ajouter menu dans menuBar ajoutée à HBox
-            menu.getItems().addAll(menuFich, menuEd, menuMonde);
+
             menuEd.getItems().addAll(menuAct, menuArc, suppSelect);
+            param.getItems().addAll(setTemp, setDelais);
             menuArc.getItems().add(supprimerArc);
             menuMonde.getItems().addAll(entree, sortie);
+            menu.getItems().addAll(menuFich, menuEd, param, menuMonde);
             menuBar.getMenus().addAll(menu);
             this.getChildren().addAll(menuBar, setNom, setTps, setDel, spacer, bNew, bQuit);
             reagir();
@@ -192,11 +207,24 @@ public class VueMenu extends HBox implements Observateur {
                         setNom.setDisable(true);
                         supprimer.setDisable(true);
                         mondeEntree.setDisable(true);
-
+                        annulerEntree.setDisable(true);
+                        mondeSortie.setDisable(true);
+                        annulerSortie.setDisable(true);
+                        setTemp.setDisable(true);
+                        setDelais.setDisable(true);
+                        setDel.setDisable(true);
+                        setTps.setDisable(true);
                 } else {
                         setNom.setDisable(false);
                         supprimer.setDisable(false);
                         mondeEntree.setDisable(false);
+                        annulerEntree.setDisable(false);
+                        mondeSortie.setDisable(false);
+                        annulerSortie.setDisable(false);
+                        setTemp.setDisable(false);
+                        setDelais.setDisable(false);
+                        setDel.setDisable(false);
+                        setTps.setDisable(false);
                 }
 
                 boolean disable2 = true;

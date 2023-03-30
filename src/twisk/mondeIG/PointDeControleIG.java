@@ -59,4 +59,8 @@ public class PointDeControleIG {
         hasArc = true;
     }
 
+    public void setHasNoArc(){
+        hasArc = false;
+    }
+
 }
