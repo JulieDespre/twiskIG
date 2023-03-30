@@ -81,10 +81,10 @@ public class VueMenu extends HBox implements Observateur {
             entree.getItems().addAll(mondeEntree, annulerEntree);
 
             Menu sortie = new Menu("Sortie");
-            mondeSortie = new Menu("est une sortie");
-            setNomItem.setOnAction(new EcouteurSetNom(monde));
+            mondeSortie = new MenuItem("est une sortie");
+            mondeSortie.setOnAction(new EcouteurSortie(monde));
             annulerSortie = new MenuItem("n'est plus une sortie");
-            //annulerEntree.setOnAction(new EcouteurAnnulerEntree(monde));
+            annulerSortie.setOnAction(new EcouteurAnnulerSortie(monde));
             sortie.getItems().addAll(mondeSortie, annulerSortie);
 
             //creation des boutons
@@ -172,13 +172,20 @@ public class VueMenu extends HBox implements Observateur {
                 mondeEntree.setDisable(monde.nbEtapeSelec() != 1);
 
                 //disable suppression arc
-                boolean disable = true;
-                for (int i = 0; i < monde.getLignes().size(); i++) {
-                        if (monde.getLignes().get(i).getSelect()) {
-                                disable = false;
+                if (monde.getLignes() != null || monde.getCourbes() != null ){
+                        boolean disable = true;
+                        for (int i = 0; i < monde.getLignes().size(); i++) {
+                                if (monde.getLignes().get(i).getSelect()) {
+                                        disable = false;
+                                }
                         }
+                        for (int i = 0; i < monde.getCourbes().size(); i++) {
+                                if (monde.getCourbes().get(i).getSelect()) {
+                                        disable = false;
+                                }
+                        }
+                        supprimerArc.setDisable(disable);
                 }
-                supprimerArc.setDisable(disable);
 
                 //disable  nom, suppression, entree
                 if (monde.getEtapesClicked().size() != 1) {

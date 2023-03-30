@@ -6,11 +6,11 @@ import twisk.exceptions.ExceptionEtape;
 import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
 
-public class EcouteurEntree implements EventHandler<ActionEvent> {
-        private MondeIG monde;
+public class EcouteurSortie  implements EventHandler<ActionEvent> {
+    private MondeIG monde;
 
-    public EcouteurEntree(MondeIG monde) {
-            this.monde = monde;
+    public EcouteurSortie(MondeIG monde) {
+        this.monde = monde;
     }
 
 
@@ -19,16 +19,16 @@ public class EcouteurEntree implements EventHandler<ActionEvent> {
         if (monde.getEtapesClicked().size() == 1) {
             for (EtapeIG etape : monde.getEtapesClicked()) {
                 try {
-                    monde.ajouterEntree(etape);
+                    monde.ajouterSortie(etape);
                 } catch (ExceptionEtape e) {
                     e.getAlert();
                 }
             }
         }
         for(int i=0;i<monde.getEtapesClicked().size();i++) {
-            monde.getEtapesClicked(i).setWasEntry(true);
             monde.getEtapesClicked().remove(i);
-            }
+        }
         monde.notifierObservateurs();
     }
 }
+

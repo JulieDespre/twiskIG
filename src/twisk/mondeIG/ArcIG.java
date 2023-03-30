@@ -46,4 +46,8 @@ public abstract class ArcIG {
     public void setSelect(Boolean bool){
         selec = bool;
     }
+
+    public EtapeIG etapeStart(){
+        return this.pdcStart.getEtapePDC();
+    }
 }

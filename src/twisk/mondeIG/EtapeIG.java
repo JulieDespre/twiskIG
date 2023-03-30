@@ -17,6 +17,10 @@ public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeCo
     private Composant composant;
     private final ArrayList<PointDeControleIG > pointsDeControle=new ArrayList<PointDeControleIG> (4);
     private Boolean estEntree = false;
+    private Boolean estSortie = false;
+    private Boolean wasEntry = false;
+    private Boolean wasExit = false;
+
 
     public EtapeIG(String nom, int largeur, int hauteur, int temps, int delais){
         this.nom= nom;
@@ -140,6 +144,29 @@ public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeCo
 
     public Boolean setEstEntree(Boolean b){
         return estEntree = b;
+    }
+
+    public Boolean estSortie(){
+        return estSortie;
+    }
+
+    public Boolean setEstSortie(Boolean b){
+        return estSortie = b;
+    }
+    public Boolean wasEntry(){
+        return wasEntry;
+    }
+
+    public void setWasEntry(Boolean bool){
+        wasEntry = bool;
+    }
+
+    public Boolean wasExit(){
+        return wasExit;
+    }
+
+    public void setWasExit(Boolean bool){
+        wasExit = bool;
     }
     @Override
     public Iterator<PointDeControleIG> iterator() {

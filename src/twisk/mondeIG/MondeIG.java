@@ -1,5 +1,6 @@
 package twisk.mondeIG;
 
+import twisk.exceptions.ExceptionEtape;
 import twisk.exceptions.TwiskException;
 import twisk.outils.FabriqueIdentifiant;
 
@@ -212,20 +213,28 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
         return mondeEntree;
     }
 
-    public void ajouterEntree(EtapeIG etape){
-        mondeEntree.add(etape);
-        etape.setEstEntree(true);
-        this.notifierObservateurs();
+    public void ajouterEntree(EtapeIG etape) throws ExceptionEtape{
+        if(!aCommeEntree().contains(etape)) {
+            mondeEntree.add(etape);
+            etape.setEstEntree(true);
+            this.notifierObservateurs();
+        }else{
+            throw new ExceptionEtape();
+        }
     }
 
     public ArrayList<EtapeIG> aCommeSortie(){
         return mondeSortie;
     }
 
-    public void ajouterSortie(EtapeIG etape){
-        mondeSortie.add(etape);
-        //etape.setEstSortie(true);
-        this.notifierObservateurs();
+    public void ajouterSortie(EtapeIG etape) throws ExceptionEtape {
+        if(!aCommeSortie().contains(etape)) {
+            mondeSortie.add(etape);
+            etape.setEstSortie(true);
+            this.notifierObservateurs();
+        } else {
+            throw new ExceptionEtape();
+        }
     }
 
     public void suppArcs(){
@@ -241,6 +250,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
                 i--;
             }
         }
+
         notifierObservateurs();
     }
 
