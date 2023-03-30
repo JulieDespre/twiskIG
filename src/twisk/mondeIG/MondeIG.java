@@ -164,15 +164,33 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> {
                     for(int i=0;i<lignes.size();i++){
                         ArcIG arc= lignes.get(i);
                         if(pdc.getIdentifiant() == arc.getPdcStart().getIdentifiant() || pdc.getIdentifiant() == arc.getPdcEnd().getIdentifiant()){
+                            pdcClicked.remove(lignes.get(i).getPdcStart());
+                            pdcClicked.remove(lignes.get(i).getPdcEnd());
+                            lignes.get(i).getPdcStart().setHasNoArc();
+                            lignes.get(i).getPdcEnd().setHasNoArc();
+                            lignes.get(i).getPdcStart().setCpt(0);
+                            lignes.get(i).getPdcEnd().setCpt(0);
                             lignes.remove(arc);
                             i--;
+                        }
+                    }
+                    for(int j=0;j<courbes.size();j++) {
+                        ArcIG arc = courbes.get(j);
+                        if (pdc.getIdentifiant() == arc.getPdcStart().getIdentifiant() || pdc.getIdentifiant() == arc.getPdcEnd().getIdentifiant()) {
+                            pdcClicked.remove(courbes.get(j).getPdcStart());
+                            pdcClicked.remove(courbes.get(j).getPdcEnd());
+                            courbes.get(j).getPdcStart().setHasNoArc();
+                            courbes.get(j).getPdcEnd().setHasNoArc();
+                            courbes.get(j).getPdcStart().setCpt(0);
+                            courbes.get(j).getPdcEnd().setCpt(0);
+                            courbes.remove(arc);
+                            j--;
                         }
                     }
                 }
             etapes.remove(etape.getIdentifiant());
         }
         this.etapesClicked.clear();
-        System.out.println(etapesClicked.size());
         this.notifierObservateurs();
     }
 

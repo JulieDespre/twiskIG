@@ -78,10 +78,9 @@ public class VueMenu extends HBox implements Observateur {
             setNomItem.setOnAction(new EcouteurSetNom(monde));
 
             param = new Menu("Paramètres de l'activité");
-            param.setOnAction(new EcouteurSetNom(monde));
 
             setTemp = new MenuItem("Modifier la durée");
-            setTemp.setOnAction(new EcouteurSetNom(monde));
+            setTemp.setOnAction(new EcouteurSetTps(monde));
 
             setDelais = new MenuItem("Modifier le delais");
             setDelais.setOnAction(new EcouteurSetNom(monde));
@@ -128,7 +127,7 @@ public class VueMenu extends HBox implements Observateur {
             ImageView icon1 = new ImageView(image1);
             setTps.setGraphic(icon1);
             setTps.setAlignment(Pos.CENTER_RIGHT);
-            setTps.setOnAction(new EcouteurBouton(monde));
+            setTps.setOnAction(new EcouteurSetTps(monde));
 
             addTool("Modifier le durée de l'activité", setTps);
 
@@ -205,7 +204,6 @@ public class VueMenu extends HBox implements Observateur {
                 //disable  nom, suppression, entree
                 if (monde.getEtapesClicked().size() != 1) {
                         setNom.setDisable(true);
-                        supprimer.setDisable(true);
                         mondeEntree.setDisable(true);
                         annulerEntree.setDisable(true);
                         mondeSortie.setDisable(true);
@@ -216,7 +214,6 @@ public class VueMenu extends HBox implements Observateur {
                         setTps.setDisable(true);
                 } else {
                         setNom.setDisable(false);
-                        supprimer.setDisable(false);
                         mondeEntree.setDisable(false);
                         annulerEntree.setDisable(false);
                         mondeSortie.setDisable(false);
@@ -226,13 +223,32 @@ public class VueMenu extends HBox implements Observateur {
                         setDel.setDisable(false);
                         setTps.setDisable(false);
                 }
+                //supprimer.setDisable(monde.getEtapesClicked().size() != 0);
+
+                boolean disable3 = true;
+                if (monde.getEtapesClicked().size() > 0) {
+                        disable3 = false;
+                }
+                supprimer.setDisable(disable3);
+
 
                 boolean disable2 = true;
-                for (int i = 0; i < monde.getLignes().size(); i++) {
-                        if (monde.getEtapesClicked().size() != 1) {
-                                disable2 = false;
-                        } else if (monde.getLignes().get(i).getSelect()) {
-                                disable2 = false;
+                if (monde.getEtapesClicked().size() > 0) {
+                        disable2 = false;
+                } else {
+                        for (int i = 0; i < monde.getLignes().size(); i++) {
+                                if (monde.getEtapesClicked().size() != 1) {
+                                        disable2 = false;
+                                } else if (monde.getLignes().get(i).getSelect()) {
+                                        disable2 = false;
+                                }
+                        }
+                        for (int i = 0; i < monde.getCourbes().size(); i++) {
+                                if (monde.getEtapesClicked().size() != 1) {
+                                        disable2 = false;
+                                } else if (monde.getCourbes().get(i).getSelect()) {
+                                        disable2 = false;
+                                }
                         }
                 }
                 suppSelect.setDisable(disable2);

@@ -1,5 +1,7 @@
 package twisk.mondeIG;
 
+import twisk.exceptions.ExceptionEtape;
+import twisk.exceptions.ExceptionTemps;
 import twisk.outils.FabriqueIdentifiant;
 import twisk.outils.TailleComposants;
 import java.util.ArrayList;
@@ -7,13 +9,14 @@ import java.util.Iterator;
 
 public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeControleIG> {
     private String nom;
+
     private final int identifiant;
     private double posX;
     private double posY;
     private int largeur;
     private int hauteur;
-    private final int temps;
-    private final int delais;
+    private int temps =5;
+    private int delais =2;
     private Composant composant;
     private final ArrayList<PointDeControleIG > pointsDeControle=new ArrayList<PointDeControleIG> (4);
     private Boolean estEntree = false;
@@ -42,9 +45,7 @@ public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeCo
         this.posY=100;
     }
 
-    public EtapeIG(int temps, int delais){
-        this.temps= temps;
-        this.delais= delais;
+    public EtapeIG(){
         FabriqueIdentifiant maFabrique=FabriqueIdentifiant.getInstance();
         this.identifiant= maFabrique.getNumeroActivite();
         this.nom="Activité "+this.identifiant;
@@ -137,6 +138,15 @@ public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeCo
         this.nom = newNom;
         this.notifierObservateurs();
     }
+    public void setTpsEtapeClicked(int newTps) throws ExceptionTemps {
+        if (newTps < 10 && newTps > 0) {
+            this.temps = newTps;
+            this.notifierObservateurs();
+        } else {
+            throw new ExceptionTemps();
+        }
+    }
+
 
     public Boolean estEntree(){
         return estEntree;

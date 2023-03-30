@@ -117,7 +117,12 @@ public class VueOutils extends HBox implements Observateur {
 
     @Override
     public void reagir() {
-        suppEtp.setDisable(monde.getEtapesClicked().size() != 1);
+        boolean disable3 = true;
+        if (monde.getEtapesClicked().size() > 0) {
+            disable3 = false;
+        }
+        suppEtp.setDisable(disable3);
+
         if (monde.getLignes() != null || monde.getCourbes() != null ){
             boolean disable = true;
             for (int i = 0; i < monde.getLignes().size(); i++) {
