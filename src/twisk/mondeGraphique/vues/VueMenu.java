@@ -83,7 +83,7 @@ public class VueMenu extends HBox implements Observateur {
             setTemp.setOnAction(new EcouteurSetTps(monde));
 
             setDelais = new MenuItem("Modifier le delais");
-            setDelais.setOnAction(new EcouteurSetNom(monde));
+            setDelais.setOnAction(new EcouteurSetDelais(monde));
 
             Menu entree = new Menu("Entrée");
             mondeEntree = new MenuItem("est une entrée");
@@ -138,7 +138,7 @@ public class VueMenu extends HBox implements Observateur {
             ImageView icon2 = new ImageView(image2);
             setDel.setGraphic(icon2);
             setDel.setAlignment(Pos.CENTER_RIGHT);
-            setDel.setOnAction(new EcouteurBouton(monde));
+            setDel.setOnAction(new EcouteurSetDelais(monde));
             addTool("Modifier le delais de l'activité", setDel);
 
             //bouton pour quitter

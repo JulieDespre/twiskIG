@@ -1,5 +1,6 @@
 package twisk.mondeIG;
 
+import twisk.exceptions.ExceptionDelais;
 import twisk.exceptions.ExceptionEtape;
 import twisk.exceptions.ExceptionTemps;
 import twisk.outils.FabriqueIdentifiant;
@@ -144,6 +145,15 @@ public abstract class EtapeIG extends SujetObserve implements Iterable<PointDeCo
             this.notifierObservateurs();
         } else {
             throw new ExceptionTemps();
+        }
+    }
+
+    public void setDelEtapeClicked(int newDel) throws ExceptionDelais {
+        if (newDel < 10 && newDel > 0) {
+            this.temps = newDel;
+            this.notifierObservateurs();
+        } else {
+            throw new ExceptionDelais();
         }
     }
 
